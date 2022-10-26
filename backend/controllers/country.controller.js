@@ -102,6 +102,15 @@ module.exports = class CountryController {
     }
   }
 
+  static async updateGoalsScored(req, res, next) {
+    try {
+      const country = await CountryModel.updateOne({ _id: req.params.id }, { $inc: { goalsScored: 1 } })
+      res.json(JsonUtil.response(res, false, 'Successfully updated country', country))
+    } catch (e) {
+      next(e)
+    }
+  }
+
   //DELETE
   static async delete(req, res, next) {
     try {

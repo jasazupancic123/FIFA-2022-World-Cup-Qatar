@@ -5,11 +5,23 @@ const schema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
+  picture: {
+    type: Schema.Types.String,
+    required: true,
+  },
   region: {
     type: Schema.Types.String,
     required: true,
   },
   fifaCode: {
+    type: Schema.Types.String,
+    required: true,
+  },
+  manager: {
+    type: Schema.Types.String,
+    required: true,
+  },
+  managerPicture: {
     type: Schema.Types.String,
     required: true,
   },
@@ -26,6 +38,14 @@ const schema = new Schema({
     required: true,
   },
   noOfTitles: {
+    type: Schema.Types.Number,
+    default: 0,
+  },
+  isEliminated: {
+    type: Schema.Types.Boolean,
+    default: false,
+  },
+  goalsScored: {
     type: Schema.Types.Number,
     default: 0,
   },
