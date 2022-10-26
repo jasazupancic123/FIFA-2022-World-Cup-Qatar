@@ -3,9 +3,16 @@ var express = require('express')
 var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
+
 const cors = require('cors')
+const bp = require('body-parser')
+const request = require('request')
+const axios = require('axios')
 
 var app = express()
+
+app.use(bp.json())
+app.use(bp.urlencoded({ extended: true }))
 
 app.listen(3000, () => {
   console.log('Listening on http://localhost:3000')
