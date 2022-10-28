@@ -5,14 +5,9 @@ const schema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
-  country: {
+  team: {
     type: Schema.Types.ObjectId,
-    ref: 'Country',
-    required: true,
-  },
-  match: {
-    type: Schema.Types.ObjectId,
-    ref: 'Match',
+    ref: 'Team',
     required: true,
   },
   goalkeeper: {

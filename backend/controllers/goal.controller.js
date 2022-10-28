@@ -1,9 +1,8 @@
 const GoalModel = require('../models/Goal')
 const JsonUtil = require('../utils/json')
-
-const CountryController = require('./country.controller')
-const PlayerController = require('./player.controller')
-const MatchController = require('./match.controller')
+const PlayerModel = require('../models/Player')
+const MatchModel = require('../models/Match')
+const TeamModel = require('../models/Team')
 
 module.exports = class GoalController {
   static async find(req, res, next) {
@@ -78,26 +77,33 @@ module.exports = class GoalController {
   //POST
   static async createAndUpdateEverything(req, res, next) {
     try {
-      const goal = await GoalModel.create(req.body)
-      if (!goal.isOwnGoal) {
-        const scorer = await PlayerController.findById(goal.scorer)
-        PlayerController.updateGoals(scorer, scorer.goals + 1)
+      const goalBody = req.body
+      if (!goalBody.isOwnGoal) {
+        const scorer = await PlayerModel.findById(goalBody.scorer)
+        scorer.goals += 1
+        await scorer.save()
       }
-      if (assister != null) {
-        const assister = await PlayerController.findById(goal.assister)
-        PlayerController.updateAssists(assister, assister.assists + 1)
+      if (goalBody.assister != null) {
+        const assister = await PlayerModel.findById(goalBody.assister)
+        assister.assists += 1
+        await assister.save()
       }
-      const match = await MatchController.findById(goal.match)
-      const homeTeam = await CountryController.findById(match.homeTeam)
-      const awayTeam = await CountryController.findById(match.awayTeam)
+      const goal = await GoalModel.create(goalBody)
+      const match = await MatchModel.findById(goal.match)
       if (goal.isHomeTeamGoal) {
-        MatchController.updateHomeScore(match, match.homeTeamGoals + 1)
-        MatchController.addHomeTeamGoal(match, goal)
-        CountryController.updateGoalsScored(homeTeam, homeTeam.goals + 1)
+        match.homeTeamScore += 1
+        match.homeTeamGoals.push(goal)
+        await match.save()
+        const homeTeam = await TeamModel.findById(match.homeTeam)
+        homeTeam.goalsScored += 1
+        await homeTeam.save()
       } else {
-        MatchController.updateAwayScore(match, match.awayTeamGoals + 1)
-        MatchController.addAwayTeamGoal(match, goal)
-        CountryController.updateGoalsScored(awayTeam, awayTeam.goals + 1)
+        match.awayTeamScore += 1
+        match.awayTeamGoals.push(goal)
+        await match.save()
+        const awayTeam = await TeamModel.findById(match.awayTeam)
+        awayTeam.goalsScored += 1
+        await awayTeam.save()
       }
       res.json(JsonUtil.response(res, false, 'Successfully created goal', goal))
     } catch (e) {

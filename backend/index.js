@@ -35,4 +35,15 @@ app.use(function (req, res, next) {
   next(createError(404))
 })
 
+//getTeams()
+
 module.exports = app
+
+async function getTeams() {
+  // request('http://localhost:3000/team', { json: true }, (err, res, body) => {
+  //   if (err) {
+  //     return console.log(err)
+  //   }
+  //   console.log(body)
+  // })
+}

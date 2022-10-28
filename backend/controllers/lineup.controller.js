@@ -1,8 +1,14 @@
 const LineupModel = require('../models/Lineup')
 const PlayerController = require('./player.controller')
+const TeamController = require('./team.controller')
 const JsonUtil = require('../utils/json')
 
-module.exports = class CountryController {
+const PlayerModel = require('../models/Player')
+const TeamModel = require('../models/Team')
+
+const mongoose = require('mongoose')
+
+module.exports = class LineupController {
   static async find(req, res, next) {
     try {
       const lineups = await LineupModel.find()
@@ -60,20 +66,43 @@ module.exports = class CountryController {
   //POST
   static async createAndUpdateEverything(req, res, next) {
     try {
-      const lineup = await LineupModel.create(req.body)
-      const goalkeeper = await PlayerController.findById(req.body.goalkeeper)
-      PlayerController.updateAppearances(goalkeeper, goalkeeper.appearances + 1)
-      const defenders = await PlayerController.findByIds(req.body.defenders)
-      defenders.forEach(async (defender) => {
-        PlayerController.updateAppearances(defender, defender.appearances + 1)
-      })
-      const midfielders = await PlayerController.findByIds(req.body.midfielders)
-      midfielders.forEach(async (midfielder) => {
-        PlayerController.updateAppearances(midfielder, midfielder.appearances + 1)
-      })
-      const attackers = await PlayerController.findByIds(req.body.attackers)
-      attackers.forEach(async (attacker) => {
-        PlayerController.updateAppearances(attacker, attacker.appearances + 1)
+      const team = await TeamModel.findById(req.body.team)
+
+      const goalkeeper = await PlayerModel.findById(req.body.goalkeeper)
+      goalkeeper.appearances += 1
+      await goalkeeper.save()
+
+      const defenders = []
+      for (let i = 0; i < req.body.defenders.length; i++) {
+        const defender = await PlayerModel.findById(req.body.defenders[i])
+        defender.appearances += 1
+        await defender.save()
+        defenders.push(defender)
+      }
+
+      const midfielders = []
+      for (let i = 0; i < req.body.midfielders.length; i++) {
+        const midfielder = await PlayerModel.findById(req.body.midfielders[i])
+        midfielder.appearances += 1
+        await midfielder.save()
+        midfielders.push(midfielder)
+      }
+
+      const attackers = []
+      for (let i = 0; i < req.body.attackers.length; i++) {
+        const attacker = await PlayerModel.findById(req.body.attackers[i])
+        attacker.appearances += 1
+        await attacker.save()
+        attackers.push(attacker)
+      }
+
+      const lineup = await LineupModel.create({
+        type: req.body.type,
+        team: team,
+        goalkeeper: goalkeeper,
+        defenders: defenders,
+        midfielders: midfielders,
+        attackers: attackers,
       })
       res.json(JsonUtil.response(res, false, 'Successfully created lineup', lineup))
     } catch (e) {
@@ -83,7 +112,36 @@ module.exports = class CountryController {
 
   static async create(req, res, next) {
     try {
-      const lineup = await LineupModel.create(req.body)
+      const team = await TeamModel.findById(req.body.team)
+
+      const goalkeeper = await PlayerModel.findById(req.body.goalkeeper)
+
+      const defenders = []
+      for (let i = 0; i < req.body.defenders.length; i++) {
+        const defender = await PlayerModel.findById(req.body.defenders[i])
+        defenders.push(defender)
+      }
+
+      const midfielders = []
+      for (let i = 0; i < req.body.midfielders.length; i++) {
+        const midfielder = await PlayerModel.findById(req.body.midfielders[i])
+        midfielders.push(midfielder)
+      }
+
+      const attackers = []
+      for (let i = 0; i < req.body.attackers.length; i++) {
+        const attacker = await PlayerModel.findById(req.body.attackers[i])
+        attackers.push(attacker)
+      }
+
+      const lineup = await LineupModel.create({
+        type: req.body.type,
+        team: team,
+        goalkeeper: goalkeeper,
+        defenders: defenders,
+        midfielders: midfielders,
+        attackers: attackers,
+      })
       res.json(JsonUtil.response(res, false, 'Successfully created lineup', lineup))
     } catch (e) {
       next(e)

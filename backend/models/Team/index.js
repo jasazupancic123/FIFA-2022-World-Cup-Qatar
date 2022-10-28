@@ -5,23 +5,11 @@ const schema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
-  picture: {
-    type: Schema.Types.String,
-    required: true,
-  },
   region: {
     type: Schema.Types.String,
     required: true,
   },
   fifaCode: {
-    type: Schema.Types.String,
-    required: true,
-  },
-  manager: {
-    type: Schema.Types.String,
-    required: true,
-  },
-  managerPicture: {
     type: Schema.Types.String,
     required: true,
   },
@@ -51,4 +39,4 @@ const schema = new Schema({
   },
 })
 
-module.exports = model('Country', schema)
+module.exports = model('Team', schema)

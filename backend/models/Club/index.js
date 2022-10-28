@@ -5,6 +5,10 @@ const schema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
+  shortName: {
+    type: Schema.Types.String,
+    required: true,
+  },
   picture: {
     type: Schema.Types.String,
     required: true,

@@ -11,7 +11,7 @@ const schema = new Schema({
   },
   nationality: {
     type: Schema.Types.ObjectId,
-    ref: 'Country',
+    ref: 'Team',
     required: true,
   },
   position: {
@@ -20,6 +20,23 @@ const schema = new Schema({
   },
   shirtNumber: {
     type: Schema.Types.Number,
+    required: true,
+  },
+  birthDate: {
+    type: Schema.Types.Date,
+    required: true,
+  },
+  height: {
+    type: Schema.Types.Number,
+    required: true,
+  },
+  prefferedFoot: {
+    type: Schema.Types.String,
+    required: true,
+  },
+  club: {
+    type: Schema.Types.ObjectId,
+    ref: 'Club',
     required: true,
   },
   appearances: {
@@ -41,23 +58,6 @@ const schema = new Schema({
   redCards: {
     type: Schema.Types.Number,
     default: 0,
-  },
-  birthDate: {
-    type: Schema.Types.Date,
-    required: true,
-  },
-  height: {
-    type: Schema.Types.Number,
-    required: true,
-  },
-  prefferedFoot: {
-    type: Schema.Types.String,
-    required: true,
-  },
-  club: {
-    type: Schema.Types.ObjectId,
-    ref: 'Club',
-    required: true,
   },
 })
 

@@ -1,4 +1,7 @@
 const PlayerModel = require('../models/Player')
+const JsonUtil = require('../utils/json')
+
+const { default: mongoose } = require('mongoose')
 
 module.exports = class PlayerController {
   static async find(req, res, next) {
@@ -26,10 +29,10 @@ module.exports = class PlayerController {
       next(e)
     }
   }
-  static async findByCountry(req, res, next) {
+  static async findByTeam(req, res, next) {
     try {
-      if (!req.params.country) res.json(JsonUtil.response(res, true, 'Please provide country', null))
-      const players = await PlayerModel.find({ country: req.params.country })
+      if (!req.params.team) res.json(JsonUtil.response(res, true, 'Please provide team', null))
+      const players = await PlayerModel.find({ nationality: req.params.team })
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -48,6 +51,16 @@ module.exports = class PlayerController {
     try {
       if (!req.params.position) res.json(JsonUtil.response(res, true, 'Please provide position', null))
       const players = await PlayerModel.find({ position: req.params.position })
+      res.json(JsonUtil.response(res, false, 'Successfully found players', players))
+    } catch (e) {
+      next(e)
+    }
+  }
+  static async findByTeamAndPosition(req, res, next) {
+    try {
+      if (!req.params.team) res.json(JsonUtil.response(res, true, 'Please provide team', null))
+      if (!req.params.position) res.json(JsonUtil.response(res, true, 'Please provide position', null))
+      const players = await PlayerModel.find({ position: req.params.position, nationality: req.params.team })
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -85,13 +98,23 @@ module.exports = class PlayerController {
       next(e)
     }
   }
-  static async findYoungestByCountry(req, res, next) {
+  static async findYoungestByTeam(req, res, next) {
     try {
-      if (!req.params.country) res.json(JsonUtil.response(res, true, 'Please provide country', null))
-      const players = await PlayerModel.find({ country: req.params.country }).sort({ age: 1 })
+      if (!req.params.team) res.json(JsonUtil.response(res, true, 'Please provide team', null))
+      const players = await PlayerModel.find({ team: req.params.team }).sort({ age: 1 })
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
+    }
+  }
+
+  //CUSTOM GET
+  static async findByIdFunction(id) {
+    try {
+      const player = await PlayerModel.findById(id)
+      return player
+    } catch (e) {
+      return e
     }
   }
 
@@ -169,7 +192,7 @@ module.exports = class PlayerController {
       if (!req.params.appearances) res.json(JsonUtil.response(res, true, 'Please provide appearances', null))
       const player = await PlayerModel.findById(req.params.id)
       player.appearances = req.params.appearances
-      await player.save()
+      await PlayerModel.findByIdAndUpdate(req.params.id, player, { new: true })
       res.json(JsonUtil.response(res, false, 'Successfully updated player', player))
     } catch (e) {
       next(e)

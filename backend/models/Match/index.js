@@ -12,14 +12,6 @@ const schema = new Schema({
     ref: 'Club',
     required: true,
   },
-  homeTeamScore: {
-    type: Schema.Types.Number,
-    default: 0,
-  },
-  awayTeamScore: {
-    type: Schema.Types.Number,
-    default: 0,
-  },
   date: {
     type: Schema.Types.Date,
     required: true,
@@ -32,6 +24,14 @@ const schema = new Schema({
     type: Schema.Types.String,
     default: 'Unknown',
   },
+  homeTeamScore: {
+    type: Schema.Types.Number,
+    default: 0,
+  },
+  awayTeamScore: {
+    type: Schema.Types.Number,
+    default: 0,
+  },
   roundOrGroup: {
     type: Schema.Types.String,
     required: true,
@@ -42,12 +42,24 @@ const schema = new Schema({
   },
   homeTeamGoals: {
     //array ki vsebuje class goals
-    type: Schema.Types.Array,
+    type: [Schema.Types.ObjectId],
+    ref: 'Goal',
     default: [],
   },
   awayTeamGoals: {
     //array ki vsebuje class goals
-    type: Schema.Types.Array,
+    type: [Schema.Types.ObjectId],
+    ref: 'Goal',
+    default: [],
+  },
+  homeTeamSubstitutions: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Substitution',
+    default: [],
+  },
+  awayTeamSubstitutions: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Substitution',
     default: [],
   },
   homeTeamLineUp: {
