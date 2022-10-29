@@ -24,6 +24,7 @@ router.put('/awayTeamLineup/:id', MatchController.addAwayTeamLineup)
 router.put('/finished/:id', MatchController.updateIsFinished)
 router.put('/halftime/:id', MatchController.updateIsHalfTime)
 router.put('/winner/:id', MatchController.updateWinner)
+router.put('/hasStarted/:id', MatchController.updateHasStarted)
 
 router.delete('/:id', MatchController.delete)
 

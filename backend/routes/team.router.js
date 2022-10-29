@@ -15,6 +15,15 @@ router.get('/atLeastOneTitle', TeamController.findByAtLeastOneTitle)
 router.post('/', TeamController.create)
 
 router.put('/:id', TeamController.update)
+router.put('/addGoalsFor/:id/:goalsFor', TeamController.addGoalsFor)
+router.put('/addGoalsAgainst/:id/:goalsAgainst', TeamController.addGoalsAgainst)
+router.put('/addPoints/:id/:points', TeamController.addPoints)
+router.put('/addMatchesPlayed/:id/:matchesPlayed', TeamController.addMatchesPlayed)
+router.put('/addMatchesWon/:id/:matchesWon', TeamController.addMatchesWon)
+router.put('/addMatchesDrawn/:id/:matchesDrawn', TeamController.addMatchesDrawn)
+router.put('/addMatchesLost/:id/:matchesLost', TeamController.addMatchesLost)
+router.put('/updateNoOfTitles/:id/:noOfTitles', TeamController.updateNoOfTitles)
+router.put('/updateIsEliminated/:id/:isEliminated', TeamController.updateIsEliminated)
 
 router.delete('/:id', TeamController.delete)
 

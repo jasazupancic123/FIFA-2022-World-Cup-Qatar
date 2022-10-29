@@ -97,6 +97,10 @@ module.exports = class GoalController {
         const homeTeam = await TeamModel.findById(match.homeTeam)
         homeTeam.goalsScored += 1
         await homeTeam.save()
+
+        const awayTeam = await TeamModel.findById(match.awayTeam)
+        awayTeam.goalsAgainst += 1
+        await awayTeam.save()
       } else {
         match.awayTeamScore += 1
         match.awayTeamGoals.push(goal)
@@ -104,6 +108,10 @@ module.exports = class GoalController {
         const awayTeam = await TeamModel.findById(match.awayTeam)
         awayTeam.goalsScored += 1
         await awayTeam.save()
+
+        const homeTeam = await TeamModel.findById(match.homeTeam)
+        homeTeam.goalsAgainst += 1
+        await homeTeam.save()
       }
       res.json(JsonUtil.response(res, false, 'Successfully created goal', goal))
     } catch (e) {

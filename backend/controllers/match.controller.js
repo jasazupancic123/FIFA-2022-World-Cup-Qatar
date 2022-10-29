@@ -1,4 +1,5 @@
 const MatchModel = require('../models/Match')
+const TeamMode = require('../models/Team')
 const JsonUtil = require('../utils/json')
 
 module.exports = class MatchController {
@@ -157,6 +158,25 @@ module.exports = class MatchController {
   static async updateIsFinished(req, res, next) {
     try {
       const match = await MatchModel.findByIdAndUpdate(req.params.id, { isFinished: req.body.isFinished }, { new: true })
+      if (match.homeTeamScore > match.awayTeamScore) {
+        const homeTeam = await TeamModel.findById(match.homeTeam)
+        homeTeam.points += 3
+        homeTeam.matchesWon += 1
+        awayTeam.matchesLost += 1
+      } else if (match.homeTeamScore < match.awayTeamScore) {
+        const awayTeam = await TeamModel.findById(match.awayTeam)
+        awayTeam.points += 3
+        awayTeam.matchesWon += 1
+        homeTeam.matchesLost += 1
+      } else {
+        const homeTeam = await TeamModel.findById(match.homeTeam)
+        const awayTeam = await TeamModel.findById(match.awayTeam)
+        homeTeam.points += 1
+        awayTeam.points += 1
+        homeTeam.matchesDrawn += 1
+        awayTeam.matchesDrawn += 1
+      }
+
       res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
     } catch (e) {
       next(e)
@@ -175,6 +195,21 @@ module.exports = class MatchController {
   static async updateWinner(req, res, next) {
     try {
       const match = await MatchModel.findByIdAndUpdate(req.params.id, { winner: req.body.winner }, { new: true })
+      res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
+    } catch (e) {
+      next(e)
+    }
+  }
+
+  static async updateHasStarted(req, res, next) {
+    try {
+      const match = await MatchModel.findByIdAndUpdate(req.params.id, { hasStarted: req.body.hasStarted }, { new: true })
+      const homeTeam = await TeamModel.findById(match.homeTeam)
+      const awayTeam = await TeamModel.findById(match.awayTeam)
+      if (match.hasStarted) {
+        homeTeam.matchesPlayed++
+        awayTeam.matchesPlayed++
+      }
       res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
     } catch (e) {
       next(e)

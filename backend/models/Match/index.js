@@ -76,6 +76,10 @@ const schema = new Schema({
     type: Schema.Types.Boolean,
     default: false,
   },
+  hasStarted: {
+    type: Schema.Types.Boolean,
+    default: false,
+  },
   isHalfTime: {
     type: Schema.Types.Boolean,
     default: false,
