@@ -9,7 +9,7 @@ const schema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
-  picture: {
+  image: {
     type: Schema.Types.String,
     required: true,
   },

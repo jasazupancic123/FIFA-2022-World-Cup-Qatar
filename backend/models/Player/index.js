@@ -9,6 +9,10 @@ const schema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
+  image: {
+    type: Schema.Types.String,
+    required: true,
+  },
   nationality: {
     type: Schema.Types.ObjectId,
     ref: 'Team',

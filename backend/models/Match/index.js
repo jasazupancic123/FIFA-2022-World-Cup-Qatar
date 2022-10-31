@@ -86,7 +86,7 @@ const schema = new Schema({
   },
   winner: {
     type: Schema.Types.ObjectId,
-    ref: 'Country',
+    ref: 'Team',
     default: null, //ce ostane null pol je draw
   },
 })
