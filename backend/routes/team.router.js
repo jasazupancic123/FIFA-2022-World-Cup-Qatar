@@ -10,7 +10,7 @@ router.get('/region/:region', TeamController.findByRegion)
 router.get('/fifaCode/:fifaCode', TeamController.findByFifaCode)
 router.get('/iso2/:iso2', TeamController.findByIso2)
 router.get('/group/:group', TeamController.findByGroup)
-router.get('/atLeastOneTitle', TeamController.findByAtLeastOneTitle)
+router.get('/findBy/atLeastOneTitle', TeamController.findByAtLeastOneTitle)
 
 router.post('/', TeamController.create)
 

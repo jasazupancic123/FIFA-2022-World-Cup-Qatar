@@ -3,7 +3,7 @@ package com.example.worldcupapp
 import java.util.*
 
 class Player(
-    var id_: String,
+    var _id: String,
     var firstName: String,
     var lastName: String,
     var image: String,
@@ -23,7 +23,7 @@ class Player(
     override fun toString(): String{
         return (
             "Player{" +
-                "id_='" + id_ + '\'' +
+                "id_='" + _id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", image='" + image + '\'' +

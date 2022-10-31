@@ -1,7 +1,7 @@
 package com.example.worldcupapp
 
 class Substitution (
-    var id_: String,
+    var _id: String,
     var minute: Int,
     var playerIn: Player,
     var playerOut: Player,
@@ -12,7 +12,7 @@ class Substitution (
     override fun toString(): String {
         return (
             "Substitution{" +
-                "id_='" + id_ + '\'' +
+                "id_='" + _id + '\'' +
                 ", minute=" + minute +
                 ", playerIn=" + playerIn +
                 ", playerOut=" + playerOut +

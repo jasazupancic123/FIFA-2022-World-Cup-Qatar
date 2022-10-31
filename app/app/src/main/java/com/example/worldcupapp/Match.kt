@@ -3,15 +3,15 @@ package com.example.worldcupapp
 import java.util.Date
 
 class Match(
-    var id_: String,
+    var _id: String,
     var homeTeam: Team,
     var awayTeam: Team,
     var date: Date,
     var stadium: String,
     var referee: String,
+    var roundOrGroup: String,
     var homeTeamScore: Int? = null,
     var awayTeamScore: Int? = null,
-    var roundOrGroup: String,
     var minute: Int? = null,
     var homeTeamGoals: MutableList<Goal> = mutableListOf(),
     var awayTeamGoals: MutableList<Goal> = mutableListOf(),
@@ -27,7 +27,7 @@ class Match(
     override fun toString(): String {
         return (
             "Match{" +
-                "id_='" + id_ + '\'' +
+                "id_='" + _id + '\'' +
                 ", homeTeam=" + homeTeam.toString() +
                 ", awayTeam=" + awayTeam.toString() +
                 ", date=" + date +

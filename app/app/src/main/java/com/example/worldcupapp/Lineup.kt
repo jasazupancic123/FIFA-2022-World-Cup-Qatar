@@ -1,7 +1,7 @@
 package com.example.worldcupapp
 
 class Lineup (
-    var id_: String,
+    var _id: String,
     var type: String,
     var team: Team,
     var goalkeeper: Player,
@@ -13,7 +13,7 @@ class Lineup (
     override fun toString(): String {
         return (
             "Lineup{" +
-                "id_='" + id_ + '\'' +
+                "id_='" + _id + '\'' +
                 ", type='" + type + '\'' +
                 ", team=" + team +
                 ", goalkeeper=" + goalkeeper.toString() +

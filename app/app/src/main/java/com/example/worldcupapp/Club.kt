@@ -1,7 +1,8 @@
 package com.example.worldcupapp
 
+
 class Club(
-    var id_: String,
+    var _id: String,
     var name: String,
     var shortName: String,
     var image: String,
@@ -10,7 +11,7 @@ class Club(
     override fun toString(): String {
         return (
             "Club{" +
-                "id_='" + id_ + '\'' +
+                "id_='" + _id + '\'' +
                 ", name='" + name + '\'' +
                 ", shortName='" + shortName + '\'' +
                 ", image='" + image + '\'' +
