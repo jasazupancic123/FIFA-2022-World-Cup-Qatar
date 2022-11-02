@@ -4,6 +4,7 @@ class Lineup (
     var _id: String,
     var type: String,
     var team: Team,
+    var match: Match,
     var goalkeeper: Player,
     var defenders: MutableList<Player>,
     var midfielders: MutableList<Player>,
@@ -15,7 +16,8 @@ class Lineup (
             "Lineup{" +
                 "id_='" + _id + '\'' +
                 ", type='" + type + '\'' +
-                ", team=" + team +
+                ", team=" + team.toString() +
+                ", match=" + match.toString() +
                 ", goalkeeper=" + goalkeeper.toString() +
                 ", defenders=" + defenders.toString() +
                 ", midfielders=" + midfielders.toString() +

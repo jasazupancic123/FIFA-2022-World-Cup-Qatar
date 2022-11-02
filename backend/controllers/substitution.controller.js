@@ -65,13 +65,6 @@ module.exports = class SubstitutionController {
         team: req.body.team,
         isHomeTeamSubstitution: req.body.isHomeTeamSubstitution,
       })
-      const match = await MatchModel.findById(req.body.match)
-      if (substitution.isHomeTeamSubstitution) {
-        match.homeTeamSubstitutions.push(substitution)
-      } else {
-        match.awayTeamSubstitutions.push(substitution)
-      }
-      await match.save()
       res.json(JsonUtil.response(res, false, 'Successfully created substitution', substitution))
     } catch (e) {
       next(e)

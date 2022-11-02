@@ -40,38 +40,6 @@ const schema = new Schema({
     type: Schema.Types.Number,
     default: 0,
   },
-  homeTeamGoals: {
-    //array ki vsebuje class goals
-    type: [Schema.Types.ObjectId],
-    ref: 'Goal',
-    default: [],
-  },
-  awayTeamGoals: {
-    //array ki vsebuje class goals
-    type: [Schema.Types.ObjectId],
-    ref: 'Goal',
-    default: [],
-  },
-  homeTeamSubstitutions: {
-    type: [Schema.Types.ObjectId],
-    ref: 'Substitution',
-    default: [],
-  },
-  awayTeamSubstitutions: {
-    type: [Schema.Types.ObjectId],
-    ref: 'Substitution',
-    default: [],
-  },
-  homeTeamLineUp: {
-    type: Schema.Types.ObjectId,
-    ref: 'LineUp',
-    default: null,
-  },
-  awayTeamLineUp: {
-    type: Schema.Types.ObjectId,
-    ref: 'LineUp',
-    default: null,
-  },
   isFinished: {
     type: Schema.Types.Boolean,
     default: false,

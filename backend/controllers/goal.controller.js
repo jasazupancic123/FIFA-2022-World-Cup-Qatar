@@ -92,7 +92,6 @@ module.exports = class GoalController {
       const match = await MatchModel.findById(goal.match)
       if (goal.isHomeTeamGoal) {
         match.homeTeamScore += 1
-        match.homeTeamGoals.push(goal)
         await match.save()
         const homeTeam = await TeamModel.findById(match.homeTeam)
         homeTeam.goalsScored += 1
@@ -103,7 +102,6 @@ module.exports = class GoalController {
         await awayTeam.save()
       } else {
         match.awayTeamScore += 1
-        match.awayTeamGoals.push(goal)
         await match.save()
         const awayTeam = await TeamModel.findById(match.awayTeam)
         awayTeam.goalsScored += 1

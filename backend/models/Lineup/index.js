@@ -10,6 +10,11 @@ const schema = new Schema({
     ref: 'Team',
     required: true,
   },
+  match: {
+    type: Schema.Types.ObjectId,
+    ref: 'Match',
+    required: true,
+  },
   goalkeeper: {
     type: Schema.Types.ObjectId,
     ref: 'Player',

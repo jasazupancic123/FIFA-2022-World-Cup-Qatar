@@ -111,50 +111,6 @@ module.exports = class MatchController {
     }
   }
 
-  static async addHomeTeamGoal(req, res, next) {
-    try {
-      const match = await MatchModel.findById(req.params.id)
-      match.homeTeamGoals.push(req.body.goal)
-      await match.save()
-      res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
-    } catch (e) {
-      next(e)
-    }
-  }
-
-  static async addAwayTeamGoal(req, res, next) {
-    try {
-      const match = await MatchModel.findById(req.params.id)
-      match.awayTeamGoals.push(req.body.goal)
-      await match.save()
-      res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
-    } catch (e) {
-      next(e)
-    }
-  }
-
-  static async addHomeTeamLineup(req, res, next) {
-    try {
-      const match = await MatchModel.findById(req.params.id)
-      match.homeTeamLineUp = req.body.lineup
-      await match.save()
-      res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
-    } catch (e) {
-      next(e)
-    }
-  }
-
-  static async addAwayTeamLineup(req, res, next) {
-    try {
-      const match = await MatchModel.findById(req.params.id)
-      match.awayTeamLineUp = req.body.lineup
-      await match.save()
-      res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
-    } catch (e) {
-      next(e)
-    }
-  }
-
   static async updateIsFinished(req, res, next) {
     try {
       const match = await MatchModel.findByIdAndUpdate(req.params.id, { isFinished: req.body.isFinished }, { new: true })

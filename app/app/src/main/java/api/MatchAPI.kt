@@ -8,7 +8,9 @@ import io.ktor.http.*
 
 import kotlinx.serialization.json.*
 import com.example.worldcupapp.Match
-import com.example.worldcupapp.Team
+import com.example.worldcupapp.Substitution
+import com.example.worldcupapp.Goal
+import com.example.worldcupapp.Lineup
 import java.text.SimpleDateFormat
 
 class MatchAPI {
@@ -40,34 +42,42 @@ class MatchAPI {
             val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
             val awayTeam = TeamAPI().findById(awayTeamId)
 
+
             val date = matchObject["date"]!!.jsonPrimitive.content
             val stadium = matchObject["stadium"]!!.jsonPrimitive.content
             val referee = matchObject["referee"]!!.jsonPrimitive.content
             val roundOrGroup = matchObject["roundOrGroup"]!!.jsonPrimitive.content
-            val homeTeamScore = matchObject["homeTeamScore"]!!.jsonPrimitive.int
-            val awayTeamScore = matchObject["awayTeamScore"]!!.jsonPrimitive.int
 
-            val homeTeamGoals = matchObject["homeTeamGoals"]!!.jsonArray
-            val awayTeamGoals = matchObject["awayTeamGoals"]!!.jsonArray
+            val homeTeamScore = if(matchObject["homeTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["homeTeamScore"]!!.jsonPrimitive.int
+            }
 
-            //goal = GoalAPI.findById(homeTeamGoals[i])
-            //goals.add(goal)
+            val awayTeamScore = if(matchObject["awayTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["awayTeamScore"]!!.jsonPrimitive.int
+            }
 
-            val homeTeamSubstitutions = matchObject["homeTeamSubstitutions"]!!.jsonArray
-            val awayTeamSubstitutions = matchObject["awayTeamSubstitutions"]!!.jsonArray
-            //substitution = SubstitutionAPI().findById(homeTeamSubstitutions[i])
-            //substitutions.add(substitution)
-
-            val homeTeamLineup = matchObject["homeTeamLineup"]?.jsonObject
-            val awayTeamLineup = matchObject["awayTeamLineup"]?.jsonObject
-            //lineup = LineupAPI().findById(homeTeamLineup)
+            val minute = if(matchObject["minute"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["minute"]!!.jsonPrimitive.int
+            }
 
             val isFinished = matchObject["isFinished"]!!.jsonPrimitive.boolean
+            val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
             val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
-            val winner = matchObject["winner"]!!.jsonPrimitive.content
-            //winner = TeamAPI().findById(winner)
 
+            val winner = if(matchObject["winner"] != JsonNull) {
+                val winnerId = matchObject["winner"]!!.jsonPrimitive.content
+                val winner = TeamAPI().findById(winnerId)
+                winner
+            } else {
+                null
+            }
 
             val match = Match(
                 _id,
@@ -76,10 +86,96 @@ class MatchAPI {
                 SimpleDateFormat("yyyy-MM-dd").parse(date),
                 stadium,
                 referee,
-                roundOrGroup)
+                roundOrGroup,
+                homeTeamScore,
+                awayTeamScore,
+                minute,
+                isFinished,
+                hasStarted,
+                isHalfTime,
+                winner)
             matches.add(match)
         }
         return matches
+    }
+
+    suspend fun findById(_id: String) : Match {
+        val client = HttpClient()
+        val response: HttpResponse = client.get(url + "/" + _id) {
+            method = HttpMethod.Get
+        }
+
+        if(response.status.value == 404) {
+            throw Exception("Status code 404")
+        }
+
+        if(Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+            throw Exception("No data found")
+        }
+
+        val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+        val matchObject = data!!.jsonObject
+        val _id = matchObject["_id"]!!.jsonPrimitive.content
+
+        val homeTeamId = matchObject["homeTeam"]!!.jsonPrimitive.content
+        val homeTeam = TeamAPI().findById(homeTeamId)
+
+        val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
+        val awayTeam = TeamAPI().findById(awayTeamId)
+
+
+        val date = matchObject["date"]!!.jsonPrimitive.content
+        val stadium = matchObject["stadium"]!!.jsonPrimitive.content
+        val referee = matchObject["referee"]!!.jsonPrimitive.content
+        val roundOrGroup = matchObject["roundOrGroup"]!!.jsonPrimitive.content
+
+        val homeTeamScore = if(matchObject["homeTeamScore"]?.jsonPrimitive?.int == null) {
+            null
+        } else {
+            matchObject["homeTeamScore"]!!.jsonPrimitive.int
+        }
+
+        val awayTeamScore = if(matchObject["awayTeamScore"]?.jsonPrimitive?.int == null) {
+            null
+        } else {
+            matchObject["awayTeamScore"]!!.jsonPrimitive.int
+        }
+
+        val minute = if(matchObject["minute"]?.jsonPrimitive?.int == null) {
+            null
+        } else {
+            matchObject["minute"]!!.jsonPrimitive.int
+        }
+
+        val isFinished = matchObject["isFinished"]!!.jsonPrimitive.boolean
+        val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
+        val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
+
+
+        val winner = if(matchObject["winner"] != JsonNull) {
+            val winnerId = matchObject["winner"]!!.jsonPrimitive.content
+            val winner = TeamAPI().findById(winnerId)
+            winner
+        } else {
+            null
+        }
+
+        val match = Match(
+            _id,
+            homeTeam,
+            awayTeam,
+            SimpleDateFormat("yyyy-MM-dd").parse(date),
+            stadium,
+            referee,
+            roundOrGroup,
+            homeTeamScore,
+            awayTeamScore,
+            minute,
+            isFinished,
+            hasStarted,
+            isHalfTime,
+            winner)
+        return match
     }
 
     suspend fun findByTeam(teamId: String): MutableList<Match>{
@@ -108,33 +204,42 @@ class MatchAPI {
             val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
             val awayTeam = TeamAPI().findById(awayTeamId)
 
+
             val date = matchObject["date"]!!.jsonPrimitive.content
             val stadium = matchObject["stadium"]!!.jsonPrimitive.content
             val referee = matchObject["referee"]!!.jsonPrimitive.content
             val roundOrGroup = matchObject["roundOrGroup"]!!.jsonPrimitive.content
-            val homeTeamScore = matchObject["homeTeamScore"]!!.jsonPrimitive.int
-            val awayTeamScore = matchObject["awayTeamScore"]!!.jsonPrimitive.int
 
-            val homeTeamGoals = matchObject["homeTeamGoals"]!!.jsonArray
-            val awayTeamGoals = matchObject["awayTeamGoals"]!!.jsonArray
+            val homeTeamScore = if(matchObject["homeTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["homeTeamScore"]!!.jsonPrimitive.int
+            }
 
-            //goal = GoalAPI.findById(homeTeamGoals[i])
-            //goals.add(goal)
+            val awayTeamScore = if(matchObject["awayTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["awayTeamScore"]!!.jsonPrimitive.int
+            }
 
-            val homeTeamSubstitutions = matchObject["homeTeamSubstitutions"]!!.jsonArray
-            val awayTeamSubstitutions = matchObject["awayTeamSubstitutions"]!!.jsonArray
-            //substitution = SubstitutionAPI().findById(homeTeamSubstitutions[i])
-            //substitutions.add(substitution)
-
-            val homeTeamLineup = matchObject["homeTeamLineup"]?.jsonObject
-            val awayTeamLineup = matchObject["awayTeamLineup"]?.jsonObject
-            //lineup = LineupAPI().findById(homeTeamLineup)
+            val minute = if(matchObject["minute"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["minute"]!!.jsonPrimitive.int
+            }
 
             val isFinished = matchObject["isFinished"]!!.jsonPrimitive.boolean
+            val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
             val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
-            val winner = matchObject["winner"]!!.jsonPrimitive.content
-            //winner = TeamAPI().findById(winner)
+
+            val winner = if(matchObject["winner"] != JsonNull) {
+                val winnerId = matchObject["winner"]!!.jsonPrimitive.content
+                val winner = TeamAPI().findById(winnerId)
+                winner
+            } else {
+                null
+            }
 
             val match = Match(
                 _id,
@@ -143,9 +248,14 @@ class MatchAPI {
                 SimpleDateFormat("yyyy-MM-dd").parse(date),
                 stadium,
                 referee,
-                roundOrGroup
-            )
-            println("round or group: $roundOrGroup")
+                roundOrGroup,
+                homeTeamScore,
+                awayTeamScore,
+                minute,
+                isFinished,
+                hasStarted,
+                isHalfTime,
+                winner)
             matches.add(match)
         }
         return matches
@@ -160,8 +270,6 @@ class MatchAPI {
         if(response.status.value == 404) {
             throw Exception("Status code 404")
         }
-
-        println(response.body() as String)
 
         if(Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
             throw Exception("No data found")
@@ -179,33 +287,42 @@ class MatchAPI {
             val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
             val awayTeam = TeamAPI().findById(awayTeamId)
 
+
             val date = matchObject["date"]!!.jsonPrimitive.content
             val stadium = matchObject["stadium"]!!.jsonPrimitive.content
             val referee = matchObject["referee"]!!.jsonPrimitive.content
             val roundOrGroup = matchObject["roundOrGroup"]!!.jsonPrimitive.content
-            val homeTeamScore = matchObject["homeTeamScore"]!!.jsonPrimitive.int
-            val awayTeamScore = matchObject["awayTeamScore"]!!.jsonPrimitive.int
 
-            val homeTeamGoals = matchObject["homeTeamGoals"]!!.jsonArray
-            val awayTeamGoals = matchObject["awayTeamGoals"]!!.jsonArray
+            val homeTeamScore = if(matchObject["homeTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["homeTeamScore"]!!.jsonPrimitive.int
+            }
 
-            //goal = GoalAPI.findById(homeTeamGoals[i])
-            //goals.add(goal)
+            val awayTeamScore = if(matchObject["awayTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["awayTeamScore"]!!.jsonPrimitive.int
+            }
 
-            val homeTeamSubstitutions = matchObject["homeTeamSubstitutions"]!!.jsonArray
-            val awayTeamSubstitutions = matchObject["awayTeamSubstitutions"]!!.jsonArray
-            //substitution = SubstitutionAPI().findById(homeTeamSubstitutions[i])
-            //substitutions.add(substitution)
-
-            val homeTeamLineup = matchObject["homeTeamLineup"]?.jsonObject
-            val awayTeamLineup = matchObject["awayTeamLineup"]?.jsonObject
-            //lineup = LineupAPI().findById(homeTeamLineup)
+            val minute = if(matchObject["minute"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["minute"]!!.jsonPrimitive.int
+            }
 
             val isFinished = matchObject["isFinished"]!!.jsonPrimitive.boolean
+            val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
             val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
-            val winner = matchObject["winner"]!!.jsonPrimitive.content
-            //winner = TeamAPI().findById(winner)
+
+            val winner = if(matchObject["winner"] != JsonNull) {
+                val winnerId = matchObject["winner"]!!.jsonPrimitive.content
+                val winner = TeamAPI().findById(winnerId)
+                winner
+            } else {
+                null
+            }
 
             val match = Match(
                 _id,
@@ -214,8 +331,14 @@ class MatchAPI {
                 SimpleDateFormat("yyyy-MM-dd").parse(date),
                 stadium,
                 referee,
-                roundOrGroup
-            )
+                roundOrGroup,
+                homeTeamScore,
+                awayTeamScore,
+                minute,
+                isFinished,
+                hasStarted,
+                isHalfTime,
+                winner)
             matches.add(match)
         }
         return matches
@@ -247,33 +370,42 @@ class MatchAPI {
             val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
             val awayTeam = TeamAPI().findById(awayTeamId)
 
+
             val date = matchObject["date"]!!.jsonPrimitive.content
             val stadium = matchObject["stadium"]!!.jsonPrimitive.content
             val referee = matchObject["referee"]!!.jsonPrimitive.content
             val roundOrGroup = matchObject["roundOrGroup"]!!.jsonPrimitive.content
-            val homeTeamScore = matchObject["homeTeamScore"]!!.jsonPrimitive.int
-            val awayTeamScore = matchObject["awayTeamScore"]!!.jsonPrimitive.int
 
-            val homeTeamGoals = matchObject["homeTeamGoals"]!!.jsonArray
-            val awayTeamGoals = matchObject["awayTeamGoals"]!!.jsonArray
+            val homeTeamScore = if(matchObject["homeTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["homeTeamScore"]!!.jsonPrimitive.int
+            }
 
-            //goal = GoalAPI.findById(homeTeamGoals[i])
-            //goals.add(goal)
+            val awayTeamScore = if(matchObject["awayTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["awayTeamScore"]!!.jsonPrimitive.int
+            }
 
-            val homeTeamSubstitutions = matchObject["homeTeamSubstitutions"]!!.jsonArray
-            val awayTeamSubstitutions = matchObject["awayTeamSubstitutions"]!!.jsonArray
-            //substitution = SubstitutionAPI().findById(homeTeamSubstitutions[i])
-            //substitutions.add(substitution)
-
-            val homeTeamLineup = matchObject["homeTeamLineup"]?.jsonObject
-            val awayTeamLineup = matchObject["awayTeamLineup"]?.jsonObject
-            //lineup = LineupAPI().findById(homeTeamLineup)
+            val minute = if(matchObject["minute"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["minute"]!!.jsonPrimitive.int
+            }
 
             val isFinished = matchObject["isFinished"]!!.jsonPrimitive.boolean
+            val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
             val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
-            val winner = matchObject["winner"]!!.jsonPrimitive.content
-            //winner = TeamAPI().findById(winner)
+
+            val winner = if(matchObject["winner"] != JsonNull) {
+                val winnerId = matchObject["winner"]!!.jsonPrimitive.content
+                val winner = TeamAPI().findById(winnerId)
+                winner
+            } else {
+                null
+            }
 
             val match = Match(
                 _id,
@@ -282,8 +414,14 @@ class MatchAPI {
                 SimpleDateFormat("yyyy-MM-dd").parse(date),
                 stadium,
                 referee,
-                roundOrGroup
-            )
+                roundOrGroup,
+                homeTeamScore,
+                awayTeamScore,
+                minute,
+                isFinished,
+                hasStarted,
+                isHalfTime,
+                winner)
             matches.add(match)
         }
         return matches
@@ -315,33 +453,42 @@ class MatchAPI {
             val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
             val awayTeam = TeamAPI().findById(awayTeamId)
 
+
             val date = matchObject["date"]!!.jsonPrimitive.content
             val stadium = matchObject["stadium"]!!.jsonPrimitive.content
             val referee = matchObject["referee"]!!.jsonPrimitive.content
             val roundOrGroup = matchObject["roundOrGroup"]!!.jsonPrimitive.content
-            val homeTeamScore = matchObject["homeTeamScore"]!!.jsonPrimitive.int
-            val awayTeamScore = matchObject["awayTeamScore"]!!.jsonPrimitive.int
 
-            val homeTeamGoals = matchObject["homeTeamGoals"]!!.jsonArray
-            val awayTeamGoals = matchObject["awayTeamGoals"]!!.jsonArray
+            val homeTeamScore = if(matchObject["homeTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["homeTeamScore"]!!.jsonPrimitive.int
+            }
 
-            //goal = GoalAPI.findById(homeTeamGoals[i])
-            //goals.add(goal)
+            val awayTeamScore = if(matchObject["awayTeamScore"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["awayTeamScore"]!!.jsonPrimitive.int
+            }
 
-            val homeTeamSubstitutions = matchObject["homeTeamSubstitutions"]!!.jsonArray
-            val awayTeamSubstitutions = matchObject["awayTeamSubstitutions"]!!.jsonArray
-            //substitution = SubstitutionAPI().findById(homeTeamSubstitutions[i])
-            //substitutions.add(substitution)
-
-            val homeTeamLineup = matchObject["homeTeamLineup"]?.jsonObject
-            val awayTeamLineup = matchObject["awayTeamLineup"]?.jsonObject
-            //lineup = LineupAPI().findById(homeTeamLineup)
+            val minute = if(matchObject["minute"]?.jsonPrimitive?.int == null) {
+                null
+            } else {
+                matchObject["minute"]!!.jsonPrimitive.int
+            }
 
             val isFinished = matchObject["isFinished"]!!.jsonPrimitive.boolean
+            val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
             val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
-            val winner = matchObject["winner"]!!.jsonPrimitive.content
-            //winner = TeamAPI().findById(winner)
+
+            val winner = if(matchObject["winner"] != JsonNull) {
+                val winnerId = matchObject["winner"]!!.jsonPrimitive.content
+                val winner = TeamAPI().findById(winnerId)
+                winner
+            } else {
+                null
+            }
 
             val match = Match(
                 _id,
@@ -350,8 +497,14 @@ class MatchAPI {
                 SimpleDateFormat("yyyy-MM-dd").parse(date),
                 stadium,
                 referee,
-                roundOrGroup
-            )
+                roundOrGroup,
+                homeTeamScore,
+                awayTeamScore,
+                minute,
+                isFinished,
+                hasStarted,
+                isHalfTime,
+                winner)
             matches.add(match)
         }
         return matches

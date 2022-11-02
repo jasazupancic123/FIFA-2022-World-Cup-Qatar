@@ -40,4 +40,28 @@ class ClubAPI {
         }
         return clubs
     }
+
+    suspend fun findById(_id: String) : Club{
+        val client = HttpClient()
+        val response: HttpResponse = client.get(url + "/" + _id) {
+            method = HttpMethod.Get
+        }
+
+        if(response.status.value == 404) {
+            throw Exception("Status code 404")
+        }
+
+        if(Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+            throw Exception("No data found")
+        }
+
+        val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+        val clubObject = data!!.jsonObject
+        val name = clubObject["name"]!!.jsonPrimitive.content
+        val shortName = clubObject["shortName"]!!.jsonPrimitive.content
+        val image = clubObject["image"]!!.jsonPrimitive.content
+        val league = clubObject["league"]!!.jsonPrimitive.content
+        val club = Club(_id, name, shortName, image, league)
+        return club
+    }
 }

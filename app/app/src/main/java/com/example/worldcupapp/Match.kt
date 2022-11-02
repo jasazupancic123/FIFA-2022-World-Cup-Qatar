@@ -13,12 +13,6 @@ class Match(
     var homeTeamScore: Int? = null,
     var awayTeamScore: Int? = null,
     var minute: Int? = null,
-    var homeTeamGoals: MutableList<Goal> = mutableListOf(),
-    var awayTeamGoals: MutableList<Goal> = mutableListOf(),
-    var homeTeamSubstitutions: MutableList<Substitution> = mutableListOf(),
-    var awayTeamSubstitutions: MutableList<Substitution> = mutableListOf(),
-    var homeTeamLineup: Lineup? = null,
-    var awayTeamLineup: Lineup? = null,
     var isFinished: Boolean = false,
     var hasStarted: Boolean = false,
     var isHalfTime: Boolean = false,
@@ -37,12 +31,6 @@ class Match(
                 ", awayTeamScore=" + awayTeamScore +
                 ", roundOrGroup='" + roundOrGroup + '\'' +
                 ", minute=" + minute +
-                ", homeTeamGoals=" + homeTeamGoals +
-                ", awayTeamGoals=" + awayTeamGoals +
-                ", homeTeamSubstitutions=" + homeTeamSubstitutions +
-                ", awayTeamSubstitutions=" + awayTeamSubstitutions +
-                ", homeTeamLineup=" + homeTeamLineup.toString() +
-                ", awayTeamLineup=" + awayTeamLineup.toString() +
                 ", isFinished=" + isFinished +
                 ", hasStarted=" + hasStarted +
                 ", isHalfTime=" + isHalfTime +

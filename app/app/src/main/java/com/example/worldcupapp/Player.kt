@@ -9,7 +9,7 @@ class Player(
     var image: String,
     var nationality: Team,
     var position: String,
-    var shirtNumber: String,
+    var shirtNumber: Int,
     var birthDate: Date,
     var height: Float,
     var prefferedFoot: String,

@@ -80,7 +80,24 @@ class TeamAPI(){
         val matchesDrawn = teamObject["matchesDrawn"]!!.jsonPrimitive.int
         val matchesLost = teamObject["matchesLost"]!!.jsonPrimitive.int
         val goalsAgainst = teamObject["goalsAgainst"]!!.jsonPrimitive.int
-        return Team(_id, name, region, fifaCode, iso2, manager, flag, group, noOfTitles, isEliminated, points, goalsScored, matchesPlayed, matchesWon, matchesDrawn, matchesLost, goalsAgainst)
+        return Team(
+            _id,
+            name,
+            region,
+            fifaCode,
+            iso2,
+            manager,
+            flag,
+            group,
+            noOfTitles,
+            isEliminated,
+            points,
+            goalsScored,
+            matchesPlayed,
+            matchesWon,
+            matchesDrawn,
+            matchesLost,
+            goalsAgainst)
     }
 
     suspend fun findByGroup(groupName: String): MutableList<Team> {

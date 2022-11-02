@@ -5,6 +5,7 @@ const JsonUtil = require('../utils/json')
 
 const PlayerModel = require('../models/Player')
 const TeamModel = require('../models/Team')
+const MatchModel = require('../models/Match')
 
 const mongoose = require('mongoose')
 
@@ -56,7 +57,7 @@ module.exports = class LineupController {
 
   static async findByMatchAndTeam(req, res, next) {
     try {
-      const lineup = await LineupModel.find({ match: req.params.match, team: req.params.team })
+      const lineup = await LineupModel.findOne({ match: req.params.match, team: req.params.team })
       res.json(JsonUtil.response(res, false, 'Successfully found lineups', lineup))
     } catch (e) {
       next(e)
@@ -67,6 +68,7 @@ module.exports = class LineupController {
   static async createAndUpdateEverything(req, res, next) {
     try {
       const team = await TeamModel.findById(req.body.team)
+      const match = await MatchModel.findById(req.body.match)
 
       const goalkeeper = await PlayerModel.findById(req.body.goalkeeper)
       goalkeeper.appearances += 1
@@ -99,6 +101,7 @@ module.exports = class LineupController {
       const lineup = await LineupModel.create({
         type: req.body.type,
         team: team,
+        match: match,
         goalkeeper: goalkeeper,
         defenders: defenders,
         midfielders: midfielders,
@@ -113,6 +116,7 @@ module.exports = class LineupController {
   static async create(req, res, next) {
     try {
       const team = await TeamModel.findById(req.body.team)
+      const match = await MatchModel.findById(req.body.match)
 
       const goalkeeper = await PlayerModel.findById(req.body.goalkeeper)
 
@@ -137,6 +141,7 @@ module.exports = class LineupController {
       const lineup = await LineupModel.create({
         type: req.body.type,
         team: team,
+        match: match,
         goalkeeper: goalkeeper,
         defenders: defenders,
         midfielders: midfielders,
