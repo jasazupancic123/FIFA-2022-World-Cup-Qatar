@@ -11,7 +11,7 @@ import com.example.worldcupapp.Manager
 import java.text.SimpleDateFormat
 
 class ManagerAPI {
-    val url = "http://localhost:3000/manager"
+    val url = "https://fifa-2022-world-cup-qatar.up.railway.app/manager"
     suspend fun find() : List<Manager> {
         val client = HttpClient()
         val response: HttpResponse = client.get(url) {

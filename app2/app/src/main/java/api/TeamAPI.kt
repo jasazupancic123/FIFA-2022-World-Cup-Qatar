@@ -9,7 +9,7 @@ import kotlinx.serialization.json.*
 import com.example.worldcupapp.Team
 
 class TeamAPI(){
-    val url = "http://localhost:3000/team"
+    val url = "https://fifa-2022-world-cup-qatar.up.railway.app/team"
 
     suspend fun find() : List<Team> {
         val client = HttpClient()

@@ -19,7 +19,7 @@ suspend fun CoroutineScope.getMatches() {
     val matches = async {
     println("DRUGI")
         val client = HttpClient()
-        val httpAsync = "http://localhost:3000/match"
+        val httpAsync = "https://fifa-2022-world-cup-qatar.up.railway.app/match"
             .httpGet()
             .responseString { request, response, result ->
                 when (result) {

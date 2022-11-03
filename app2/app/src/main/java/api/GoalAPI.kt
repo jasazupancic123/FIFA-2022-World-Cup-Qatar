@@ -11,7 +11,7 @@ import com.example.worldcupapp.Goal
 import java.text.SimpleDateFormat
 
 class GoalAPI {
-    val url = "http://localhost:3000/goal"
+    val url = "https://fifa-2022-world-cup-qatar.up.railway.app/goal"
 
     suspend fun find() : MutableList<Goal> {
         val client = HttpClient()

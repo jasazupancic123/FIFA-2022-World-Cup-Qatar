@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 
 class MatchAPI {
-    val url = "http://localhost:3000/match"
+    val url = "https://fifa-2022-world-cup-qatar.up.railway.app/match"
 
     suspend fun find(): MutableList<Match> {
         println("1")
