@@ -3,9 +3,9 @@ package com.example.worldcupapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
-import api.MatchAPI
 import com.example.worldcupapp.databinding.ActivityMainBinding
 import androidx.lifecycle.lifecycleScope
+import api.*
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
@@ -14,35 +14,8 @@ import kotlinx.coroutines.*
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.result.Result
 
-suspend fun CoroutineScope.getMatches() {
-    println("PRVI")
-    val matches = async {
-    println("DRUGI")
-        val client = HttpClient()
-        val httpAsync = "https://fifa-2022-world-cup-qatar.up.railway.app/match"
-            .httpGet()
-            .responseString { request, response, result ->
-                when (result) {
-                    is Result.Failure -> {
-                        val ex = result.getException()
-                        println("exception")
-                        println(ex)
-                    }
-                    is Result.Success -> {
-                        val data = result.get()
-                        println("data: $data")
-                    }
-                }
-
-            }
-    }
-    matches.await()
-    //return matches.await()
-}
-
-
 class MainActivity : AppCompatActivity(){
-
+    private val scope = CoroutineScope(newSingleThreadContext("name"))
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,40 +23,14 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        lifecycleScope.launch {
-            getMatches()
+        scope.launch {
+            println("IN SCOPE")
+            val lineups = LineupAPI().find()
+            println(lineups.toString())
         }
-        /*
-        val coroutine = GlobalScope.async {
-            MatchAPI().find()
-        }
-
-         */
-
-/*
-        runBlocking {
-            withContext(Dispatchers.IO) {
-                val matchAPI = MatchAPI()
-                try {
-                    val matches = matchAPI.find()
-                } catch (e: Exception) {
-                    println(e)
-                }
-            }
-        }
-
- */
 
         setContentView(binding.root)
     }
-
-    /*private fun getMatches() {
-        lifecycleScope.launch {
-            val matches = MatchAPI().find()
-        }
-    }
-
-     */
 }
 
 

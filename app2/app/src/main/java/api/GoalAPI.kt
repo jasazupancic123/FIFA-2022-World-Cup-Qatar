@@ -8,243 +8,267 @@ import io.ktor.http.*
 
 import kotlinx.serialization.json.*
 import com.example.worldcupapp.Goal
+import com.example.worldcupapp.Substitution
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import java.text.SimpleDateFormat
 
 class GoalAPI {
     val url = "https://fifa-2022-world-cup-qatar.up.railway.app/goal"
 
     suspend fun find() : MutableList<Goal> {
-        val client = HttpClient()
-        val response: HttpResponse = client.get(url) {
-            method = HttpMethod.Get
-        }
-
-        if(response.status.value == 404) {
-            throw Exception("Status code 404")
-        }
-
-        if(Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
-            throw Exception("No data found")
-        }
-
-        val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
         val goals: MutableList<Goal> = mutableListOf()
-        for (goal in data!!.jsonArray) {
-            val goalObject = goal.jsonObject
-            val _id = goalObject["_id"]!!.jsonPrimitive.content
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url) {
+                    method = HttpMethod.Get
+                }
 
-            val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-            val scorer = PlayerAPI().findById(scorerId)
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
 
-            val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-            val assister = PlayerAPI().findById(assisterId)
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
 
-            val minute = goalObject["minute"]!!.jsonPrimitive.int
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                for (goal in data!!.jsonArray) {
+                    val goalObject = goal.jsonObject
+                    val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-            val matchId = goalObject["match"]!!.jsonPrimitive.content
-            val match = MatchAPI().findById(matchId)
+                    val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
+                    val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
 
-            val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
-            val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+                    val assisterId = goalObject["assister"]!!.jsonPrimitive.content
+                    val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
 
-            val goal = Goal(
-                _id,
-                scorer,
-                assister,
-                minute,
-                match,
-                isHomeTeamGoal,
-                isOwnGoal
-            )
-            goals.add(goal)
+                    val minute = goalObject["minute"]!!.jsonPrimitive.int
+
+                    val matchId = goalObject["match"]!!.jsonPrimitive.content
+                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+
+                    val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
+                    val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+
+                    val goal = Goal(
+                        _id,
+                        scorer,
+                        assister,
+                        minute,
+                        match,
+                        isHomeTeamGoal,
+                        isOwnGoal
+                    )
+                    goals.add(goal)
+                }
+            }
         }
         return goals
     }
 
-    suspend fun findById(goalId: String) : Goal{
-        val client = HttpClient()
-        val response: HttpResponse = client.get(url + "/" + goalId) {
-            method = HttpMethod.Get
+    suspend fun findById(goalId: String) : Goal? {
+        var goal: Goal? = null
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url + "/" + goalId) {
+                    method = HttpMethod.Get
+                }
+
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
+
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
+
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                val goalObject = data!!.jsonObject
+                val _id = goalObject["_id"]!!.jsonPrimitive.content
+
+                val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
+                val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
+
+                val assisterId = goalObject["assister"]!!.jsonPrimitive.content
+                val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
+
+                val minute = goalObject["minute"]!!.jsonPrimitive.int
+
+                val matchId = goalObject["match"]!!.jsonPrimitive.content
+                val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+
+                val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
+                val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+
+                goal = Goal(
+                    _id,
+                    scorer,
+                    assister,
+                    minute,
+                    match,
+                    isHomeTeamGoal,
+                    isOwnGoal
+                )
+            }
         }
-
-        if(response.status.value == 404) {
-            throw Exception("Status code 404")
-        }
-
-        if(Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
-            throw Exception("No data found")
-        }
-
-        val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
-        val goalObject = data!!.jsonObject
-        val _id = goalObject["_id"]!!.jsonPrimitive.content
-
-        val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-        val scorer = PlayerAPI().findById(scorerId)
-
-        val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-        val assister = PlayerAPI().findById(assisterId)
-
-        val minute = goalObject["minute"]!!.jsonPrimitive.int
-
-        val matchId = goalObject["match"]!!.jsonPrimitive.content
-        val match = MatchAPI().findById(matchId)
-
-        val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
-        val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
-
-        val goal = Goal(
-            _id,
-            scorer,
-            assister,
-            minute,
-            match,
-            isHomeTeamGoal,
-            isOwnGoal
-        )
         return goal
     }
 
     suspend fun findByScorer(scorerId: String) : MutableList<Goal> {
-        val client = HttpClient()
-        val response: HttpResponse = client.get(url + "/scorer/" + scorerId) {
-            method = HttpMethod.Get
-        }
-
-        if(response.status.value == 404) {
-            throw Exception("Status code 404")
-        }
-
-        if(Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
-            throw Exception("No data found")
-        }
-
-        val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
         val goals: MutableList<Goal> = mutableListOf()
-        for (goal in data!!.jsonArray) {
-            val goalObject = goal.jsonObject
-            val _id = goalObject["_id"]!!.jsonPrimitive.content
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url + "/scorer/" + scorerId) {
+                    method = HttpMethod.Get
+                }
 
-            val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-            val scorer = PlayerAPI().findById(scorerId)
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
 
-            val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-            val assister = PlayerAPI().findById(assisterId)
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
 
-            val minute = goalObject["minute"]!!.jsonPrimitive.int
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                for (goal in data!!.jsonArray) {
+                    val goalObject = goal.jsonObject
+                    val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-            val matchId = goalObject["match"]!!.jsonPrimitive.content
-            val match = MatchAPI().findById(matchId)
+                    val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
+                    val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
 
-            val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
-            val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+                    val assisterId = goalObject["assister"]!!.jsonPrimitive.content
+                    val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
 
-            val goal = Goal(
-                _id,
-                scorer,
-                assister,
-                minute,
-                match,
-                isHomeTeamGoal,
-                isOwnGoal
-            )
-            goals.add(goal)
+                    val minute = goalObject["minute"]!!.jsonPrimitive.int
+
+                    val matchId = goalObject["match"]!!.jsonPrimitive.content
+                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+
+                    val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
+                    val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+
+                    val goal = Goal(
+                        _id,
+                        scorer,
+                        assister,
+                        minute,
+                        match,
+                        isHomeTeamGoal,
+                        isOwnGoal
+                    )
+                    goals.add(goal)
+                }
+            }
         }
         return goals
     }
 
     suspend fun findByAsister(asisterId: String) : MutableList<Goal>{
-        val client = HttpClient()
-        val response: HttpResponse = client.get(url + "/assister/" + asisterId) {
-            method = HttpMethod.Get
-        }
-
-        if(response.status.value == 404) {
-            throw Exception("Status code 404")
-        }
-
-        if(Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
-            throw Exception("No data found")
-        }
-
-        val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
         val goals: MutableList<Goal> = mutableListOf()
-        for (goal in data!!.jsonArray) {
-            val goalObject = goal.jsonObject
-            val _id = goalObject["_id"]!!.jsonPrimitive.content
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url + "/assister/" + asisterId) {
+                    method = HttpMethod.Get
+                }
 
-            val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-            val scorer = PlayerAPI().findById(scorerId)
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
 
-            val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-            val assister = PlayerAPI().findById(assisterId)
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
 
-            val minute = goalObject["minute"]!!.jsonPrimitive.int
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                for (goal in data!!.jsonArray) {
+                    val goalObject = goal.jsonObject
+                    val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-            val matchId = goalObject["match"]!!.jsonPrimitive.content
-            val match = MatchAPI().findById(matchId)
+                    val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
+                    val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
 
-            val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
-            val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+                    val assisterId = goalObject["assister"]!!.jsonPrimitive.content
+                    val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
 
-            val goal = Goal(
-                _id,
-                scorer,
-                assister,
-                minute,
-                match,
-                isHomeTeamGoal,
-                isOwnGoal
-            )
-            goals.add(goal)
+                    val minute = goalObject["minute"]!!.jsonPrimitive.int
+
+                    val matchId = goalObject["match"]!!.jsonPrimitive.content
+                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+
+                    val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
+                    val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+
+                    val goal = Goal(
+                        _id,
+                        scorer,
+                        assister,
+                        minute,
+                        match,
+                        isHomeTeamGoal,
+                        isOwnGoal
+                    )
+                    goals.add(goal)
+                }
+            }
         }
         return goals
     }
 
     suspend fun findByMatch(matchId: String) : MutableList<Goal>{
-        val client = HttpClient()
-        val response: HttpResponse = client.get(url + "/match/" + matchId) {
-            method = HttpMethod.Get
-        }
-
-        if(response.status.value == 404) {
-            throw Exception("Status code 404")
-        }
-
-        if(Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
-            throw Exception("No data found")
-        }
-
-        val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
         val goals: MutableList<Goal> = mutableListOf()
-        for (goal in data!!.jsonArray) {
-            val goalObject = goal.jsonObject
-            val _id = goalObject["_id"]!!.jsonPrimitive.content
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url + "/match/" + matchId) {
+                    method = HttpMethod.Get
+                }
 
-            val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-            val scorer = PlayerAPI().findById(scorerId)
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
 
-            val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-            val assister = PlayerAPI().findById(assisterId)
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
 
-            val minute = goalObject["minute"]!!.jsonPrimitive.int
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                for (goal in data!!.jsonArray) {
+                    val goalObject = goal.jsonObject
+                    val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-            val matchId = goalObject["match"]!!.jsonPrimitive.content
-            val match = MatchAPI().findById(matchId)
+                    val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
+                    val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
 
-            val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
-            val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+                    val assisterId = goalObject["assister"]!!.jsonPrimitive.content
+                    val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
 
-            val goal = Goal(
-                _id,
-                scorer,
-                assister,
-                minute,
-                match,
-                isHomeTeamGoal,
-                isOwnGoal
-            )
-            goals.add(goal)
+                    val minute = goalObject["minute"]!!.jsonPrimitive.int
+
+                    val matchId = goalObject["match"]!!.jsonPrimitive.content
+                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+
+                    val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
+                    val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
+
+                    val goal = Goal(
+                        _id,
+                        scorer,
+                        assister,
+                        minute,
+                        match,
+                        isHomeTeamGoal,
+                        isOwnGoal
+                    )
+                    goals.add(goal)
+                }
+            }
         }
         return goals
     }
