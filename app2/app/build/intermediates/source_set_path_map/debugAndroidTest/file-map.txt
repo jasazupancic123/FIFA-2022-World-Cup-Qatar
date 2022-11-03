@@ -1,0 +1,7 @@
+com.example.worldcupapp.test.app-androidTest-0 C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\build\generated\res\resValues\androidTest\debug
+com.example.worldcupapp.test.app-androidTest-1 C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\build\generated\res\rs\androidTest\debug
+com.example.worldcupapp.test.app-mergeDebugAndroidTestResources-2 C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.worldcupapp.test.app-mergeDebugAndroidTestResources-3 C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.worldcupapp.test.app-merged_res-4 C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\build\intermediates\merged_res\debugAndroidTest
+com.example.worldcupapp.test.app-androidTest-5 C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\androidTest\res
+com.example.worldcupapp.test.app-androidTestDebug-6 C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\androidTestDebug\res

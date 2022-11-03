@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha02@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e6ce2bfad28d0b4440d656be673df003/transformed/lifecycle-runtime-ktx-2.2.0-alpha02/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e6ce2bfad28d0b4440d656be673df003/transformed/lifecycle-runtime-ktx-2.2.0-alpha02/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-runtime-ktx/2.2.0-alpha02/130f41e65c879609aef4d5626cbe5abc6946985/lifecycle-runtime-ktx-2.2.0-alpha02-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
