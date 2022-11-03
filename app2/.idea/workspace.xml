@@ -13,15 +13,99 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea904257-eafc-4d9f-8f28-0e86f251493e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/api/ClubAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/api/ClubAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/api/GoalAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/api/GoalAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/api/LineupAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/api/LineupAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/api/ManagerAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/api/ManagerAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/api/MatchAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/api/MatchAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/api/PlayerAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/api/PlayerAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/api/SubstitutionAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/api/SubstitutionAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/api/TeamAPI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/api/TeamAPI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcupapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcupapp/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Procfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/app/src/main/java/activities/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/app/src/main/res/layout/content_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/app/src/main/res/values-land/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/app/src/main/res/values-w1240dp/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/app/src/main/res/values-w600dp/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/example/worldcupapp/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/ClubAPI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/GoalAPI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/LineupAPI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/Main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/ManagerAPI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/MatchAPI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/PlayerAPI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/SubstitutionAPI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/api/TeamAPI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/classes/Club.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/classes/Goal.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/classes/Lineup.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/classes/Manager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/classes/Match.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/classes/Player.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/classes/Substitution.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/classes/Team.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcupapp/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/world_cup_qatar_official.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/world_cup_qattarjpg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/example/worldcupapp/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/config.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/lib/cli-options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/lib/env-options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/lib/main.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/lib/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/node_modules/dotenv/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/utils/env.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../herokuLogin.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../app/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +117,23 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="WorldCupApp" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
