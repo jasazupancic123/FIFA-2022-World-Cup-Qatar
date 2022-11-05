@@ -14,13 +14,14 @@ drawable world_cup_qatar_official
 drawable world_cup_qattarjpg
 id awayTeamImage
 id awayTeamName
-id dateAndTimeOfMatch
+id dateOfMatch
 id homeTeamImage
 id homeTeamName
 id imageView2
 id linearLayoutVertical
 id matchInfoLayout
 id recycler_match
+id timeOfMatch
 layout activity_main
 layout list_match
 mipmap ic_launcher

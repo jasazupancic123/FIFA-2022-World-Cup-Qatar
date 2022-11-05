@@ -65,14 +65,16 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var awayTeamImage: ImageView
     var homeTeamName: TextView
     var awayTeamName: TextView
-    var dateAndTimeOfMatch: TextView
+    var dateOfMatch: TextView
+    var timeOfMatch: TextView
 
     init {
         homeTeamImage = itemView.findViewById(R.id.homeTeamImage)
         awayTeamImage = itemView.findViewById(R.id.awayTeamImage)
         homeTeamName = itemView.findViewById(R.id.homeTeamName)
         awayTeamName = itemView.findViewById(R.id.awayTeamName)
-        dateAndTimeOfMatch = itemView.findViewById(R.id.dateAndTimeOfMatch)
+        dateOfMatch = itemView.findViewById(R.id.dateOfMatch)
+        timeOfMatch = itemView.findViewById(R.id.timeOfMatch)
     }
 
     fun bind(match: Match, context: Context) {
@@ -82,9 +84,22 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         homeTeamName.text = match.homeTeam.name
         awayTeamName.text = match.awayTeam.name
 
-        val dateFormat : SimpleDateFormat = SimpleDateFormat("EEE, d, MMM")
-        val timeFormat : SimpleDateFormat = SimpleDateFormat("hh:mm a")
-        val givenFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val dateFormat : SimpleDateFormat = SimpleDateFormat("EEE d/MM")
+        val timeFormat : SimpleDateFormat = SimpleDateFormat("HH:mm")
+        val givenFormat: SimpleDateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
+
+        try {
+            println("match date: ${match.date.toString()}")
+            val date = givenFormat.parse(match.date.toString())
+            println("passed")
+            val dateStr = dateFormat.format(date)
+            val timeStr = timeFormat.format(date)
+            dateOfMatch.text = "$dateStr"
+            timeOfMatch.text = "$timeStr"
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+
     }
 }
 

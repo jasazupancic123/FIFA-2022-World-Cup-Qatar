@@ -10,6 +10,7 @@ router.get('/team/:team', MatchController.findByTeam)
 router.get('/round/:round', MatchController.findByRoundOrGroup)
 router.get('/status/finished', MatchController.findFinishedMatches)
 router.get('/status/unfinished', MatchController.findUnfinishedMatches)
+router.get('/upcoming/five', MatchController.findFiveUpcomingMatches)
 
 router.post('/', MatchController.create)
 

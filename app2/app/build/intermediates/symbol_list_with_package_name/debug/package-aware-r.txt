@@ -2781,7 +2781,7 @@ id currentState
 id custom
 id customPanel
 id cut
-id dateAndTimeOfMatch
+id dateOfMatch
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3089,6 +3089,7 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id time
+id timeOfMatch
 id title
 id titleDividerNoCustom
 id title_template

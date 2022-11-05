@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import api.MatchAPI
 import com.example.worldcupapp.databinding.ActivityMainBinding
-import com.example.worldcupapp.manager.RequestManager
-import com.example.worldcupapp.models.MatchResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext

@@ -2780,7 +2780,7 @@ int id currentState 0x7f080087
 int id custom 0x7f080088
 int id customPanel 0x7f080089
 int id cut 0x7f08008a
-int id dateAndTimeOfMatch 0x7f08008b
+int id dateOfMatch 0x7f0801e5
 int id date_picker_actions 0x7f08008c
 int id decelerate 0x7f08008d
 int id decelerateAndComplete 0x7f08008e
@@ -3088,6 +3088,7 @@ int id textinput_placeholder 0x7f0801bb
 int id textinput_prefix_text 0x7f0801bc
 int id textinput_suffix_text 0x7f0801bd
 int id time 0x7f0801be
+int id timeOfMatch 0x7f0801e6
 int id title 0x7f0801bf
 int id titleDividerNoCustom 0x7f0801c0
 int id title_template 0x7f0801c1

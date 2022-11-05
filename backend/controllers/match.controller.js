@@ -64,6 +64,15 @@ module.exports = class MatchController {
     }
   }
 
+  static async findFiveUpcomingMatches(req, res, next) {
+    try {
+      const matches = await MatchModel.find({ isFinished: false }).sort({ date: 1 }).limit(5)
+      res.json(JsonUtil.response(res, false, 'Successfully found matches', matches))
+    } catch (e) {
+      next(e)
+    }
+  }
+
   //POST
   static async create(req, res, next) {
     try {
