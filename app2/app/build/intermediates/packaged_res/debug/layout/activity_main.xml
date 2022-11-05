@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="417dp"
+        android:layout_height="235dp"
+        android:background="#5B021E"
+        android:backgroundTint="#5B021E"
+        android:hapticFeedbackEnabled="false"
+        app:srcCompat="@drawable/world_cup_qattarjpg" />
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_match"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+
+
+<!-- <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +33,73 @@
     android:layout_height="match_parent"
     android:background="#D6D6D6"
     tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/matchInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/homeTeamImagexd"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/homeTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/homeTeamImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/dateAndTimeOfMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date-Time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/awayTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="Away"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/awayTeamImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/awayTeamImage"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/TEST"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -20,7 +114,7 @@
         app:srcCompat="@drawable/world_cup_qattarjpg" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutVertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -33,72 +127,61 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <LinearLayout
+            android:id="@+id/matchInfoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#740526"
             android:orientation="horizontal">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/matchInfo"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+            <ImageView
+                android:id="@+id/homeTeamImage2"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <!--android:src="@drawable/flag_of_qatar"--> />
+            <TextView
+                android:id="@+id/homeTeamName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:layout_weight="1"
+                android:text="Homeyyy" />
 
-                <ImageView
-                    android:id="@+id/homeTeamImage"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/dateAndTimeOfMatch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Date-Time" />
 
-                <TextView
-                    android:id="@+id/homeTeamName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Home"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/homeTeamImage"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/awayTeamName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Away"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/awayTeamImage"
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-                <TextView
-                    android:id="@+id/dateAndTimeOfMatch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date-Time"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/awayTeamName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="Away"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/awayTeamImage"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/awayTeamImage"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+            <ImageView
+                android:id="@+id/awayTeamImage2"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout> -->

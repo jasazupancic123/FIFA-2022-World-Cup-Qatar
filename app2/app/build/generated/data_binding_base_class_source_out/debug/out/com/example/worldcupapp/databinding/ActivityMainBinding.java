@@ -6,10 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.worldcupapp.R;
@@ -19,51 +18,24 @@ import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
-
-  @NonNull
-  public final ImageView awayTeamImage;
-
-  @NonNull
-  public final TextView awayTeamName;
-
-  @NonNull
-  public final TextView dateAndTimeOfMatch;
-
-  @NonNull
-  public final ImageView homeTeamImage;
-
-  @NonNull
-  public final TextView homeTeamName;
+  private final LinearLayout rootView;
 
   @NonNull
   public final ImageView imageView2;
 
   @NonNull
-  public final LinearLayout linearLayout;
+  public final RecyclerView recyclerMatch;
 
-  @NonNull
-  public final ConstraintLayout matchInfo;
-
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView awayTeamImage,
-      @NonNull TextView awayTeamName, @NonNull TextView dateAndTimeOfMatch,
-      @NonNull ImageView homeTeamImage, @NonNull TextView homeTeamName,
-      @NonNull ImageView imageView2, @NonNull LinearLayout linearLayout,
-      @NonNull ConstraintLayout matchInfo) {
+  private ActivityMainBinding(@NonNull LinearLayout rootView, @NonNull ImageView imageView2,
+      @NonNull RecyclerView recyclerMatch) {
     this.rootView = rootView;
-    this.awayTeamImage = awayTeamImage;
-    this.awayTeamName = awayTeamName;
-    this.dateAndTimeOfMatch = dateAndTimeOfMatch;
-    this.homeTeamImage = homeTeamImage;
-    this.homeTeamName = homeTeamName;
     this.imageView2 = imageView2;
-    this.linearLayout = linearLayout;
-    this.matchInfo = matchInfo;
+    this.recyclerMatch = recyclerMatch;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -88,56 +60,19 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.awayTeamImage;
-      ImageView awayTeamImage = ViewBindings.findChildViewById(rootView, id);
-      if (awayTeamImage == null) {
-        break missingId;
-      }
-
-      id = R.id.awayTeamName;
-      TextView awayTeamName = ViewBindings.findChildViewById(rootView, id);
-      if (awayTeamName == null) {
-        break missingId;
-      }
-
-      id = R.id.dateAndTimeOfMatch;
-      TextView dateAndTimeOfMatch = ViewBindings.findChildViewById(rootView, id);
-      if (dateAndTimeOfMatch == null) {
-        break missingId;
-      }
-
-      id = R.id.homeTeamImage;
-      ImageView homeTeamImage = ViewBindings.findChildViewById(rootView, id);
-      if (homeTeamImage == null) {
-        break missingId;
-      }
-
-      id = R.id.homeTeamName;
-      TextView homeTeamName = ViewBindings.findChildViewById(rootView, id);
-      if (homeTeamName == null) {
-        break missingId;
-      }
-
       id = R.id.imageView2;
       ImageView imageView2 = ViewBindings.findChildViewById(rootView, id);
       if (imageView2 == null) {
         break missingId;
       }
 
-      id = R.id.linearLayout;
-      LinearLayout linearLayout = ViewBindings.findChildViewById(rootView, id);
-      if (linearLayout == null) {
+      id = R.id.recycler_match;
+      RecyclerView recyclerMatch = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerMatch == null) {
         break missingId;
       }
 
-      id = R.id.matchInfo;
-      ConstraintLayout matchInfo = ViewBindings.findChildViewById(rootView, id);
-      if (matchInfo == null) {
-        break missingId;
-      }
-
-      return new ActivityMainBinding((ConstraintLayout) rootView, awayTeamImage, awayTeamName,
-          dateAndTimeOfMatch, homeTeamImage, homeTeamName, imageView2, linearLayout, matchInfo);
+      return new ActivityMainBinding((LinearLayout) rootView, imageView2, recyclerMatch);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,10 +1,14 @@
 [
     {
-        "merged": "com.example.worldcupapp-mergeDebugResources-28:/layout/activity_main.xml",
-        "source": "com.example.worldcupapp-main-31:/layout/activity_main.xml"
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-28:\\layout\\list_match.xml",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-31:\\layout\\list_match.xml"
     },
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-28:\\layout\\activity_main.xml",
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-31:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.example.worldcupapp-mergeDebugResources-28:/layout/list_match.xml",
+        "source": "com.example.worldcupapp-main-31:/layout/list_match.xml"
     }
 ]

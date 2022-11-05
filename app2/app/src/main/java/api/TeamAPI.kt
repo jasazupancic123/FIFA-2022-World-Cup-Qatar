@@ -35,7 +35,7 @@ class TeamAPI(){
                     val fifaCode = teamObject["fifaCode"]!!.jsonPrimitive.content
                     val iso2 = teamObject["iso2"]!!.jsonPrimitive.content
 
-                    val managerId = teamObject["manager"]!!.jsonPrimitive.content
+                    val managerId = teamObject["com/example/worldcupapp/manager"]!!.jsonPrimitive.content
                     val manager = ManagerAPI().findById(managerId) ?: throw Exception("Manager not found")
 
                     val flag = teamObject["flag"]!!.jsonPrimitive.content
@@ -159,7 +159,7 @@ class TeamAPI(){
                     val fifaCode = teamObject["fifaCode"]!!.jsonPrimitive.content
                     val iso2 = teamObject["iso2"]!!.jsonPrimitive.content
 
-                    val managerId = teamObject["manager"]!!.jsonPrimitive.content
+                    val managerId = teamObject["com/example/worldcupapp/manager"]!!.jsonPrimitive.content
                     val manager = ManagerAPI().findById(managerId) ?: throw Exception("Manager not found")
 
                     val flag = teamObject["flag"]!!.jsonPrimitive.content
@@ -226,7 +226,7 @@ class TeamAPI(){
                     val fifaCode = teamObject["fifaCode"]!!.jsonPrimitive.content
                     val iso2 = teamObject["iso2"]!!.jsonPrimitive.content
 
-                    val managerId = teamObject["manager"]!!.jsonPrimitive.content
+                    val managerId = teamObject["com/example/worldcupapp/manager"]!!.jsonPrimitive.content
                     val manager = ManagerAPI().findById(managerId)
 
                     val flag = teamObject["flag"]!!.jsonPrimitive.content
