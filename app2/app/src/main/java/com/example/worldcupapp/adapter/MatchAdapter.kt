@@ -13,10 +13,6 @@ import com.squareup.picasso.Picasso
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
-//the app generates a card for only the first match, make it generate a card for each match
-
-
-
 public class MatchAdapter : RecyclerView.Adapter<MatchViewHolder> {
     lateinit var context: Context
     lateinit var matches: List<Match>
@@ -37,27 +33,8 @@ public class MatchAdapter : RecyclerView.Adapter<MatchViewHolder> {
     }
 
     override fun getItemCount(): Int {
-        println("matches size: ${matches.size}")
         return matches.size
     }
-
-    /*
-    override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
-        val match = matches.get(position)
-        Picasso.with(context).load("https://countryflagsapi.com/png/" + match.homeTeam.iso2).into(holder.homeTeamImage)
-        Picasso.with(context).load("https://countryflagsapi.com/png/" + match.awayTeam.iso2).into(holder.awayTeamImage)
-
-        holder.homeTeamName.text = match.homeTeam.name
-        holder.awayTeamName.text = match.awayTeam.name
-
-        val dateFormat : SimpleDateFormat = SimpleDateFormat("EEE, d, MMM")
-        val timeFormat : SimpleDateFormat = SimpleDateFormat("hh:mm a")
-        val givenFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    }
-
-
-
-     */
 }
 
 class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -81,8 +58,8 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         Picasso.with(context).load("https://countryflagsapi.com/png/" + match.homeTeam.name).into(homeTeamImage)
         Picasso.with(context).load("https://countryflagsapi.com/png/" + match.awayTeam.name).into(awayTeamImage)
 
-        homeTeamName.text = match.homeTeam.name
-        awayTeamName.text = match.awayTeam.name
+        homeTeamName.text = match.homeTeam.fifaCode
+        awayTeamName.text = match.awayTeam.fifaCode
 
         val dateFormat : SimpleDateFormat = SimpleDateFormat("EEE d/MM")
         val timeFormat : SimpleDateFormat = SimpleDateFormat("HH:mm")
@@ -94,12 +71,11 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             println("passed")
             val dateStr = dateFormat.format(date)
             val timeStr = timeFormat.format(date)
-            dateOfMatch.text = "$dateStr"
-            timeOfMatch.text = "$timeStr"
+            dateOfMatch.text = dateStr
+            timeOfMatch.text = timeStr
         } catch (e: ParseException) {
             e.printStackTrace()
         }
-
     }
 }
 

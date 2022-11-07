@@ -24,6 +24,22 @@
         android:theme="@style/Theme.WorldCupApp"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.worldcupapp.StatisticsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_statistics"
+            android:theme="@style/Theme.WorldCupApp.NoActionBar" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.worldcupapp.TeamActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name="com.example.worldcupapp.MainActivity"
             android:exported="true" >
             <intent-filter>
@@ -36,6 +52,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false" />
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

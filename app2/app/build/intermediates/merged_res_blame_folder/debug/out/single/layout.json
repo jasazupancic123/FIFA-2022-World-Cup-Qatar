@@ -1,14 +1,34 @@
 [
     {
-        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-28:\\layout\\list_match.xml",
-        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-31:\\layout\\list_match.xml"
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-44:\\layout\\activity_staticstics.xml",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\activity_staticstics.xml"
     },
     {
-        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-28:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-31:\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-44:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.worldcupapp-mergeDebugResources-28:/layout/list_match.xml",
-        "source": "com.example.worldcupapp-main-31:/layout/list_match.xml"
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-44:\\layout\\activity_statistics.xml",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\activity_statistics.xml"
+    },
+    {
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-44:\\layout\\navbar.xml",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\navbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-44:\\layout\\list_match.xml",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\list_match.xml"
+    },
+    {
+        "merged": "com.example.worldcupapp-mergeDebugResources-44:/layout/activity_main.xml",
+        "source": "com.example.worldcupapp-main-47:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-44:\\layout\\list_team.xml",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\list_team.xml"
+    },
+    {
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-mergeDebugResources-44:\\layout\\activity_team.xml",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\activity_team.xml"
     }
 ]

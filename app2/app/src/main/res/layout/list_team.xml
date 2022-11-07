@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardElevation="10dp"
+    card_view:cardCornerRadius="10dp">
+    <!--app:cardBackgroundColor="@color/darkRed"> -->
+
+    <LinearLayout
+        android:id="@+id/linearLayoutVertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5B021E"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/teamImage"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:scaleType="fitXY" />
+        <TextView
+            android:id="@+id/teamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="TeamName" />
+
+        <TextView
+            android:id="@+id/teamStats"
+            android:layout_width="match_parent"
+            android:layout_marginRight="15dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="TeamStats" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
