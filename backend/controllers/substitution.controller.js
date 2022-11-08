@@ -16,12 +16,12 @@ module.exports = class SubstitutionController {
         substitutions[i].team.manager = manager
 
         substitutions[i].playerIn = await PlayerModel.findById(substitutions[i].playerIn)
-        substitutions[i].playerIn.team = substitutions[i].team
-        substitutions[i].playerIn.team.manager = manager
+        substitutions[i].playerIn.nationality = substitutions[i].team
+        substitutions[i].playerIn.nationality.manager = manager
 
         substitutions[i].playerOut = await PlayerModel.findById(substitutions[i].playerOut)
-        substitutions[i].playerOut.team = substitutions[i].team
-        substitutions[i].playerOut.team.manager = manager
+        substitutions[i].playerOut.nationality = substitutions[i].team
+        substitutions[i].playerOut.nationality.manager = manager
 
         substitutions[i].match = await MatchModel.findById(substitutions[i].match)
         substitutions[i].match.homeTeam = await TeamModel.findById(substitutions[i].match.homeTeam)
@@ -42,12 +42,12 @@ module.exports = class SubstitutionController {
       substitution.team.manager = manager
 
       substitution.playerIn = await PlayerModel.findById(substitution.playerIn)
-      substitution.playerIn.team = substitution.team
-      substitution.playerIn.team.manager = manager
+      substitution.playerIn.nationality = substitution.team
+      substitution.playerIn.nationality.manager = manager
 
       substitution.playerOut = await PlayerModel.findById(substitution.playerOut)
-      substitution.playerOut.team = substitution.team
-      substitution.playerOut.team.manager = manager
+      substitution.playerOut.nationality = substitution.team
+      substitution.playerOut.nationality.manager = manager
 
       substitution.match = await MatchModel.findById(substitution.match)
       substitution.match.homeTeam = await TeamModel.findById(substitution.match.homeTeam)
@@ -69,12 +69,12 @@ module.exports = class SubstitutionController {
         substitutions[i].team.manager = manager
 
         substitutions[i].playerIn = await PlayerModel.findById(substitutions[i].playerIn)
-        substitutions[i].playerIn.team = substitutions[i].team
-        substitutions[i].playerIn.team.manager = manager
+        substitutions[i].playerIn.nationality = substitutions[i].team
+        substitutions[i].playerIn.nationality.manager = manager
 
         substitutions[i].playerOut = await PlayerModel.findById(substitutions[i].playerOut)
-        substitutions[i].playerOut.team = substitutions[i].team
-        substitutions[i].playerOut.team.manager = manager
+        substitutions[i].playerOut.nationality = substitutions[i].team
+        substitutions[i].playerOut.nationality.manager = manager
 
         substitutions[i].match = await MatchModel.findById(substitutions[i].match)
         substitutions[i].match.homeTeam = await TeamModel.findById(substitutions[i].match.homeTeam)
@@ -97,12 +97,12 @@ module.exports = class SubstitutionController {
         substitutions[i].team.manager = manager
 
         substitutions[i].playerIn = await PlayerModel.findById(substitutions[i].playerIn)
-        substitutions[i].playerIn.team = substitutions[i].team
-        substitutions[i].playerIn.team.manager = manager
+        substitutions[i].playerIn.nationality = substitutions[i].team
+        substitutions[i].playerIn.nationality.manager = manager
 
         substitutions[i].playerOut = await PlayerModel.findById(substitutions[i].playerOut)
-        substitutions[i].playerOut.team = substitutions[i].team
-        substitutions[i].playerOut.team.manager = manager
+        substitutions[i].playerOut.nationality = substitutions[i].team
+        substitutions[i].playerOut.nationality.manager = manager
 
         substitutions[i].match = await MatchModel.findById(substitutions[i].match)
         substitutions[i].match.homeTeam = await TeamModel.findById(substitutions[i].match.homeTeam)
@@ -125,12 +125,12 @@ module.exports = class SubstitutionController {
         substitutions[i].team.manager = manager
 
         substitutions[i].playerIn = await PlayerModel.findById(substitutions[i].playerIn)
-        substitutions[i].playerIn.team = substitutions[i].team
-        substitutions[i].playerIn.team.manager = manager
+        substitutions[i].playerIn.nationality = substitutions[i].team
+        substitutions[i].playerIn.nationality.manager = manager
 
         substitutions[i].playerOut = await PlayerModel.findById(substitutions[i].playerOut)
-        substitutions[i].playerOut.team = substitutions[i].team
-        substitutions[i].playerOut.team.manager = manager
+        substitutions[i].playerOut.nationality = substitutions[i].team
+        substitutions[i].playerOut.nationality.manager = manager
 
         substitutions[i].match = await MatchModel.findById(substitutions[i].match)
         substitutions[i].match.homeTeam = await TeamModel.findById(substitutions[i].match.homeTeam)

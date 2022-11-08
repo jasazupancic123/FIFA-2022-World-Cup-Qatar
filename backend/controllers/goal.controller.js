@@ -12,7 +12,9 @@ module.exports = class GoalController {
       for (let i = 0; i < goals.length; i++) {
         const scorer = await PlayerModel.findById(goals[i].scorer)
         const assister = await PlayerModel.findById(goals[i].assister)
+        console.log(goals[i].match)
         const match = await MatchModel.findById(goals[i].match)
+        console.log(match)
         const homeTeam = await TeamModel.findById(match.homeTeam)
         const awayTeam = await TeamModel.findById(match.awayTeam)
         const homeManager = await ManagerModel.findById(homeTeam.manager)

@@ -1,5 +1,6 @@
 package api
 
+import com.example.worldcupapp.Club
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -8,6 +9,8 @@ import io.ktor.http.*
 
 import kotlinx.serialization.json.*
 import com.example.worldcupapp.Player
+import com.example.worldcupapp.Team
+import com.google.gson.Gson
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import java.text.SimpleDateFormat
@@ -40,8 +43,7 @@ class PlayerAPI {
                     val lastName = playerObject["lastName"]!!.jsonPrimitive.content
                     val image = playerObject["image"]!!.jsonPrimitive.content
 
-                    val nationalityId = playerObject["nationality"]!!.jsonPrimitive.content
-                    val nationality = TeamAPI().findById(nationalityId) ?: throw Exception("Team not found")
+                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonPrimitive.content, Team::class.java)
 
                     val position = playerObject["position"]!!.jsonPrimitive.content
                     val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
@@ -49,8 +51,7 @@ class PlayerAPI {
                     val height = playerObject["height"]!!.jsonPrimitive.float
                     val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
 
-                    val clubId = playerObject["club"]!!.jsonPrimitive.content
-                    val club = ClubAPI().findById(clubId) ?: throw Exception("Club not found")
+                    val club = Gson().fromJson(playerObject["club"]!!.jsonPrimitive.content, Club::class.java)
 
                     val appearances = playerObject["appearances"]!!.jsonPrimitive.int
                     val goals = playerObject["goals"]!!.jsonPrimitive.int
@@ -107,8 +108,7 @@ class PlayerAPI {
                 val lastName = playerObject["lastName"]!!.jsonPrimitive.content
                 val image = playerObject["image"]!!.jsonPrimitive.content
 
-                val nationalityId = playerObject["nationality"]!!.jsonPrimitive.content
-                val nationality = TeamAPI().findById(nationalityId) ?: throw Exception("Team not found")
+                val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonPrimitive.content, Team::class.java)
 
                 val position = playerObject["position"]!!.jsonPrimitive.content
                 val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
@@ -116,8 +116,7 @@ class PlayerAPI {
                 val height = playerObject["height"]!!.jsonPrimitive.float
                 val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
 
-                val clubId = playerObject["club"]!!.jsonPrimitive.content
-                val club = ClubAPI().findById(clubId) ?: throw Exception("Club not found")
+                val club = Gson().fromJson(playerObject["club"]!!.jsonPrimitive.content, Club::class.java)
 
                 val appearances = playerObject["appearances"]!!.jsonPrimitive.int
                 val goals = playerObject["goals"]!!.jsonPrimitive.int
@@ -173,8 +172,7 @@ class PlayerAPI {
                 val lastName = playerObject["lastName"]!!.jsonPrimitive.content
                 val image = playerObject["image"]!!.jsonPrimitive.content
 
-                val nationalityId = playerObject["nationality"]!!.jsonPrimitive.content
-                val nationality = TeamAPI().findById(nationalityId) ?: throw Exception("Team not found")
+                val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonPrimitive.content, Team::class.java)
 
                 val position = playerObject["position"]!!.jsonPrimitive.content
                 val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
@@ -182,8 +180,7 @@ class PlayerAPI {
                 val height = playerObject["height"]!!.jsonPrimitive.float
                 val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
 
-                val clubId = playerObject["club"]!!.jsonPrimitive.content
-                val club = ClubAPI().findById(clubId) ?: throw Exception("Club not found")
+                val club = Gson().fromJson(playerObject["club"]!!.jsonPrimitive.content, Club::class.java)
 
                 val appearances = playerObject["appearances"]!!.jsonPrimitive.int
                 val goals = playerObject["goals"]!!.jsonPrimitive.int
@@ -239,8 +236,7 @@ class PlayerAPI {
                     val lastName = playerObject["lastName"]!!.jsonPrimitive.content
                     val image = playerObject["image"]!!.jsonPrimitive.content
 
-                    val nationalityId = playerObject["nationality"]!!.jsonPrimitive.content
-                    val nationality = TeamAPI().findById(nationalityId) ?: throw Exception("Team not found")
+                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonPrimitive.content, Team::class.java)
 
                     val position = playerObject["position"]!!.jsonPrimitive.content
                     val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
@@ -248,8 +244,7 @@ class PlayerAPI {
                     val height = playerObject["height"]!!.jsonPrimitive.float
                     val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
 
-                    val clubId = playerObject["club"]!!.jsonPrimitive.content
-                    val club = ClubAPI().findById(clubId) ?: throw Exception("Club not found")
+                    val club = Gson().fromJson(playerObject["club"]!!.jsonPrimitive.content, Club::class.java)
 
                     val appearances = playerObject["appearances"]!!.jsonPrimitive.int
                     val goals = playerObject["goals"]!!.jsonPrimitive.int

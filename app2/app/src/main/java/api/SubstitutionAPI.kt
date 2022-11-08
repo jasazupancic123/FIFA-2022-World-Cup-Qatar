@@ -1,6 +1,6 @@
 package api
 
-import com.example.worldcupapp.Match
+import com.example.worldcupapp.*
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -8,7 +8,7 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 
 import kotlinx.serialization.json.*
-import com.example.worldcupapp.Substitution
+import com.google.gson.Gson
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import java.text.SimpleDateFormat
@@ -39,20 +39,15 @@ class SubstitutionAPI {
                     val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                     val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                    val playerInId = substitutionObject["playerIn"]!!.jsonPrimitive.content
-                    val playerIn = PlayerAPI().findById(playerInId) ?: throw Exception("Player in not found")
+                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val playerOutId = substitutionObject["playerOut"]!!.jsonPrimitive.content
-                    val playerOut = PlayerAPI().findById(playerOutId) ?: throw Exception("Player out not found")
+                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val matchId = substitutionObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
-                    val teamId = substitutionObject["team"]!!.jsonPrimitive.content
-                    val team = TeamAPI().findById(teamId) ?: throw Exception("Team not found")
+                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
 
-                    val isHomeTeamSubstitution =
-                        substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
+                    val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
                     val substitution = Substitution(
                         _id,
@@ -92,20 +87,15 @@ class SubstitutionAPI {
                 val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                 val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                val playerInId = substitutionObject["playerIn"]!!.jsonPrimitive.content
-                val playerIn = PlayerAPI().findById(playerInId) ?: throw Exception("Player in not found")
+                val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
 
-                val playerOutId = substitutionObject["playerOut"]!!.jsonPrimitive.content
-                val playerOut = PlayerAPI().findById(playerOutId) ?: throw Exception("Player out not found")
+                val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
 
-                val matchId = substitutionObject["match"]!!.jsonPrimitive.content
-                val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
-                val teamId = substitutionObject["team"]!!.jsonPrimitive.content
-                val team = TeamAPI().findById(teamId) ?: throw Exception("Team not found")
+                val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
 
-                val isHomeTeamSubstitution =
-                    substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
+                val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
                 substitution = Substitution(
                     _id,
@@ -144,20 +134,15 @@ class SubstitutionAPI {
                     val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                     val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                    val playerInId = substitutionObject["playerIn"]!!.jsonPrimitive.content
-                    val playerIn = PlayerAPI().findById(playerInId) ?: throw Exception("Player in not found")
+                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val playerOutId = substitutionObject["playerOut"]!!.jsonPrimitive.content
-                    val playerOut = PlayerAPI().findById(playerOutId) ?: throw Exception("Player out not found")
+                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val matchId = substitutionObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
-                    val teamId = substitutionObject["team"]!!.jsonPrimitive.content
-                    val team = TeamAPI().findById(teamId) ?: throw Exception("Team not found")
+                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
 
-                    val isHomeTeamSubstitution =
-                        substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
+                    val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
                     val substitution = Substitution(
                         _id,
@@ -198,20 +183,15 @@ class SubstitutionAPI {
                     val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                     val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                    val playerInId = substitutionObject["playerIn"]!!.jsonPrimitive.content
-                    val playerIn = PlayerAPI().findById(playerInId) ?: throw Exception("Player in not found")
+                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val playerOutId = substitutionObject["playerOut"]!!.jsonPrimitive.content
-                    val playerOut = PlayerAPI().findById(playerOutId) ?: throw Exception("Player out not found")
+                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val matchId = substitutionObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
-                    val teamId = substitutionObject["team"]!!.jsonPrimitive.content
-                    val team = TeamAPI().findById(teamId) ?: throw Exception("Team not found")
+                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
 
-                    val isHomeTeamSubstitution =
-                        substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
+                    val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
                     val substitution = Substitution(
                         _id,
@@ -253,20 +233,15 @@ class SubstitutionAPI {
                     val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                     val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                    val playerInId = substitutionObject["playerIn"]!!.jsonPrimitive.content
-                    val playerIn = PlayerAPI().findById(playerInId) ?: throw Exception("Player in not found")
+                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val playerOutId = substitutionObject["playerOut"]!!.jsonPrimitive.content
-                    val playerOut = PlayerAPI().findById(playerOutId) ?: throw Exception("Player out not found")
+                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val matchId = substitutionObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
-                    val teamId = substitutionObject["team"]!!.jsonPrimitive.content
-                    val team = TeamAPI().findById(teamId) ?: throw Exception("Team not found")
+                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
 
-                    val isHomeTeamSubstitution =
-                        substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
+                    val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
                     val substitution = Substitution(
                         _id,

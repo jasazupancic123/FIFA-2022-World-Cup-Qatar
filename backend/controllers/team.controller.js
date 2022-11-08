@@ -7,9 +7,12 @@ module.exports = class TeamController {
     try {
       const teams = await TeamModel.find()
       for (let i = 0; i < teams.length; i++) {
+        console.log(teams[i].manager)
         const manager = await ManagerModel.findById(teams[i].manager)
+        console.log(manager)
         teams[i].manager = manager
       }
+      res.json(JsonUtil.response(res, false, 'Successfully found teams', teams))
     } catch (e) {
       next(e)
     }

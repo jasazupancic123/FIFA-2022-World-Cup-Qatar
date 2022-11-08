@@ -1,5 +1,6 @@
 package api
 
+import com.example.worldcupapp.*
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -7,8 +8,7 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 
 import kotlinx.serialization.json.*
-import com.example.worldcupapp.Goal
-import com.example.worldcupapp.Substitution
+import com.google.gson.Gson
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import java.text.SimpleDateFormat
@@ -38,16 +38,13 @@ class GoalAPI {
                     val goalObject = goal.jsonObject
                     val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                    val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-                    val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
+                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-                    val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
+                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                    val matchId = goalObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
@@ -89,16 +86,13 @@ class GoalAPI {
                 val goalObject = data!!.jsonObject
                 val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-                val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
+                val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
 
-                val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-                val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
+                val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
 
                 val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                val matchId = goalObject["match"]!!.jsonPrimitive.content
-                val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
                 val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                 val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
@@ -139,16 +133,13 @@ class GoalAPI {
                     val goalObject = goal.jsonObject
                     val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                    val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-                    val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
+                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-                    val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
+                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                    val matchId = goalObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
@@ -191,16 +182,13 @@ class GoalAPI {
                     val goalObject = goal.jsonObject
                     val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                    val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-                    val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
+                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-                    val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
+                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                    val matchId = goalObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
@@ -243,16 +231,13 @@ class GoalAPI {
                     val goalObject = goal.jsonObject
                     val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                    val scorerId = goalObject["scorer"]!!.jsonPrimitive.content
-                    val scorer = PlayerAPI().findById(scorerId) ?: throw Exception("Scorer not found")
+                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
 
-                    val assisterId = goalObject["assister"]!!.jsonPrimitive.content
-                    val assister = PlayerAPI().findById(assisterId) ?: throw Exception("Assister not found")
+                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                    val matchId = goalObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean

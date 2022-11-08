@@ -1,6 +1,6 @@
 package api
 
-import com.example.worldcupapp.Goal
+import com.example.worldcupapp.*
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -8,8 +8,7 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 
 import kotlinx.serialization.json.*
-import com.example.worldcupapp.Lineup
-import com.example.worldcupapp.Player
+import com.google.gson.Gson
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import java.text.SimpleDateFormat
@@ -40,40 +39,33 @@ class LineupAPI {
                     val _id = lineupObject["_id"]!!.jsonPrimitive.content
                     val type = lineupObject["type"]!!.jsonPrimitive.content
 
-                    val teamId = lineupObject["team"]!!.jsonPrimitive.content
-                    val team = TeamAPI().findById(teamId) ?: throw Exception("Team not found")
+                    val team = Gson().fromJson(lineupObject["team"]!!.jsonPrimitive.content, Team::class.java)
 
-                    val matchId = lineupObject["match"]!!.jsonPrimitive.content
-                    val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                    val match = Gson().fromJson(lineupObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
-                    val goalkeeperId = lineupObject["goalkeeper"]!!.jsonPrimitive.content
-                    val goalkeeper = PlayerAPI().findById(goalkeeperId) ?: throw Exception("Goalkeeper not found")
+                    val goalkeeper = Gson().fromJson(lineupObject["goalkeeper"]!!.jsonPrimitive.content, Player::class.java)
 
                     val defenders: MutableList<Player> = mutableListOf()
                     for (defender in lineupObject["defenders"]!!.jsonArray) {
-                        val defenderId = defender.jsonPrimitive.content
-                        val defender = PlayerAPI().findById(defenderId) ?: throw Exception("Defender not found")
+                        val defender = Gson().fromJson(defender.jsonPrimitive.content, Player::class.java)
                         defenders.add(defender)
                     }
 
                     val midfielders: MutableList<Player> = mutableListOf()
                     for (midfielder in lineupObject["midfielders"]!!.jsonArray) {
-                        val midfielderId = midfielder.jsonPrimitive.content
-                        val midfielder = PlayerAPI().findById(midfielderId) ?: throw Exception("Midfielder not found")
+                        val midfielder = Gson().fromJson(midfielder.jsonPrimitive.content, Player::class.java)
                         midfielders.add(midfielder)
                     }
 
                     val attackers: MutableList<Player> = mutableListOf()
                     for (attacker in lineupObject["attackers"]!!.jsonArray) {
-                        val attackerId = attacker.jsonPrimitive.content
-                        val attacker = PlayerAPI().findById(attackerId) ?: throw Exception("Attacker not found")
+                        val attacker = Gson().fromJson(attacker.jsonPrimitive.content, Player::class.java)
                         attackers.add(attacker)
                     }
 
                     val substitutes: MutableList<Player> = mutableListOf()
                     for (substitute in lineupObject["substitutes"]!!.jsonArray) {
-                        val substituteId = substitute.jsonPrimitive.content
-                        val substitute = PlayerAPI().findById(substituteId) ?: throw Exception("Substitute not found")
+                        val substitute = Gson().fromJson(substitute.jsonPrimitive.content, Player::class.java)
                         substitutes.add(substitute)
                     }
 
@@ -117,40 +109,33 @@ class LineupAPI {
                 val _id = lineupObject["_id"]!!.jsonPrimitive.content
                 val type = lineupObject["type"]!!.jsonPrimitive.content
 
-                val teamId = lineupObject["team"]!!.jsonPrimitive.content
-                val team = TeamAPI().findById(teamId) ?: throw Exception("Team not found")
+                val team = Gson().fromJson(lineupObject["team"]!!.jsonPrimitive.content, Team::class.java)
 
-                val matchId = lineupObject["match"]!!.jsonPrimitive.content
-                val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                val match = Gson().fromJson(lineupObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
-                val goalkeeperId = lineupObject["goalkeeper"]!!.jsonPrimitive.content
-                val goalkeeper = PlayerAPI().findById(goalkeeperId) ?: throw Exception("Goalkeeper not found")
+                val goalkeeper = Gson().fromJson(lineupObject["goalkeeper"]!!.jsonPrimitive.content, Player::class.java)
 
                 val defenders: MutableList<Player> = mutableListOf()
                 for (defender in lineupObject["defenders"]!!.jsonArray) {
-                    val defenderId = defender.jsonPrimitive.content
-                    val defender = PlayerAPI().findById(defenderId) ?: throw Exception("Defender not found")
+                    val defender = Gson().fromJson(defender.jsonPrimitive.content, Player::class.java)
                     defenders.add(defender)
                 }
 
                 val midfielders: MutableList<Player> = mutableListOf()
                 for (midfielder in lineupObject["midfielders"]!!.jsonArray) {
-                    val midfielderId = midfielder.jsonPrimitive.content
-                    val midfielder = PlayerAPI().findById(midfielderId) ?: throw Exception("Midfielder not found")
+                    val midfielder = Gson().fromJson(midfielder.jsonPrimitive.content, Player::class.java)
                     midfielders.add(midfielder)
                 }
 
                 val attackers: MutableList<Player> = mutableListOf()
                 for (attacker in lineupObject["attackers"]!!.jsonArray) {
-                    val attackerId = attacker.jsonPrimitive.content
-                    val attacker = PlayerAPI().findById(attackerId) ?: throw Exception("Attacker not found")
+                    val attacker = Gson().fromJson(attacker.jsonPrimitive.content, Player::class.java)
                     attackers.add(attacker)
                 }
 
                 val substitutes: MutableList<Player> = mutableListOf()
                 for (substitute in lineupObject["substitutes"]!!.jsonArray) {
-                    val substituteId = substitute.jsonPrimitive.content
-                    val substitute = PlayerAPI().findById(substituteId) ?: throw Exception("Substitute not found")
+                    val substitute = Gson().fromJson(substitute.jsonPrimitive.content, Player::class.java)
                     substitutes.add(substitute)
                 }
 
@@ -193,38 +178,33 @@ class LineupAPI {
                 val _id = lineupObject["_id"]!!.jsonPrimitive.content
                 val type = lineupObject["type"]!!.jsonPrimitive.content
 
-                val team = TeamAPI().findById(teamId) ?: throw Exception("Team not found")
+                val team = Gson().fromJson(lineupObject["team"]!!.jsonPrimitive.content, Team::class.java)
 
-                val match = MatchAPI().findById(matchId) ?: throw Exception("Match not found")
+                val match = Gson().fromJson(lineupObject["match"]!!.jsonPrimitive.content, Match::class.java)
 
-                val goalkeeperId = lineupObject["goalkeeper"]!!.jsonPrimitive.content
-                val goalkeeper = PlayerAPI().findById(goalkeeperId) ?: throw Exception("Goalkeeper not found")
+                val goalkeeper = Gson().fromJson(lineupObject["goalkeeper"]!!.jsonPrimitive.content, Player::class.java)
 
                 val defenders: MutableList<Player> = mutableListOf()
                 for (defender in lineupObject["defenders"]!!.jsonArray) {
-                    val defenderId = defender.jsonPrimitive.content
-                    val defender = PlayerAPI().findById(defenderId) ?: throw Exception("Defender not found")
+                    val defender = Gson().fromJson(defender.jsonPrimitive.content, Player::class.java)
                     defenders.add(defender)
                 }
 
                 val midfielders: MutableList<Player> = mutableListOf()
                 for (midfielder in lineupObject["midfielders"]!!.jsonArray) {
-                    val midfielderId = midfielder.jsonPrimitive.content
-                    val midfielder = PlayerAPI().findById(midfielderId) ?: throw Exception("Midfielder not found")
+                    val midfielder = Gson().fromJson(midfielder.jsonPrimitive.content, Player::class.java)
                     midfielders.add(midfielder)
                 }
 
                 val attackers: MutableList<Player> = mutableListOf()
                 for (attacker in lineupObject["attackers"]!!.jsonArray) {
-                    val attackerId = attacker.jsonPrimitive.content
-                    val attacker = PlayerAPI().findById(attackerId) ?: throw Exception("Attacker not found")
+                    val attacker = Gson().fromJson(attacker.jsonPrimitive.content, Player::class.java)
                     attackers.add(attacker)
                 }
 
                 val substitutes: MutableList<Player> = mutableListOf()
                 for (substitute in lineupObject["substitutes"]!!.jsonArray) {
-                    val substituteId = substitute.jsonPrimitive.content
-                    val substitute = PlayerAPI().findById(substituteId) ?: throw Exception("Substitute not found")
+                    val substitute = Gson().fromJson(substitute.jsonPrimitive.content, Player::class.java)
                     substitutes.add(substitute)
                 }
 
