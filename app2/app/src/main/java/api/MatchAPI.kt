@@ -199,7 +199,7 @@ class MatchAPI {
         val matches: MutableList<Match> = mutableListOf()
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("http://localhost:3000/upcoming/five")
+            .url("$url/upcoming/five")
             .build()
         val response: Response = client.newCall(request).execute()
         val data = Json.parseToJsonElement(response.body()!!.string()).jsonObject["data"]
@@ -242,9 +242,7 @@ class MatchAPI {
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
                     val winner = if (matchObject["winner"] != JsonNull) {
-                        val winnerId = matchObject["winner"]!!.jsonPrimitive.content
-                        val winner =
-                            TeamAPI().findById(winnerId) ?: throw Exception("No winner found")
+                        val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
                     } else {
                         null
