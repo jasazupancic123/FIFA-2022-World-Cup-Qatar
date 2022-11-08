@@ -1,12 +1,22 @@
 const PlayerModel = require('../models/Player')
 const JsonUtil = require('../utils/json')
 
+const TeamModel = require('../models/Team')
+const ManagerModel = require('../models/Manager')
+const ClubModel = require('../models/Club')
+
 const { default: mongoose } = require('mongoose')
 
 module.exports = class PlayerController {
   static async find(req, res, next) {
     try {
       const players = await PlayerModel.find()
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -15,6 +25,10 @@ module.exports = class PlayerController {
   static async findById(req, res, next) {
     try {
       const player = await PlayerModel.findById(req.params.id)
+      player.team = await TeamModel.findById(player.team)
+      const manager = await ManagerModel.findById(player.team.manager)
+      player.team.manager = manager
+      player.club = await ClubModel.findById(player.club)
       res.json(JsonUtil.response(res, false, 'Successfully found player', player))
     } catch (e) {
       next(e)
@@ -24,6 +38,10 @@ module.exports = class PlayerController {
     try {
       if (!req.params.firstName || !req.params.lastName) res.json(JsonUtil.response(res, true, 'Please provide first name and last name', null))
       const player = await PlayerModel.findOne({ firstName: req.params.firstName, lastName: req.params.lastName })
+      player.team = await TeamModel.findById(player.team)
+      const manager = await ManagerModel.findById(player.team.manager)
+      player.team.manager = manager
+      player.club = await ClubModel.findById(player.club)
       res.json(JsonUtil.response(res, false, 'Successfully found player', player))
     } catch (e) {
       next(e)
@@ -33,6 +51,12 @@ module.exports = class PlayerController {
     try {
       if (!req.params.team) res.json(JsonUtil.response(res, true, 'Please provide team', null))
       const players = await PlayerModel.find({ nationality: req.params.team })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -42,6 +66,12 @@ module.exports = class PlayerController {
     try {
       if (!req.params.club) res.json(JsonUtil.response(res, true, 'Please provide club', null))
       const players = await PlayerModel.find({ club: req.params.club })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -51,6 +81,12 @@ module.exports = class PlayerController {
     try {
       if (!req.params.position) res.json(JsonUtil.response(res, true, 'Please provide position', null))
       const players = await PlayerModel.find({ position: req.params.position })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -61,6 +97,12 @@ module.exports = class PlayerController {
       if (!req.params.team) res.json(JsonUtil.response(res, true, 'Please provide team', null))
       if (!req.params.position) res.json(JsonUtil.response(res, true, 'Please provide position', null))
       const players = await PlayerModel.find({ position: req.params.position, nationality: req.params.team })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -69,6 +111,12 @@ module.exports = class PlayerController {
   static async findByMostGoals(req, res, next) {
     try {
       const players = await PlayerModel.find().sort({ goals: -1 })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -77,6 +125,12 @@ module.exports = class PlayerController {
   static async findByMostAssists(req, res, next) {
     try {
       const players = await PlayerModel.find().sort({ assists: -1 })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -85,6 +139,12 @@ module.exports = class PlayerController {
   static async findByMostYellowCards(req, res, next) {
     try {
       const players = await PlayerModel.find().sort({ yellowCards: -1 })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -93,6 +153,12 @@ module.exports = class PlayerController {
   static async findByMostRedCards(req, res, next) {
     try {
       const players = await PlayerModel.find().sort({ redCards: -1 })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)
@@ -102,6 +168,12 @@ module.exports = class PlayerController {
     try {
       if (!req.params.team) res.json(JsonUtil.response(res, true, 'Please provide team', null))
       const players = await PlayerModel.find({ team: req.params.team }).sort({ age: 1 })
+      for (let i = 0; i < players.length; i++) {
+        players[i].team = await TeamModel.findById(players[i].team)
+        const manager = await ManagerModel.findById(players[i].team.manager)
+        players[i].team.manager = manager
+        players[i].club = await ClubModel.findById(players[i].club)
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found players', players))
     } catch (e) {
       next(e)

@@ -17,6 +17,8 @@ module.exports = class TeamController {
   static async findById(req, res, next) {
     try {
       const team = await TeamModel.findById(req.params.id)
+      const manager = await ManagerModel.findById(team.manager)
+      team.manager = manager
       res.json(JsonUtil.response(res, false, 'Successfully found team', team))
     } catch (e) {
       next(e)
@@ -25,6 +27,8 @@ module.exports = class TeamController {
   static async findByName(req, res, next) {
     try {
       const team = await TeamModel.findOne({ name: req.params.name })
+      const manager = await ManagerModel.findById(team.manager)
+      team.manager = manager
       res.json(JsonUtil.response(res, false, 'Successfully found team', team))
     } catch (e) {
       next(e)
@@ -33,6 +37,10 @@ module.exports = class TeamController {
   static async findByRegion(req, res, next) {
     try {
       const teams = await TeamModel.find({ region: req.params.region })
+      for (let i = 0; i < teams.length; i++) {
+        const manager = await ManagerModel.findById(teams[i].manager)
+        teams[i].manager = manager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found teams', teams))
     } catch (e) {
       next(e)
@@ -41,6 +49,8 @@ module.exports = class TeamController {
   static async findByFifaCode(req, res, next) {
     try {
       const team = await TeamModel.findOne({ fifaCode: req.params.fifaCode })
+      const manager = await ManagerModel.findById(team.manager)
+      team.manager = manager
       res.json(JsonUtil.response(res, false, 'Successfully found team', team))
     } catch (e) {
       next(e)
@@ -49,6 +59,8 @@ module.exports = class TeamController {
   static async findByIso2(req, res, next) {
     try {
       const team = await TeamModel.findOne({ iso2: req.params.iso2 })
+      const manager = await ManagerModel.findById(team.manager)
+      team.manager = manager
       res.json(JsonUtil.response(res, false, 'Successfully found team', team))
     } catch (e) {
       next(e)
@@ -57,6 +69,10 @@ module.exports = class TeamController {
   static async findByGroup(req, res, next) {
     try {
       const teams = await TeamModel.find({ group: req.params.group })
+      for (let i = 0; i < teams.length; i++) {
+        const manager = await ManagerModel.findById(teams[i].manager)
+        teams[i].manager = manager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found teams', teams))
     } catch (e) {
       next(e)
@@ -65,6 +81,10 @@ module.exports = class TeamController {
   static async findByAtLeastOneTitle(req, res, next) {
     try {
       const teams = await TeamModel.find({ noOfTitles: { $gt: 0 } })
+      for (let i = 0; i < teams.length; i++) {
+        const manager = await ManagerModel.findById(teams[i].manager)
+        teams[i].manager = manager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found teams', teams))
     } catch (e) {
       next(e)

@@ -25,6 +25,14 @@ module.exports = class MatchController {
   static async findById(req, res, next) {
     try {
       const match = await MatchModel.findById(req.params.id)
+      const homeTeam = await TeamMode.findById(match.homeTeam)
+      const awayTeam = await TeamMode.findById(match.awayTeam)
+      match.homeTeam = homeTeam
+      match.awayTeam = awayTeam
+      const homeTeamManager = await ManagerModel.findById(homeTeam.manager)
+      const awayTeamManager = await ManagerModel.findById(awayTeam.manager)
+      match.homeTeam.manager = homeTeamManager
+      match.awayTeam.manager = awayTeamManager
       res.json(JsonUtil.response(res, false, 'Successfully found match', match))
     } catch (e) {
       next(e)
@@ -33,6 +41,16 @@ module.exports = class MatchController {
   static async findByDate(req, res, next) {
     try {
       const match = await MatchModel.find({ date: req.params.date })
+      for (let i = 0; i < matches.length; i++) {
+        const homeTeam = await TeamMode.findById(matches[i].homeTeam)
+        const awayTeam = await TeamMode.findById(matches[i].awayTeam)
+        matches[i].homeTeam = homeTeam
+        matches[i].awayTeam = awayTeam
+        const homeTeamManager = await ManagerModel.findById(homeTeam.manager)
+        const awayTeamManager = await ManagerModel.findById(awayTeam.manager)
+        matches[i].homeTeam.manager = homeTeamManager
+        matches[i].awayTeam.manager = awayTeamManager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found matches', match))
     } catch (e) {
       next(e)
@@ -43,6 +61,16 @@ module.exports = class MatchController {
       const homeMatches = await MatchModel.find({ homeTeam: req.params.team })
       const awayMatches = await MatchModel.find({ awayTeam: req.params.team })
       const matches = homeMatches.concat(awayMatches)
+      for (let i = 0; i < matches.length; i++) {
+        const homeTeam = await TeamMode.findById(matches[i].homeTeam)
+        const awayTeam = await TeamMode.findById(matches[i].awayTeam)
+        matches[i].homeTeam = homeTeam
+        matches[i].awayTeam = awayTeam
+        const homeTeamManager = await ManagerModel.findById(homeTeam.manager)
+        const awayTeamManager = await ManagerModel.findById(awayTeam.manager)
+        matches[i].homeTeam.manager = homeTeamManager
+        matches[i].awayTeam.manager = awayTeamManager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found matches', matches))
     } catch (e) {
       next(e)
@@ -51,6 +79,16 @@ module.exports = class MatchController {
   static async findByRoundOrGroup(req, res, next) {
     try {
       const matches = await MatchModel.find({ roundOrGroup: req.params.round })
+      for (let i = 0; i < matches.length; i++) {
+        const homeTeam = await TeamMode.findById(matches[i].homeTeam)
+        const awayTeam = await TeamMode.findById(matches[i].awayTeam)
+        matches[i].homeTeam = homeTeam
+        matches[i].awayTeam = awayTeam
+        const homeTeamManager = await ManagerModel.findById(homeTeam.manager)
+        const awayTeamManager = await ManagerModel.findById(awayTeam.manager)
+        matches[i].homeTeam.manager = homeTeamManager
+        matches[i].awayTeam.manager = awayTeamManager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found matches', matches))
     } catch (e) {
       next(e)
@@ -60,6 +98,16 @@ module.exports = class MatchController {
   static async findFinishedMatches(req, res, next) {
     try {
       const matches = await MatchModel.find({ isFinished: true })
+      for (let i = 0; i < matches.length; i++) {
+        const homeTeam = await TeamMode.findById(matches[i].homeTeam)
+        const awayTeam = await TeamMode.findById(matches[i].awayTeam)
+        matches[i].homeTeam = homeTeam
+        matches[i].awayTeam = awayTeam
+        const homeTeamManager = await ManagerModel.findById(homeTeam.manager)
+        const awayTeamManager = await ManagerModel.findById(awayTeam.manager)
+        matches[i].homeTeam.manager = homeTeamManager
+        matches[i].awayTeam.manager = awayTeamManager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found matches', matches))
     } catch (e) {
       next(e)
@@ -69,6 +117,16 @@ module.exports = class MatchController {
   static async findUnfinishedMatches(req, res, next) {
     try {
       const matches = await MatchModel.find({ isFinished: false })
+      for (let i = 0; i < matches.length; i++) {
+        const homeTeam = await TeamMode.findById(matches[i].homeTeam)
+        const awayTeam = await TeamMode.findById(matches[i].awayTeam)
+        matches[i].homeTeam = homeTeam
+        matches[i].awayTeam = awayTeam
+        const homeTeamManager = await ManagerModel.findById(homeTeam.manager)
+        const awayTeamManager = await ManagerModel.findById(awayTeam.manager)
+        matches[i].homeTeam.manager = homeTeamManager
+        matches[i].awayTeam.manager = awayTeamManager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found matches', matches))
     } catch (e) {
       next(e)

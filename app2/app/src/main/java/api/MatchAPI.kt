@@ -40,13 +40,11 @@ class MatchAPI {
                     val matchObject = match.jsonObject
                     val _id = matchObject["_id"]!!.jsonPrimitive.content
 
-                    val homeTeamId = matchObject["homeTeam"]!!.jsonPrimitive.content
-                    val homeTeam =
-                        TeamAPI().findById(homeTeamId) ?: throw Exception("No home team found")
+                    val homeTeamObject = matchObject["homeTeam"]!!.jsonObject
+                    val homeTeam = Gson().fromJson(homeTeamObject.toString(), Team::class.java)
 
-                    val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
-                    val awayTeam =
-                        TeamAPI().findById(awayTeamId) ?: throw Exception("No away team found")
+                    val awayTeamObject = matchObject["awayTeam"]!!.jsonObject
+                    val awayTeam = Gson().fromJson(awayTeamObject.toString(), Team::class.java)
 
                     val date = matchObject["date"]!!.jsonPrimitive.content
                     val stadium = matchObject["stadium"]!!.jsonPrimitive.content
@@ -78,9 +76,7 @@ class MatchAPI {
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
                     val winner = if (matchObject["winner"] != JsonNull) {
-                        val winnerId = matchObject["winner"]!!.jsonPrimitive.content
-                        val winner =
-                            TeamAPI().findById(winnerId) ?: throw Exception("No winner found")
+                        val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
                     } else {
                         null
@@ -130,13 +126,11 @@ class MatchAPI {
                 val matchObject = data!!.jsonObject
                 val _id = matchObject["_id"]!!.jsonPrimitive.content
 
-                val homeTeamId = matchObject["homeTeam"]!!.jsonPrimitive.content
-                val homeTeam =
-                    TeamAPI().findById(homeTeamId) ?: throw Exception("No home team found")
+                val homeTeamObject = matchObject["homeTeam"]!!.jsonObject
+                val homeTeam = Gson().fromJson(homeTeamObject.toString(), Team::class.java)
 
-                val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
-                val awayTeam =
-                    TeamAPI().findById(awayTeamId) ?: throw Exception("No away team found")
+                val awayTeamObject = matchObject["awayTeam"]!!.jsonObject
+                val awayTeam = Gson().fromJson(awayTeamObject.toString(), Team::class.java)
 
 
                 val date = matchObject["date"]!!.jsonPrimitive.content
@@ -167,8 +161,7 @@ class MatchAPI {
                 val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
                 val winner = if (matchObject["winner"] != JsonNull) {
-                    val winnerId = matchObject["winner"]!!.jsonPrimitive.content
-                    val winner = TeamAPI().findById(winnerId) ?: throw Exception("No winner found")
+                    val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                     winner
                 } else {
                     null
@@ -195,22 +188,33 @@ class MatchAPI {
         return match
     }
 
-    fun findUpcomingFive(): MutableList<Match> {
+    suspend fun findUpcomingFive(): MutableList<Match> {
         val matches: MutableList<Match> = mutableListOf()
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("$url/upcoming/five")
-            .build()
-        val response: Response = client.newCall(request).execute()
-        val data = Json.parseToJsonElement(response.body()!!.string()).jsonObject["data"]
-        println(data)
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url) {
+                    method = HttpMethod.Get
+                }
+
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
+
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
+
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
                 for (match in data!!.jsonArray) {
                     val matchObject = match.jsonObject
                     val _id = matchObject["_id"]!!.jsonPrimitive.content
 
-                    val homeTeam = Gson().fromJson(matchObject["homeTeam"]!!.jsonPrimitive.content, Team::class.java)
+                    val homeTeamObject = matchObject["homeTeam"]!!.jsonObject
+                    val homeTeam = Gson().fromJson(homeTeamObject.toString(), Team::class.java)
 
-                    val awayTeam = Gson().fromJson(matchObject["awayTeam"]!!.jsonPrimitive.content, Team::class.java)
+                    val awayTeamObject = matchObject["awayTeam"]!!.jsonObject
+                    val awayTeam = Gson().fromJson(awayTeamObject.toString(), Team::class.java)
 
                     val date = matchObject["date"]!!.jsonPrimitive.content
                     val stadium = matchObject["stadium"]!!.jsonPrimitive.content
@@ -247,7 +251,6 @@ class MatchAPI {
                     } else {
                         null
                     }
-                    println("got winner")
 
                     val match = Match(
                         _id,
@@ -266,8 +269,11 @@ class MatchAPI {
                         winner
                     )
                     matches.add(match)
-                    println("Added match")
                 }
+            }
+        }
+        return matches
+    }
         /*
                 val response: HttpResponse = client.get(url + "/upcoming/five") {
                     method = HttpMethod.Get
@@ -351,8 +357,7 @@ class MatchAPI {
         }
         return matches
          */
-        return matches
-    }
+
 
     suspend fun findByTeam(teamId: String): MutableList<Match>{
         val matches: MutableList<Match> = mutableListOf()
@@ -376,11 +381,11 @@ class MatchAPI {
                     val matchObject = match.jsonObject
                     val _id = matchObject["_id"]!!.jsonPrimitive.content
 
-                    val homeTeamId = matchObject["homeTeam"]!!.jsonPrimitive.content
-                    val homeTeam = TeamAPI().findById(homeTeamId) ?: throw Exception("No home team found")
+                    val homeTeamObject = matchObject["homeTeam"]!!.jsonObject
+                    val homeTeam = Gson().fromJson(homeTeamObject.toString(), Team::class.java)
 
-                    val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
-                    val awayTeam = TeamAPI().findById(awayTeamId) ?: throw Exception("No away team found")
+                    val awayTeamObject = matchObject["awayTeam"]!!.jsonObject
+                    val awayTeam = Gson().fromJson(awayTeamObject.toString(), Team::class.java)
 
 
                     val date = matchObject["date"]!!.jsonPrimitive.content
@@ -414,8 +419,7 @@ class MatchAPI {
 
 
                     val winner = if (matchObject["winner"] != JsonNull) {
-                        val winnerId = matchObject["winner"]!!.jsonPrimitive.content
-                        val winner = TeamAPI().findById(winnerId) ?: throw Exception("No winner found")
+                        val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
                     } else {
                         null
@@ -467,11 +471,11 @@ class MatchAPI {
                     val matchObject = match.jsonObject
                     val _id = matchObject["_id"]!!.jsonPrimitive.content
 
-                    val homeTeamId = matchObject["homeTeam"]!!.jsonPrimitive.content
-                    val homeTeam = TeamAPI().findById(homeTeamId) ?: throw Exception("No home team found")
+                    val homeTeamObject = matchObject["homeTeam"]!!.jsonObject
+                    val homeTeam = Gson().fromJson(homeTeamObject.toString(), Team::class.java)
 
-                    val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
-                    val awayTeam = TeamAPI().findById(awayTeamId) ?: throw Exception("No away team found")
+                    val awayTeamObject = matchObject["awayTeam"]!!.jsonObject
+                    val awayTeam = Gson().fromJson(awayTeamObject.toString(), Team::class.java)
 
 
                     val date = matchObject["date"]!!.jsonPrimitive.content
@@ -505,8 +509,7 @@ class MatchAPI {
 
 
                     val winner = if (matchObject["winner"] != JsonNull) {
-                        val winnerId = matchObject["winner"]!!.jsonPrimitive.content
-                        val winner = TeamAPI().findById(winnerId) ?: throw Exception("No winner found")
+                        val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
                     } else {
                         null
@@ -557,11 +560,11 @@ class MatchAPI {
                     val matchObject = match.jsonObject
                     val _id = matchObject["_id"]!!.jsonPrimitive.content
 
-                    val homeTeamId = matchObject["homeTeam"]!!.jsonPrimitive.content
-                    val homeTeam = TeamAPI().findById(homeTeamId) ?: throw Exception("No home team found")
+                    val homeTeamObject = matchObject["homeTeam"]!!.jsonObject
+                    val homeTeam = Gson().fromJson(homeTeamObject.toString(), Team::class.java)
 
-                    val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
-                    val awayTeam = TeamAPI().findById(awayTeamId) ?: throw Exception("No away team found")
+                    val awayTeamObject = matchObject["awayTeam"]!!.jsonObject
+                    val awayTeam = Gson().fromJson(awayTeamObject.toString(), Team::class.java)
 
 
                     val date = matchObject["date"]!!.jsonPrimitive.content
@@ -595,8 +598,7 @@ class MatchAPI {
 
 
                     val winner = if (matchObject["winner"] != JsonNull) {
-                        val winnerId = matchObject["winner"]!!.jsonPrimitive.content
-                        val winner = TeamAPI().findById(winnerId) ?: throw Exception("No winner found")
+                        val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
                     } else {
                         null
@@ -647,12 +649,9 @@ class MatchAPI {
                     val matchObject = match.jsonObject
                     val _id = matchObject["_id"]!!.jsonPrimitive.content
 
-                    val homeTeamId = matchObject["homeTeam"]!!.jsonPrimitive.content
-                    val homeTeam = TeamAPI().findById(homeTeamId) ?: throw Exception("No home team found")
+                    val homeTeam = Gson().fromJson(matchObject["homeTeam"]!!.jsonPrimitive.content, Team::class.java)
 
-                    val awayTeamId = matchObject["awayTeam"]!!.jsonPrimitive.content
-                    val awayTeam = TeamAPI().findById(awayTeamId) ?: throw Exception("No away team found")
-
+                    val awayTeam = Gson().fromJson(matchObject["awayTeam"]!!.jsonPrimitive.content, Team::class.java)
 
                     val date = matchObject["date"]!!.jsonPrimitive.content
                     val stadium = matchObject["stadium"]!!.jsonPrimitive.content
@@ -683,10 +682,8 @@ class MatchAPI {
                     val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
-
                     val winner = if (matchObject["winner"] != JsonNull) {
-                        val winnerId = matchObject["winner"]!!.jsonPrimitive.content
-                        val winner = TeamAPI().findById(winnerId) ?: throw Exception("No winner found")
+                        val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
                     } else {
                         null
