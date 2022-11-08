@@ -8,8 +8,8 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 
 import kotlinx.serialization.json.*
-import com.google.gson.Gson
 import kotlinx.coroutines.async
+import com.google.gson.Gson
 import kotlinx.coroutines.coroutineScope
 import java.text.SimpleDateFormat
 
@@ -38,13 +38,13 @@ class GoalAPI {
                     val goalObject = goal.jsonObject
                     val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
+                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonObject.toString(), Player::class.java)
 
-                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
+                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonObject.toString(), Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                    val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                    val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
@@ -86,13 +86,13 @@ class GoalAPI {
                 val goalObject = data!!.jsonObject
                 val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
+                val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonObject.toString(), Player::class.java)
 
-                val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
+                val assister = Gson().fromJson(goalObject["assister"]!!.jsonObject.toString(), Player::class.java)
 
                 val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
                 val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                 val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
@@ -133,13 +133,13 @@ class GoalAPI {
                     val goalObject = goal.jsonObject
                     val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
+                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonObject.toString(), Player::class.java)
 
-                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
+                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonObject.toString(), Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                    val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                    val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
@@ -182,13 +182,13 @@ class GoalAPI {
                     val goalObject = goal.jsonObject
                     val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
+                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonObject.toString(), Player::class.java)
 
-                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
+                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonObject.toString(), Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                    val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                    val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
@@ -227,17 +227,21 @@ class GoalAPI {
                 }
 
                 val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                println(data)
                 for (goal in data!!.jsonArray) {
                     val goalObject = goal.jsonObject
                     val _id = goalObject["_id"]!!.jsonPrimitive.content
 
-                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonPrimitive.content, Player::class.java)
+                    println(goalObject["scorer"]!!.jsonObject)
 
-                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonPrimitive.content, Player::class.java)
+                    val scorerObject = goalObject["scorer"]!!.jsonObject
+                    val scorer = Gson().fromJson(scorerObject.toString(), Player::class.java)
+
+                    val assister = Gson().fromJson(goalObject["assister"]!!.jsonObject.toString(), Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
 
-                    val match = Gson().fromJson(goalObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                    val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean

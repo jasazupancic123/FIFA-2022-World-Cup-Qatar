@@ -39,13 +39,13 @@ class SubstitutionAPI {
                     val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                     val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
+                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonObject.toString(), Player::class.java)
 
-                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
+                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonObject.toString(), Player::class.java)
 
-                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonObject.toString(), Match::class.java)
 
-                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
+                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonObject.toString(), Team::class.java)
 
                     val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
@@ -87,13 +87,13 @@ class SubstitutionAPI {
                 val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                 val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
+                val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonObject.toString(), Player::class.java)
 
-                val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
+                val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonObject.toString(), Player::class.java)
 
-                val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                val match = Gson().fromJson(substitutionObject["match"]!!.jsonObject.toString(), Match::class.java)
 
-                val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
+                val team = Gson().fromJson(substitutionObject["team"]!!.jsonObject.toString(), Team::class.java)
 
                 val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
@@ -134,13 +134,13 @@ class SubstitutionAPI {
                     val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                     val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
+                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonObject.toString(), Player::class.java)
 
-                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
+                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonObject.toString(), Player::class.java)
 
-                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonObject.toString(), Match::class.java)
 
-                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
+                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonObject.toString(), Team::class.java)
 
                     val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
@@ -183,13 +183,13 @@ class SubstitutionAPI {
                     val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                     val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
+                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonObject.toString(), Player::class.java)
 
-                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
+                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonObject.toString(), Player::class.java)
 
-                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonObject.toString(), Match::class.java)
 
-                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
+                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonObject.toString(), Team::class.java)
 
                     val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 
@@ -233,13 +233,13 @@ class SubstitutionAPI {
                     val _id = substitutionObject["_id"]!!.jsonPrimitive.content
                     val minute = substitutionObject["minute"]!!.jsonPrimitive.int
 
-                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonPrimitive.content, Player::class.java)
+                    val playerIn = Gson().fromJson(substitutionObject["playerIn"]!!.jsonObject.toString(), Player::class.java)
 
-                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonPrimitive.content, Player::class.java)
+                    val playerOut = Gson().fromJson(substitutionObject["playerOut"]!!.jsonObject.toString(), Player::class.java)
 
-                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonPrimitive.content, Match::class.java)
+                    val match = Gson().fromJson(substitutionObject["match"]!!.jsonObject.toString(), Match::class.java)
 
-                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonPrimitive.content, Team::class.java)
+                    val team = Gson().fromJson(substitutionObject["team"]!!.jsonObject.toString(), Team::class.java)
 
                     val isHomeTeamSubstitution = substitutionObject["isHomeTeamSubstitution"]!!.jsonPrimitive.boolean
 

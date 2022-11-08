@@ -60,6 +60,8 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     fun bind(match: Match, context: Context) {
+        val test = match.homeTeam
+        println(match.homeTeam.name)
         Picasso.with(context).load("https://countryflagsapi.com/png/" + match.homeTeam.name).into(homeTeamImage)
         Picasso.with(context).load("https://countryflagsapi.com/png/" + match.awayTeam.name).into(awayTeamImage)
 

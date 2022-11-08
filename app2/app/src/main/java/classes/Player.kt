@@ -7,7 +7,7 @@ class Player(
     var firstName: String,
     var lastName: String,
     var image: String,
-    var nationality: Team,
+    var team: Team,
     var position: String,
     var shirtNumber: Int,
     var birthDate: Date,
@@ -27,13 +27,13 @@ class Player(
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", image='" + image + '\'' +
-                ", nationality='" + nationality + '\'' +
+                ", nationality='" + team + '\'' +
                 ", position='" + position + '\'' +
                 ", shirtNumber='" + shirtNumber + '\'' +
                 ", birthDate=" + birthDate +
                 ", height=" + height +
                 ", prefferedFoot='" + prefferedFoot + '\'' +
-                ", club='" + club.toString() + '\'' +
+                ", club='" + club + '\'' +
                 ", appearances=" + appearances +
                 ", goals=" + goals +
                 ", assists=" + assists +

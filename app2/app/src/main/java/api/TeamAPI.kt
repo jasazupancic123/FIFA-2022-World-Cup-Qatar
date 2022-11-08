@@ -39,7 +39,7 @@ class TeamAPI(){
                     val fifaCode = teamObject["fifaCode"]!!.jsonPrimitive.content
                     val iso2 = teamObject["iso2"]!!.jsonPrimitive.content
 
-                    val manager = Gson().fromJson(teamObject["manager"]!!.jsonPrimitive.content, Manager::class.java)
+                    val manager = Gson().fromJson(teamObject["manager"]!!.jsonObject.toString(), Manager::class.java)
 
                     val flag = teamObject["flag"]!!.jsonPrimitive.content
                     val group = teamObject["group"]!!.jsonPrimitive.content
@@ -101,7 +101,7 @@ class TeamAPI(){
                 val fifaCode = teamObject["fifaCode"]!!.jsonPrimitive.content
                 val iso2 = teamObject["iso2"]!!.jsonPrimitive.content
 
-                val manager = Gson().fromJson(teamObject["manager"]!!.jsonPrimitive.content, Manager::class.java)
+                val manager = Gson().fromJson(teamObject["manager"]!!.jsonObject.toString(), Manager::class.java)
 
                 val flag = teamObject["flag"]!!.jsonPrimitive.content
                 val group = teamObject["group"]!!.jsonPrimitive.content
@@ -160,8 +160,7 @@ class TeamAPI(){
                     val fifaCode = teamObject["fifaCode"]!!.jsonPrimitive.content
                     val iso2 = teamObject["iso2"]!!.jsonPrimitive.content
 
-                    val manager = Gson().fromJson(teamObject["manager"]!!.jsonPrimitive.content, Manager::class.java)
-
+                    val manager = Gson().fromJson(teamObject["manager"]!!.jsonObject.toString(), Manager::class.java)
 
                     val flag = teamObject["flag"]!!.jsonPrimitive.content
                     val group = teamObject["group"]!!.jsonPrimitive.content
@@ -227,8 +226,7 @@ class TeamAPI(){
                     val fifaCode = teamObject["fifaCode"]!!.jsonPrimitive.content
                     val iso2 = teamObject["iso2"]!!.jsonPrimitive.content
 
-                    val manager = Gson().fromJson(teamObject["manager"]!!.jsonPrimitive.content, Manager::class.java)
-
+                    val manager = Gson().fromJson(teamObject["manager"]!!.jsonObject.toString(), Manager::class.java)
 
                     val flag = teamObject["flag"]!!.jsonPrimitive.content
                     val group = teamObject["group"]!!.jsonPrimitive.content

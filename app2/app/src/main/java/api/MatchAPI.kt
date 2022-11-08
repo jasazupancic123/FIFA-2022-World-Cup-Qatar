@@ -10,9 +10,6 @@ import io.ktor.http.*
 import kotlinx.coroutines.*
 
 import kotlinx.serialization.json.*
-import okhttp3.*
-import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 import java.text.SimpleDateFormat
 
 class MatchAPI {

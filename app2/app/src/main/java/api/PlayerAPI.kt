@@ -43,7 +43,7 @@ class PlayerAPI {
                     val lastName = playerObject["lastName"]!!.jsonPrimitive.content
                     val image = playerObject["image"]!!.jsonPrimitive.content
 
-                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonPrimitive.content, Team::class.java)
+                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonObject.toString(), Team::class.java)
 
                     val position = playerObject["position"]!!.jsonPrimitive.content
                     val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
@@ -51,7 +51,7 @@ class PlayerAPI {
                     val height = playerObject["height"]!!.jsonPrimitive.float
                     val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
 
-                    val club = Gson().fromJson(playerObject["club"]!!.jsonPrimitive.content, Club::class.java)
+                    val club = Gson().fromJson(playerObject["club"]!!.jsonObject.toString(), Club::class.java)
 
                     val appearances = playerObject["appearances"]!!.jsonPrimitive.int
                     val goals = playerObject["goals"]!!.jsonPrimitive.int
@@ -108,7 +108,7 @@ class PlayerAPI {
                 val lastName = playerObject["lastName"]!!.jsonPrimitive.content
                 val image = playerObject["image"]!!.jsonPrimitive.content
 
-                val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonPrimitive.content, Team::class.java)
+                val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonObject.toString(), Team::class.java)
 
                 val position = playerObject["position"]!!.jsonPrimitive.content
                 val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
@@ -116,7 +116,7 @@ class PlayerAPI {
                 val height = playerObject["height"]!!.jsonPrimitive.float
                 val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
 
-                val club = Gson().fromJson(playerObject["club"]!!.jsonPrimitive.content, Club::class.java)
+                val club = Gson().fromJson(playerObject["club"]!!.jsonObject.toString(), Club::class.java)
 
                 val appearances = playerObject["appearances"]!!.jsonPrimitive.int
                 val goals = playerObject["goals"]!!.jsonPrimitive.int
@@ -172,7 +172,7 @@ class PlayerAPI {
                 val lastName = playerObject["lastName"]!!.jsonPrimitive.content
                 val image = playerObject["image"]!!.jsonPrimitive.content
 
-                val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonPrimitive.content, Team::class.java)
+                val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonObject.toString(), Team::class.java)
 
                 val position = playerObject["position"]!!.jsonPrimitive.content
                 val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
@@ -180,7 +180,7 @@ class PlayerAPI {
                 val height = playerObject["height"]!!.jsonPrimitive.float
                 val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
 
-                val club = Gson().fromJson(playerObject["club"]!!.jsonPrimitive.content, Club::class.java)
+                val club = Gson().fromJson(playerObject["club"]!!.jsonObject.toString(), Club::class.java)
 
                 val appearances = playerObject["appearances"]!!.jsonPrimitive.int
                 val goals = playerObject["goals"]!!.jsonPrimitive.int
@@ -236,7 +236,7 @@ class PlayerAPI {
                     val lastName = playerObject["lastName"]!!.jsonPrimitive.content
                     val image = playerObject["image"]!!.jsonPrimitive.content
 
-                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonPrimitive.content, Team::class.java)
+                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonObject.toString(), Team::class.java)
 
                     val position = playerObject["position"]!!.jsonPrimitive.content
                     val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
@@ -244,7 +244,7 @@ class PlayerAPI {
                     val height = playerObject["height"]!!.jsonPrimitive.float
                     val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
 
-                    val club = Gson().fromJson(playerObject["club"]!!.jsonPrimitive.content, Club::class.java)
+                    val club = Gson().fromJson(playerObject["club"]!!.jsonObject.toString(), Club::class.java)
 
                     val appearances = playerObject["appearances"]!!.jsonPrimitive.int
                     val goals = playerObject["goals"]!!.jsonPrimitive.int
