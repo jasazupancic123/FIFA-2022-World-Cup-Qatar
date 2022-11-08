@@ -1,14 +1,18 @@
 package com.example.worldcupapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.worldcupapp.Match
+import com.example.worldcupapp.MatchDetailsActivity
 import com.example.worldcupapp.R
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -26,7 +30,6 @@ public class MatchAdapter : RecyclerView.Adapter<MatchViewHolder> {
         return MatchViewHolder(LayoutInflater.from(context).inflate(R.layout.list_match, parent, false))
     }
 
-    //add a card for each match
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         val match = matches[position]
         holder.bind(match, context)
@@ -44,6 +47,7 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var awayTeamName: TextView
     var dateOfMatch: TextView
     var timeOfMatch: TextView
+    var button: Button
 
     init {
         homeTeamImage = itemView.findViewById(R.id.homeTeamImage)
@@ -52,6 +56,7 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         awayTeamName = itemView.findViewById(R.id.awayTeamName)
         dateOfMatch = itemView.findViewById(R.id.dateOfMatch)
         timeOfMatch = itemView.findViewById(R.id.timeOfMatch)
+        button = itemView.findViewById(R.id.button)
     }
 
     fun bind(match: Match, context: Context) {
@@ -66,15 +71,19 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val givenFormat: SimpleDateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
 
         try {
-            println("match date: ${match.date.toString()}")
             val date = givenFormat.parse(match.date.toString())
-            println("passed")
             val dateStr = dateFormat.format(date)
             val timeStr = timeFormat.format(date)
             dateOfMatch.text = dateStr
             timeOfMatch.text = timeStr
         } catch (e: ParseException) {
             e.printStackTrace()
+        }
+
+        button.setOnClickListener {
+            val intent = Intent(context, MatchDetailsActivity::class.java)
+            intent.putExtra("match", Gson().toJson(match))
+            context.startActivity(intent)
         }
     }
 }

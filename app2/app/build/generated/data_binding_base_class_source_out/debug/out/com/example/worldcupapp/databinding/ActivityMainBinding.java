@@ -11,7 +11,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.Guideline;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -27,9 +26,6 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @NonNull
   public final BottomNavigationView bottomNaviagtionView;
-
-  @NonNull
-  public final Guideline guideline2;
 
   @NonNull
   public final ImageView imageView2;
@@ -50,13 +46,12 @@ public final class ActivityMainBinding implements ViewBinding {
   public final TextView upcomingMatchesText;
 
   private ActivityMainBinding(@NonNull ScrollView rootView,
-      @NonNull BottomNavigationView bottomNaviagtionView, @NonNull Guideline guideline2,
-      @NonNull ImageView imageView2, @NonNull LinearLayout linearLayout,
-      @NonNull TextView loadingMatchesText, @NonNull ProgressBar progressBar,
-      @NonNull RecyclerView recyclerMatch, @NonNull TextView upcomingMatchesText) {
+      @NonNull BottomNavigationView bottomNaviagtionView, @NonNull ImageView imageView2,
+      @NonNull LinearLayout linearLayout, @NonNull TextView loadingMatchesText,
+      @NonNull ProgressBar progressBar, @NonNull RecyclerView recyclerMatch,
+      @NonNull TextView upcomingMatchesText) {
     this.rootView = rootView;
     this.bottomNaviagtionView = bottomNaviagtionView;
-    this.guideline2 = guideline2;
     this.imageView2 = imageView2;
     this.linearLayout = linearLayout;
     this.loadingMatchesText = loadingMatchesText;
@@ -98,12 +93,6 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.guideline2;
-      Guideline guideline2 = ViewBindings.findChildViewById(rootView, id);
-      if (guideline2 == null) {
-        break missingId;
-      }
-
       id = R.id.imageView2;
       ImageView imageView2 = ViewBindings.findChildViewById(rootView, id);
       if (imageView2 == null) {
@@ -140,9 +129,8 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ScrollView) rootView, bottomNaviagtionView, guideline2,
-          imageView2, linearLayout, loadingMatchesText, progressBar, recyclerMatch,
-          upcomingMatchesText);
+      return new ActivityMainBinding((ScrollView) rootView, bottomNaviagtionView, imageView2,
+          linearLayout, loadingMatchesText, progressBar, recyclerMatch, upcomingMatchesText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,11 +1,15 @@
 const TeamModel = require('../models/Team')
+const ManagerModel = require('../models/Manager')
 const JsonUtil = require('../utils/json')
 
 module.exports = class TeamController {
   static async find(req, res, next) {
     try {
       const teams = await TeamModel.find()
-      res.json(JsonUtil.response(res, false, 'Successfully found teams', teams))
+      for (let i = 0; i < teams.length; i++) {
+        const manager = await ManagerModel.findById(teams[i].manager)
+        teams[i].manager = manager
+      }
     } catch (e) {
       next(e)
     }

@@ -1,11 +1,22 @@
 const MatchModel = require('../models/Match')
 const TeamMode = require('../models/Team')
 const JsonUtil = require('../utils/json')
+const ManagerModel = require('../models/Manager')
 
 module.exports = class MatchController {
   static async find(req, res, next) {
     try {
       const matches = await MatchModel.find().sort({ date: 1 }) //ce nebo vredu daj -1 namesto 1
+      for (let i = 0; i < matches.length; i++) {
+        const homeTeam = await TeamMode.findById(matches[i].homeTeam)
+        const awayTeam = await TeamMode.findById(matches[i].awayTeam)
+        matches[i].homeTeam = homeTeam
+        matches[i].awayTeam = awayTeam
+        const homeTeamManager = await ManagerModel.findById(homeTeam.manager)
+        const awayTeamManager = await ManagerModel.findById(awayTeam.manager)
+        matches[i].homeTeam.manager = homeTeamManager
+        matches[i].awayTeam.manager = awayTeamManager
+      }
       res.json(JsonUtil.response(res, false, 'Successfully found mathces', matches))
     } catch (e) {
       next(e)

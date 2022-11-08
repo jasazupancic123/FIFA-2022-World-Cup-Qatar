@@ -4,12 +4,12 @@ const { model, Schema } = require('mongoose')
 const schema = new Schema({
   homeTeam: {
     type: Schema.Types.ObjectId,
-    ref: 'Club',
+    ref: 'Team',
     required: true,
   },
   awayTeam: {
     type: Schema.Types.ObjectId,
-    ref: 'Club',
+    ref: 'Team',
     required: true,
   },
   date: {
