@@ -12,7 +12,7 @@ module.exports = class SubstitutionController {
       const substitutions = await SubstitionModel.find()
       for (let i = 0; i < substitutions.length; i++) {
         substitutions[i].team = await TeamModel.findById(substitutions[i].team)
-        const manager = await ManagerModel.findById(substitutions[i].playerIn.team.manager)
+        const manager = await ManagerModel.findById(substitutions[i].team.manager)
         substitutions[i].team.manager = manager
 
         substitutions[i].playerIn = await PlayerModel.findById(substitutions[i].playerIn)
@@ -38,7 +38,7 @@ module.exports = class SubstitutionController {
     try {
       const substitution = await SubstitionModel.findById(req.params.id)
       substitution.team = await TeamModel.findById(substitution.team)
-      const manager = await ManagerModel.findById(substitution.playerIn.team.manager)
+      const manager = await ManagerModel.findById(substitution.team.manager)
       substitution.team.manager = manager
 
       substitution.playerIn = await PlayerModel.findById(substitution.playerIn)
@@ -65,7 +65,7 @@ module.exports = class SubstitutionController {
       const substitutions = await SubstitionModel.find({ match: req.params.match })
       for (let i = 0; i < substitutions.length; i++) {
         substitutions[i].team = await TeamModel.findById(substitutions[i].team)
-        const manager = await ManagerModel.findById(substitutions[i].playerIn.team.manager)
+        const manager = await ManagerModel.findById(substitutions[i].team.manager)
         substitutions[i].team.manager = manager
 
         substitutions[i].playerIn = await PlayerModel.findById(substitutions[i].playerIn)
@@ -93,7 +93,7 @@ module.exports = class SubstitutionController {
       const substitutions = await SubstitionModel.find({ team: req.params.team })
       for (let i = 0; i < substitutions.length; i++) {
         substitutions[i].team = await TeamModel.findById(substitutions[i].team)
-        const manager = await ManagerModel.findById(substitutions[i].playerIn.team.manager)
+        const manager = await ManagerModel.findById(substitutions[i].team.manager)
         substitutions[i].team.manager = manager
 
         substitutions[i].playerIn = await PlayerModel.findById(substitutions[i].playerIn)
@@ -121,7 +121,7 @@ module.exports = class SubstitutionController {
       const substitutions = await SubstitionModel.find({ match: req.params.match, team: req.params.team })
       for (let i = 0; i < substitutions.length; i++) {
         substitutions[i].team = await TeamModel.findById(substitutions[i].team)
-        const manager = await ManagerModel.findById(substitutions[i].playerIn.team.manager)
+        const manager = await ManagerModel.findById(substitutions[i].team.manager)
         substitutions[i].team.manager = manager
 
         substitutions[i].playerIn = await PlayerModel.findById(substitutions[i].playerIn)

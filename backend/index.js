@@ -20,8 +20,8 @@ app.listen(process.env.PORT || 3000, () => {
 })
 
 const DatabaseUtil = require('./utils/db')
-const db = new DatabaseUtil('mongodb+srv://jasazupancic:zupancic123@cluster0.g8dt0zk.mongodb.net/?retryWrites=true&w=majority')
-//const db = new DatabaseUtil('mongodb://localhost:27017/wcqatar2022')
+//const db = new DatabaseUtil('mongodb+srv://jasazupancic:zupancic123@cluster0.g8dt0zk.mongodb.net/?retryWrites=true&w=majority')
+const db = new DatabaseUtil('mongodb://localhost:27017/wcqatar2022')
 db.connect()
 
 const router = require('./routes/index')

@@ -14,7 +14,7 @@ module.exports = class GoalController {
         const assister = await PlayerModel.findById(goals[i].assister)
         console.log(goals[i].match)
         const match = await MatchModel.findById(goals[i].match)
-        console.log(match)
+
         const homeTeam = await TeamModel.findById(match.homeTeam)
         const awayTeam = await TeamModel.findById(match.awayTeam)
         const homeManager = await ManagerModel.findById(homeTeam.manager)
