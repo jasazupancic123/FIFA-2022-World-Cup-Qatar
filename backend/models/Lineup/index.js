@@ -21,22 +21,22 @@ const schema = new Schema({
     required: true,
   },
   defenders: {
-    type: [Schema.Types.ObjectId],
+    type: Schema.Types.Array,
     ref: 'Player',
     required: true,
   },
   midfielders: {
-    type: [Schema.Types.ObjectId],
+    type: Schema.Types.Array,
     ref: 'Player',
     required: true,
   },
   attackers: {
-    type: [Schema.Types.ObjectId],
+    type: Schema.Types.Array,
     ref: 'Player',
     required: true,
   },
   substitutes: {
-    type: [Schema.Types.ObjectId],
+    type: Schema.Types.Array,
     ref: 'Player',
     required: true,
   },

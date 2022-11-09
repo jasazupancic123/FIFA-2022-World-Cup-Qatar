@@ -14,62 +14,45 @@ module.exports = class LineupController {
     try {
       const lineups = await LineupModel.find()
       for (let i = 0; i < lineups.length; i++) {
-        console.log(lineups[i].team)
         lineups[i].team = await TeamModel.findById(lineups[i].team)
         lineups[i].match = await MatchModel.findById(lineups[i].match)
-        lineups[i].match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
-        lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineup.match.homeTeam.manager)
-        lineups[i].match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
-        lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineup.match.awayTeam.manager)
-        lineups[i].match.winner = await TeamModel.findById(lineup.match.winner)
+        lineups[i].match.homeTeam = await TeamModel.findById(lineups[i].match.homeTeam)
+        lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineups[i].match.homeTeam.manager)
+        lineups[i].match.awayTeam = await TeamModel.findById(lineups[i].match.awayTeam)
+        lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineups[i].match.awayTeam.manager)
+        lineups[i].match.winner = await TeamModel.findById(lineups[i].match.winner)
         const manager = await ManagerModel.findById(lineups[i].team.manager)
         lineups[i].team.manager = manager
 
-        const goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
-        goalkeeper.nationality = lineups[i].team
-        goalkeeper.nationality.manager = lineups[i].team.manager
-        goalkeeper.club = await ClubModel.findById(lineups[i].goalkeeper.club)
+        lineups[i].goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
+        lineups[i].goalkeeper.nationality = await TeamModel.findById(lineups[i].goalkeeper.nationality)
+        lineups[i].goalkeeper.nationality.manager = await ManagerModel.findById(lineups[i].goalkeeper.nationality.manager)
+        lineups[i].goalkeeper.club = await ClubModel(lineups[i].goalkeeper.club)
 
-        const defenders = []
         for (let j = 0; j < lineups[i].defenders.length; j++) {
-          const defender = await PlayerModel.findById(lineups[i].defenders[j])
-          defenders.push(defender)
-        }
-        lineups[i].defenders = defenders
-        for (let j = 0; j < lineups[i].defenders.length; j++) {
+          lineups[i].defenders[j] = await PlayerModel.findById(lineups[i].defenders[j])
           lineups[i].defenders[j].nationality = lineups[i].team
           lineups[i].defenders[j].nationality.manager = lineups[i].team.manager
           lineups[i].defenders[j].club = await ClubModel.findById(lineups[i].defenders[j].club)
         }
+        //convert lineup[i].midfielders to PlayerModel
         const midfielders = []
         for (let j = 0; j < lineups[i].midfielders.length; j++) {
           const midfielder = await PlayerModel.findById(lineups[i].midfielders[j])
-          midfielders.push(midfielder)
+          midfielder.nationality = lineups[i].team
+          midfielder.nationality.manager = lineups[i].team.manager
+          midfielder.club = await ClubModel.findById(midfielder.club)
+          lineups[i].midfielders[j] = midfielder
         }
-        lineups[i].midfielders = midfielders
-        for (let j = 0; j < lineups[i].midfielders.length; j++) {
-          lineups[i].midfielders[j].nationality = lineups[i].team
-          lineups[i].midfielders[j].nationality.manager = lineups[i].team.manager
-          lineups[i].midfielders[j].club = await ClubModel.findById(lineups[i].midfielders[j].club)
-        }
-        const attackers = []
+
         for (let j = 0; j < lineups[i].attackers.length; j++) {
-          const attacker = await PlayerModel.findById(lineups[i].attackers[j])
-          attackers.push(attacker)
-        }
-        lineups[i].attackers = attackers
-        for (let j = 0; j < lineups[i].attackers.length; j++) {
+          lineups[i].attackers[j] = await PlayerModel.findById(lineups[i].attackers[j])
           lineups[i].attackers[j].nationality = lineups[i].team
           lineups[i].attackers[j].nationality.manager = lineups[i].team.manager
           lineups[i].attackers[j].club = await ClubModel.findById(lineups[i].attackers[j].club)
         }
-        const substitutes = []
         for (let j = 0; j < lineups[i].substitutes.length; j++) {
-          const substitute = await PlayerModel.findById(lineups[i].substitutes[j])
-          substitutes.push(substitute)
-        }
-        lineups[i].substitutes = substitutes
-        for (let j = 0; j < lineups[i].substitutes.length; j++) {
+          lineups[i].substitutes[j] = await PlayerModel.findById(lineups[i].substitutes[j])
           lineups[i].substitutes[j].nationality = lineups[i].team
           lineups[i].substitutes[j].nationality.manager = lineups[i].team.manager
           lineups[i].substitutes[j].club = await ClubModel.findById(lineups[i].substitutes[j].club)
@@ -95,51 +78,32 @@ module.exports = class LineupController {
       const manager = await ManagerModel.findById(lineup.team.manager)
       lineup.team.manager = manager
 
-      const goalkeeper = await PlayerModel.findById(lineup.goalkeeper)
-      goalkeeper.nationality = lineup.team
-      goalkeeper.nationality.manager = lineup.team.manager
-      goalkeeper.club = await ClubModel.findById(lineup.goalkeeper.club)
+      lineup.goalkeeper = await PlayerModel.findById(lineup.goalkeeper)
+      lineup.goalkeeper.nationality = await TeamModel.findById(lineup.goalkeeper.nationality)
+      lineup.goalkeeper.nationality.manager = await ManagerModel.findById(lineup.goalkeeper.nationality.manager)
+      lineup.goalkeeper.club = await ClubModel(lineup.goalkeeper.club)
 
       const defenders = []
       for (let j = 0; j < lineup.defenders.length; j++) {
-        const defender = await PlayerModel.findById(lineup.defenders[j])
-        defenders.push(defender)
-      }
-      lineup.defenders = defenders
-      for (let j = 0; j < lineup.defenders.length; j++) {
+        lineup.defenders[j] = await PlayerModel.findById(lineup.defenders[j])
         lineup.defenders[j].nationality = lineup.team
         lineup.defenders[j].nationality.manager = lineup.team.manager
         lineup.defenders[j].club = await ClubModel.findById(lineup.defenders[j].club)
       }
-      const midfielders = []
       for (let j = 0; j < lineup.midfielders.length; j++) {
-        const midfielder = await PlayerModel.findById(lineup.midfielders[j])
-        midfielders.push(midfielder)
-      }
-      lineup.midfielders = midfielders
-      for (let j = 0; j < lineup.midfielders.length; j++) {
+        lineup.midfielders[j] = await PlayerModel.findById(lineup.midfielders[j])
         lineup.midfielders[j].nationality = lineup.team
         lineup.midfielders[j].nationality.manager = lineup.team.manager
         lineup.midfielders[j].club = await ClubModel.findById(lineup.midfielders[j].club)
       }
-      const attackers = []
       for (let j = 0; j < lineup.attackers.length; j++) {
-        const attacker = await PlayerModel.findById(lineup.attackers[j])
-        attackers.push(attacker)
-      }
-      lineup.attackers = attackers
-      for (let j = 0; j < lineup.attackers.length; j++) {
+        lineup.attackers[j] = await PlayerModel.findById(lineup.attackers[j])
         lineup.attackers[j].nationality = lineup.team
         lineup.attackers[j].nationality.manager = lineup.team.manager
         lineup.attackers[j].club = await ClubModel.findById(lineup.attackers[j].club)
       }
-      const substitutes = []
       for (let j = 0; j < lineup.substitutes.length; j++) {
-        const substitute = await PlayerModel.findById(lineup.substitutes[j])
-        substitutes.push(substitute)
-      }
-      lineup.substitutes = substitutes
-      for (let j = 0; j < lineup.substitutes.length; j++) {
+        lineup.substitutes[j] = await PlayerModel.findById(lineup.substitutes[j])
         lineup.substitutes[j].nationality = lineup.team
         lineup.substitutes[j].nationality.manager = lineup.team.manager
         lineup.substitutes[j].club = await ClubModel.findById(lineup.substitutes[j].club)
@@ -157,59 +121,39 @@ module.exports = class LineupController {
       for (let i = 0; i < lineups.length; i++) {
         lineups[i].team = await TeamModel.findById(lineups[i].team)
         lineups[i].match = await MatchModel.findById(lineups[i].match)
-        lineups[i].match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
-        lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineup.match.homeTeam.manager)
-        lineups[i].match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
-        lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineup.match.awayTeam.manager)
-        lineups[i].match.winner = await TeamModel.findById(lineup.match.winner)
+        lineups[i].match.homeTeam = await TeamModel.findById(lineups[i].match.homeTeam)
+        lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineups[i].match.homeTeam.manager)
+        lineups[i].match.awayTeam = await TeamModel.findById(lineups[i].match.awayTeam)
+        lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineups[i].match.awayTeam.manager)
+        lineups[i].match.winner = await TeamModel.findById(lineups[i].match.winner)
         const manager = await ManagerModel.findById(lineups[i].team.manager)
         lineups[i].team.manager = manager
 
-        const goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
-        goalkeeper.nationality = lineups[i].team
-        goalkeeper.nationality.manager = lineups[i].team.manager
-        goalkeeper.club = await ClubModel.findById(lineups[i].goalkeeper.club)
+        lineups[i].goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
+        lineups[i].goalkeeper.nationality = await TeamModel.findById(lineups[i].goalkeeper.nationality)
+        lineups[i].goalkeeper.nationality.manager = await ManagerModel.findById(lineups[i].goalkeeper.nationality.manager)
+        lineups[i].goalkeeper.club = await ClubModel(lineups[i].goalkeeper.club)
 
-        const defenders = []
         for (let j = 0; j < lineups[i].defenders.length; j++) {
-          const defender = await PlayerModel.findById(lineups[i].defenders[j])
-          defenders.push(defender)
-        }
-        lineups[i].defenders = defenders
-        for (let j = 0; j < lineups[i].defenders.length; j++) {
+          lineups[i].defenders[j] = await PlayerModel.findById(lineups[i].defenders[j])
           lineups[i].defenders[j].nationality = lineups[i].team
           lineups[i].defenders[j].nationality.manager = lineups[i].team.manager
           lineups[i].defenders[j].club = await ClubModel.findById(lineups[i].defenders[j].club)
         }
-        const midfielders = []
         for (let j = 0; j < lineups[i].midfielders.length; j++) {
-          const midfielder = await PlayerModel.findById(lineups[i].midfielders[j])
-          midfielders.push(midfielder)
-        }
-        lineups[i].midfielders = midfielders
-        for (let j = 0; j < lineups[i].midfielders.length; j++) {
+          lineups[i].midfielders[j] = await PlayerModel.findById(lineups[i].midfielders[j])
           lineups[i].midfielders[j].nationality = lineups[i].team
           lineups[i].midfielders[j].nationality.manager = lineups[i].team.manager
           lineups[i].midfielders[j].club = await ClubModel.findById(lineups[i].midfielders[j].club)
         }
-        const attackers = []
         for (let j = 0; j < lineups[i].attackers.length; j++) {
-          const attacker = await PlayerModel.findById(lineups[i].attackers[j])
-          attackers.push(attacker)
-        }
-        lineups[i].attackers = attackers
-        for (let j = 0; j < lineups[i].attackers.length; j++) {
+          lineups[i].attackers[j] = await PlayerModel.findById(lineups[i].attackers[j])
           lineups[i].attackers[j].nationality = lineups[i].team
           lineups[i].attackers[j].nationality.manager = lineups[i].team.manager
           lineups[i].attackers[j].club = await ClubModel.findById(lineups[i].attackers[j].club)
         }
-        const substitutes = []
         for (let j = 0; j < lineups[i].substitutes.length; j++) {
-          const substitute = await PlayerModel.findById(lineups[i].substitutes[j])
-          substitutes.push(substitute)
-        }
-        lineups[i].substitutes = substitutes
-        for (let j = 0; j < lineups[i].substitutes.length; j++) {
+          lineups[i].substitutes[j] = await PlayerModel.findById(lineups[i].substitutes[j])
           lineups[i].substitutes[j].nationality = lineups[i].team
           lineups[i].substitutes[j].nationality.manager = lineups[i].team.manager
           lineups[i].substitutes[j].club = await ClubModel.findById(lineups[i].substitutes[j].club)
@@ -227,59 +171,39 @@ module.exports = class LineupController {
       for (let i = 0; i < lineups.length; i++) {
         lineups[i].team = await TeamModel.findById(lineups[i].team)
         lineups[i].match = await MatchModel.findById(lineups[i].match)
-        lineups[i].match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
-        lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineup.match.homeTeam.manager)
-        lineups[i].match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
-        lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineup.match.awayTeam.manager)
-        lineups[i].match.winner = await TeamModel.findById(lineup.match.winner)
+        lineups[i].match.homeTeam = await TeamModel.findById(lineups[i].match.homeTeam)
+        lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineups[i].match.homeTeam.manager)
+        lineups[i].match.awayTeam = await TeamModel.findById(lineups[i].match.awayTeam)
+        lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineups[i].match.awayTeam.manager)
+        lineups[i].match.winner = await TeamModel.findById(lineups[i].match.winner)
         const manager = await ManagerModel.findById(lineups[i].team.manager)
         lineups[i].team.manager = manager
 
-        const goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
-        goalkeeper.nationality = lineups[i].team
-        goalkeeper.nationality.manager = lineups[i].team.manager
-        goalkeeper.club = await ClubModel.findById(lineups[i].goalkeeper.club)
+        lineups[i].goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
+        lineups[i].goalkeeper.nationality = await TeamModel.findById(lineups[i].goalkeeper.nationality)
+        lineups[i].goalkeeper.nationality.manager = await ManagerModel.findById(lineups[i].goalkeeper.nationality.manager)
+        lineups[i].goalkeeper.club = await ClubModel(lineups[i].goalkeeper.club)
 
-        const defenders = []
         for (let j = 0; j < lineups[i].defenders.length; j++) {
-          const defender = await PlayerModel.findById(lineups[i].defenders[j])
-          defenders.push(defender)
-        }
-        lineups[i].defenders = defenders
-        for (let j = 0; j < lineups[i].defenders.length; j++) {
+          lineups[i].defenders[j] = await PlayerModel.findById(lineups[i].defenders[j])
           lineups[i].defenders[j].nationality = lineups[i].team
           lineups[i].defenders[j].nationality.manager = lineups[i].team.manager
           lineups[i].defenders[j].club = await ClubModel.findById(lineups[i].defenders[j].club)
         }
-        const midfielders = []
         for (let j = 0; j < lineups[i].midfielders.length; j++) {
-          const midfielder = await PlayerModel.findById(lineups[i].midfielders[j])
-          midfielders.push(midfielder)
-        }
-        lineups[i].midfielders = midfielders
-        for (let j = 0; j < lineups[i].midfielders.length; j++) {
+          lineups[i].midfielders[j] = await PlayerModel.findById(lineups[i].midfielders[j])
           lineups[i].midfielders[j].nationality = lineups[i].team
           lineups[i].midfielders[j].nationality.manager = lineups[i].team.manager
           lineups[i].midfielders[j].club = await ClubModel.findById(lineups[i].midfielders[j].club)
         }
-        const attackers = []
         for (let j = 0; j < lineups[i].attackers.length; j++) {
-          const attacker = await PlayerModel.findById(lineups[i].attackers[j])
-          attackers.push(attacker)
-        }
-        lineups[i].attackers = attackers
-        for (let j = 0; j < lineups[i].attackers.length; j++) {
+          lineups[i].attackers[j] = await PlayerModel.findById(lineups[i].attackers[j])
           lineups[i].attackers[j].nationality = lineups[i].team
           lineups[i].attackers[j].nationality.manager = lineups[i].team.manager
           lineups[i].attackers[j].club = await ClubModel.findById(lineups[i].attackers[j].club)
         }
-        const substitutes = []
         for (let j = 0; j < lineups[i].substitutes.length; j++) {
-          const substitute = await PlayerModel.findById(lineups[i].substitutes[j])
-          substitutes.push(substitute)
-        }
-        lineups[i].substitutes = substitutes
-        for (let j = 0; j < lineups[i].substitutes.length; j++) {
+          lineups[i].substitutes[j] = await PlayerModel.findById(lineups[i].substitutes[j])
           lineups[i].substitutes[j].nationality = lineups[i].team
           lineups[i].substitutes[j].nationality.manager = lineups[i].team.manager
           lineups[i].substitutes[j].club = await ClubModel.findById(lineups[i].substitutes[j].club)
@@ -297,59 +221,39 @@ module.exports = class LineupController {
       for (let i = 0; i < lineups.length; i++) {
         lineups[i].team = await TeamModel.findById(lineups[i].team)
         lineups[i].match = await MatchModel.findById(lineups[i].match)
-        lineups[i].match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
-        lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineup.match.homeTeam.manager)
-        lineups[i].match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
-        lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineup.match.awayTeam.manager)
-        lineups[i].match.winner = await TeamModel.findById(lineup.match.winner)
+        lineups[i].match.homeTeam = await TeamModel.findById(lineups[i].match.homeTeam)
+        lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineups[i].match.homeTeam.manager)
+        lineups[i].match.awayTeam = await TeamModel.findById(lineups[i].match.awayTeam)
+        lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineups[i].match.awayTeam.manager)
+        lineups[i].match.winner = await TeamModel.findById(lineups[i].match.winner)
         const manager = await ManagerModel.findById(lineups[i].team.manager)
         lineups[i].team.manager = manager
 
-        const goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
-        goalkeeper.nationality = lineups[i].team
-        goalkeeper.nationality.manager = lineups[i].team.manager
-        goalkeeper.club = await ClubModel.findById(lineups[i].goalkeeper.club)
+        lineups[i].goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
+        lineups[i].goalkeeper.nationality = await TeamModel.findById(lineups[i].goalkeeper.nationality)
+        lineups[i].goalkeeper.nationality.manager = await ManagerModel.findById(lineups[i].goalkeeper.nationality.manager)
+        lineups[i].goalkeeper.club = await ClubModel(lineups[i].goalkeeper.club)
 
-        const defenders = []
         for (let j = 0; j < lineups[i].defenders.length; j++) {
-          const defender = await PlayerModel.findById(lineups[i].defenders[j])
-          defenders.push(defender)
-        }
-        lineups[i].defenders = defenders
-        for (let j = 0; j < lineups[i].defenders.length; j++) {
+          lineups[i].defenders[j] = await PlayerModel.findById(lineups[i].defenders[j])
           lineups[i].defenders[j].nationality = lineups[i].team
           lineups[i].defenders[j].nationality.manager = lineups[i].team.manager
           lineups[i].defenders[j].club = await ClubModel.findById(lineups[i].defenders[j].club)
         }
-        const midfielders = []
         for (let j = 0; j < lineups[i].midfielders.length; j++) {
-          const midfielder = await PlayerModel.findById(lineups[i].midfielders[j])
-          midfielders.push(midfielder)
-        }
-        lineups[i].midfielders = midfielders
-        for (let j = 0; j < lineups[i].midfielders.length; j++) {
+          lineups[i].midfielders[j] = await PlayerModel.findById(lineups[i].midfielders[j])
           lineups[i].midfielders[j].nationality = lineups[i].team
           lineups[i].midfielders[j].nationality.manager = lineups[i].team.manager
           lineups[i].midfielders[j].club = await ClubModel.findById(lineups[i].midfielders[j].club)
         }
-        const attackers = []
         for (let j = 0; j < lineups[i].attackers.length; j++) {
-          const attacker = await PlayerModel.findById(lineups[i].attackers[j])
-          attackers.push(attacker)
-        }
-        lineups[i].attackers = attackers
-        for (let j = 0; j < lineups[i].attackers.length; j++) {
+          lineups[i].attackers[j] = await PlayerModel.findById(lineups[i].attackers[j])
           lineups[i].attackers[j].nationality = lineups[i].team
           lineups[i].attackers[j].nationality.manager = lineups[i].team.manager
           lineups[i].attackers[j].club = await ClubModel.findById(lineups[i].attackers[j].club)
         }
-        const substitutes = []
         for (let j = 0; j < lineups[i].substitutes.length; j++) {
-          const substitute = await PlayerModel.findById(lineups[i].substitutes[j])
-          substitutes.push(substitute)
-        }
-        lineups[i].substitutes = substitutes
-        for (let j = 0; j < lineups[i].substitutes.length; j++) {
+          lineups[i].substitutes[j] = await PlayerModel.findById(lineups[i].substitutes[j])
           lineups[i].substitutes[j].nationality = lineups[i].team
           lineups[i].substitutes[j].nationality.manager = lineups[i].team.manager
           lineups[i].substitutes[j].club = await ClubModel.findById(lineups[i].substitutes[j].club)
@@ -375,51 +279,32 @@ module.exports = class LineupController {
       const manager = await ManagerModel.findById(lineup.team.manager)
       lineup.team.manager = manager
 
-      const goalkeeper = await PlayerModel.findById(lineup.goalkeeper)
-      goalkeeper.nationality = lineup.team
-      goalkeeper.nationality.manager = lineup.team.manager
-      goalkeeper.club = await ClubModel.findById(lineup.goalkeeper.club)
+      lineup.goalkeeper = await PlayerModel.findById(lineup.goalkeeper)
+      lineup.goalkeeper.nationality = await TeamModel.findById(lineup.goalkeeper.nationality)
+      lineup.goalkeeper.nationality.manager = await ManagerModel.findById(lineup.goalkeeper.nationality.manager)
+      lineup.goalkeeper.club = await ClubModel(lineup.goalkeeper.club)
 
       const defenders = []
       for (let j = 0; j < lineup.defenders.length; j++) {
-        const defender = await PlayerModel.findById(lineup.defenders[j])
-        defenders.push(defender)
-      }
-      lineup.defenders = defenders
-      for (let j = 0; j < lineup.defenders.length; j++) {
+        lineup.defenders[j] = await PlayerModel.findById(lineup.defenders[j])
         lineup.defenders[j].nationality = lineup.team
         lineup.defenders[j].nationality.manager = lineup.team.manager
         lineup.defenders[j].club = await ClubModel.findById(lineup.defenders[j].club)
       }
-      const midfielders = []
       for (let j = 0; j < lineup.midfielders.length; j++) {
-        const midfielder = await PlayerModel.findById(lineup.midfielders[j])
-        midfielders.push(midfielder)
-      }
-      lineup.midfielders = midfielders
-      for (let j = 0; j < lineup.midfielders.length; j++) {
+        lineup.midfielders[j] = await PlayerModel.findById(lineup.midfielders[j])
         lineup.midfielders[j].nationality = lineup.team
         lineup.midfielders[j].nationality.manager = lineup.team.manager
         lineup.midfielders[j].club = await ClubModel.findById(lineup.midfielders[j].club)
       }
-      const attackers = []
       for (let j = 0; j < lineup.attackers.length; j++) {
-        const attacker = await PlayerModel.findById(lineup.attackers[j])
-        attackers.push(attacker)
-      }
-      lineup.attackers = attackers
-      for (let j = 0; j < lineup.attackers.length; j++) {
+        lineup.attackers[j] = await PlayerModel.findById(lineup.attackers[j])
         lineup.attackers[j].nationality = lineup.team
         lineup.attackers[j].nationality.manager = lineup.team.manager
         lineup.attackers[j].club = await ClubModel.findById(lineup.attackers[j].club)
       }
-      const substitutes = []
       for (let j = 0; j < lineup.substitutes.length; j++) {
-        const substitute = await PlayerModel.findById(lineup.substitutes[j])
-        substitutes.push(substitute)
-      }
-      lineup.substitutes = substitutes
-      for (let j = 0; j < lineup.substitutes.length; j++) {
+        lineup.substitutes[j] = await PlayerModel.findById(lineup.substitutes[j])
         lineup.substitutes[j].nationality = lineup.team
         lineup.substitutes[j].nationality.manager = lineup.team.manager
         lineup.substitutes[j].club = await ClubModel.findById(lineup.substitutes[j].club)
@@ -443,6 +328,9 @@ module.exports = class LineupController {
       const defenders = []
       for (let i = 0; i < req.body.defenders.length; i++) {
         const defender = await PlayerModel.findById(req.body.defenders[i])
+        defender.nationality = await TeamModel.findById(defender.nationality)
+        defender.nationality.manager = await ManagerModel.findById(defender.nationality.manager)
+        defender.club = await ClubModel.findById(defender.club)
         defender.appearances += 1
         await defender.save()
         defenders.push(defender)
@@ -451,6 +339,9 @@ module.exports = class LineupController {
       const midfielders = []
       for (let i = 0; i < req.body.midfielders.length; i++) {
         const midfielder = await PlayerModel.findById(req.body.midfielders[i])
+        midfielder.nationality = await TeamModel.findById(midfielder.nationality)
+        midfielder.nationality.manager = await ManagerModel.findById(midfielder.nationality.manager)
+        midfielder.club = await ClubModel.findById(midfielder.club)
         midfielder.appearances += 1
         await midfielder.save()
         midfielders.push(midfielder)
@@ -459,9 +350,22 @@ module.exports = class LineupController {
       const attackers = []
       for (let i = 0; i < req.body.attackers.length; i++) {
         const attacker = await PlayerModel.findById(req.body.attackers[i])
+        attacker.nationality = await TeamModel.findById(attacker.nationality)
+        attacker.nationality.manager = await ManagerModel.findById(attacker.nationality.manager)
+        attacker.club = await ClubModel.findById(attacker.club)
         attacker.appearances += 1
         await attacker.save()
         attackers.push(attacker)
+      }
+
+      const substitutes = []
+      for (let i = 0; i < req.body.substitutes.length; i++) {
+        const substitute = await PlayerModel.findById(req.body.substitutes[i])
+        substitute.nationality = await TeamModel.findById(substitute.nationality)
+        substitute.nationality.manager = await ManagerModel.findById(substitute.nationality.manager)
+        substitute.club = await ClubModel.findById(substitute.club)
+        await substitute.save()
+        substitutes.push(substitute)
       }
 
       const lineup = await LineupModel.create({
@@ -472,6 +376,7 @@ module.exports = class LineupController {
         defenders: defenders,
         midfielders: midfielders,
         attackers: attackers,
+        substitutes: substitutes,
       })
       res.json(JsonUtil.response(res, false, 'Successfully created lineup', lineup))
     } catch (e) {
