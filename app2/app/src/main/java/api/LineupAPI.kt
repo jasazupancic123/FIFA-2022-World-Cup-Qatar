@@ -190,10 +190,7 @@ class LineupAPI {
                 //val match = Gson().fromJson(matchObject.jsonObject.toString(), Match::class.java)
                 val match = Gson().fromJson(lineupObject["match"]!!.jsonObject.toString(), Match::class.java)
 
-                val goalkeeperObject = lineupObject["goalkeeper"]!!
-                val json = Gson().toJson(goalkeeperObject)
-                println(json)
-                val goalkeeper = Gson().fromJson(json, Player::class.java)
+                val goalkeeper = Gson().fromJson(lineupObject["goalkeeper"]!!.jsonObject.toString(), Player::class.java)
 
                 val defenders: MutableList<Player> = mutableListOf()
                 for (defender in lineupObject["defenders"]!!.jsonArray) {
