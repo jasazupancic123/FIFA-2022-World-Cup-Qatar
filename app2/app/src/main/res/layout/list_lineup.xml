@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/teamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Team Name"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/formationStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Formation Style"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/goalkeeperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Goalkeeper"
+        android:layout_marginLeft="50dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/teamName"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/goalkeeperCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/goalkeeperText">
+        <TextView
+            android:id="@+id/goalkeeperName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Midfielder 1 Name"
+            tools:ignore="ExtraText" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/defenderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Defenders"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintTop_toBottomOf="@id/goalkeeperCard"
+        android:textStyle="bold"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/defenderCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/defenderText">
+        <TextView
+            android:id="@+id/defenderNames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Midfielder 1 Name"
+            tools:ignore="ExtraText" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/midfielderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/defenderCard"
+        android:text="Midfielders"
+        android:textStyle="bold"
+        android:layout_marginLeft="50dp"
+        tools:ignore="ExtraText" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/midfielderCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/midfielderText">
+        <TextView
+            android:id="@+id/midfielderNames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Midfielder 1 Name"
+            tools:ignore="ExtraText" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/forwardText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forwards"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/midfielderCard"
+        android:layout_marginLeft="50dp"
+        tools:ignore="ExtraText" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/forwardText">
+    <TextView
+        android:id="@+id/forwardNames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Forward 1 Name"
+        tools:ignore="ExtraText" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -2871,6 +2871,9 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id defenderCard
+id defenderNames
+id defenderText
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -2924,6 +2927,9 @@ id fixed
 id flip
 id floating
 id forever
+id formationStyle
+id forwardNames
+id forwardText
 id fragment_container_view_tag
 id fragment_layout
 id frameLayout
@@ -2931,6 +2937,9 @@ id frost
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
+id goalkeeperCard
+id goalkeeperName
+id goalkeeperText
 id gone
 id graph
 id graph_wrap
@@ -2984,6 +2993,7 @@ id lineups
 id listMode
 id list_item
 id loadingGoalsText
+id loadingLineupsText
 id loadingMatchesText
 id loadingTeamsText
 id locale
@@ -3017,6 +3027,9 @@ id material_value_index
 id matrix
 id message
 id middle
+id midfielderCard
+id midfielderNames
+id midfielderText
 id mini
 id month_grid
 id month_navigation_bar
@@ -3063,6 +3076,7 @@ id navigation_header_container
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id noLineupsText
 id noScroll
 id noState
 id none
@@ -3099,7 +3113,9 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerViewAwayTeamLineup
 id recyclerViewGoals
+id recyclerViewHomeTeamLineup
 id recycler_match
 id recycler_team_GroupA
 id recycler_team_GroupB
@@ -3398,7 +3414,9 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_details
+layout fragment_lineup
 layout list_goal
+layout list_lineup
 layout list_match
 layout list_team
 layout m3_alert_dialog

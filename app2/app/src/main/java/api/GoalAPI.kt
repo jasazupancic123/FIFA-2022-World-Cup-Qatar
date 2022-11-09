@@ -234,8 +234,7 @@ class GoalAPI {
 
                     println(goalObject["scorer"]!!.jsonObject)
 
-                    val scorerObject = goalObject["scorer"]!!.jsonObject
-                    val scorer = Gson().fromJson(scorerObject.toString(), Player::class.java)
+                    val scorer = Gson().fromJson(goalObject["scorer"]!!.jsonObject.toString(), Player::class.java)
 
                     val assister = Gson().fromJson(goalObject["assister"]!!.jsonObject.toString(), Player::class.java)
 

@@ -18,22 +18,18 @@ public class GoalAdapter: RecyclerView.Adapter<GoalViewHolder> {
     constructor(context: Context, goals: MutableList<Goal>) {
         this.context = context
         this.goals = goals
-        println("GoalAdapter constructor")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder {
-        println("GoalAdapter onCreateViewHolder")
         return GoalViewHolder(LayoutInflater.from(context).inflate(R.layout.list_goal, parent, false))
     }
 
     override fun onBindViewHolder(holder: GoalViewHolder, position: Int) {
-        println("GoalAdapter onBindViewHolder")
         val goal = goals[position]
         holder.bind(goal, context)
     }
 
     override fun getItemCount(): Int {
-        println("GoalAdapter getItemCount")
         return goals.size
     }
 }

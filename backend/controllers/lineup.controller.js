@@ -17,6 +17,9 @@ module.exports = class LineupController {
         console.log(lineups[i].team)
         lineups[i].team = await TeamModel.findById(lineups[i].team)
         lineups[i].match = await MatchModel.findById(lineups[i].match)
+        lineups[i].match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
+        lineups[i].match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
+        lineups[i].match.winner = await TeamModel.findById(lineup.match.winner)
         const manager = await ManagerModel.findById(lineups[i].team.manager)
         lineups[i].team.manager = manager
 
@@ -81,6 +84,9 @@ module.exports = class LineupController {
       const lineup = await LineupModel.findById(req.params.id)
       lineup.team = await TeamModel.findById(lineup.team)
       lineup.match = await MatchModel.findById(lineup.match)
+      lineup.match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
+      lineup.match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
+      lineup.match.winner = await TeamModel.findById(lineup.match.winner)
       const manager = await ManagerModel.findById(lineup.team.manager)
       lineup.team.manager = manager
 
@@ -146,6 +152,9 @@ module.exports = class LineupController {
       for (let i = 0; i < lineups.length; i++) {
         lineups[i].team = await TeamModel.findById(lineups[i].team)
         lineups[i].match = await MatchModel.findById(lineups[i].match)
+        lineups[i].match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
+        lineups[i].match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
+        lineups[i].match.winner = await TeamModel.findById(lineup.match.winner)
         const manager = await ManagerModel.findById(lineups[i].team.manager)
         lineups[i].team.manager = manager
 
@@ -211,6 +220,9 @@ module.exports = class LineupController {
       for (let i = 0; i < lineups.length; i++) {
         lineups[i].team = await TeamModel.findById(lineups[i].team)
         lineups[i].match = await MatchModel.findById(lineups[i].match)
+        lineups[i].match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
+        lineups[i].match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
+        lineups[i].match.winner = await TeamModel.findById(lineup.match.winner)
         const manager = await ManagerModel.findById(lineups[i].team.manager)
         lineups[i].team.manager = manager
 
@@ -276,6 +288,9 @@ module.exports = class LineupController {
       for (let i = 0; i < lineups.length; i++) {
         lineups[i].team = await TeamModel.findById(lineups[i].team)
         lineups[i].match = await MatchModel.findById(lineups[i].match)
+        lineups[i].match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
+        lineups[i].match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
+        lineups[i].match.winner = await TeamModel.findById(lineup.match.winner)
         const manager = await ManagerModel.findById(lineups[i].team.manager)
         lineups[i].team.manager = manager
 
@@ -340,6 +355,9 @@ module.exports = class LineupController {
       const lineup = await LineupModel.findOne({ match: req.params.match, team: req.params.team })
       lineup.team = await TeamModel.findById(lineup.team)
       lineup.match = await MatchModel.findById(lineup.match)
+      lineup.match.homeTeam = await TeamModel.findById(lineup.match.homeTeam)
+      lineup.match.awayTeam = await TeamModel.findById(lineup.match.awayTeam)
+      lineup.match.winner = await TeamModel.findById(lineup.match.winner)
       const manager = await ManagerModel.findById(lineup.team.manager)
       lineup.team.manager = manager
 

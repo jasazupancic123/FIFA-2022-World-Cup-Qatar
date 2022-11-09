@@ -50,10 +50,18 @@ class MatchDetailsActivity : AppCompatActivity() {
                     matchNavigation.selectedItemId = R.id.details;
                 }
                 R.id.standings -> {
+
                     matchNavigation.selectedItemId = R.id.standings;
                 }
                 R.id.lineups -> {
-                    matchNavigation.selectedItemId = R.id.lineups;
+                    val lineupFragment = LineupFragment()
+                    val args = Bundle()
+                    args.putString("match", matchObject as String)
+                    lineupFragment.arguments = args
+                    val fragmentManager = supportFragmentManager
+                    val fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.frameLayout, lineupFragment)
+                    fragmentTransaction.commit()
+                    //matchNavigation.selectedItemId = R.id.lineups;
                 }
             }
             false

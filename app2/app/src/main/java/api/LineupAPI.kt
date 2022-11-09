@@ -174,15 +174,43 @@ class LineupAPI {
                 }
 
                 val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                println("data: $data")
                 val lineupObject = data!!.jsonObject
                 val _id = lineupObject["_id"]!!.jsonPrimitive.content
                 val type = lineupObject["type"]!!.jsonPrimitive.content
 
                 val team = Gson().fromJson(lineupObject["team"]!!.jsonObject.toString(), Team::class.java)
 
-                val match = Gson().fromJson(lineupObject["match"]!!.jsonObject.toString(), Match::class.java)
+                //println(lineupObject["match"])
+                //println(lineupObject["goalkeeper"]!!.jsonObject.toString())
 
-                val goalkeeper = Gson().fromJson(lineupObject["goalkeeper"]!!.jsonObject.toString(), Player::class.java)
+                val matchObject = lineupObject["match"]!!.jsonObject
+                println(matchObject.toString())
+
+                //val match = Gson().fromJson(matchObject.jsonObject.toString(), Match::class.java)
+                val match = Match(
+                    matchObject["_id"]!!.jsonPrimitive.content,
+                    Gson().fromJson(matchObject["homeTeam"]!!.jsonPrimitive.content, Team::class.java),
+                    Gson().fromJson(matchObject.jsonObject["awayTeam"]!!.jsonObject.toString(), Team::class.java),
+                    SimpleDateFormat("yyyy-MM-dd").parse(matchObject.jsonObject["date"]!!.jsonPrimitive.content),
+                    matchObject.jsonObject["stadium"]!!.jsonPrimitive.content,
+                    matchObject.jsonObject["referee"]!!.jsonPrimitive.content,
+                    matchObject.jsonObject["roundOrGroup"]!!.jsonPrimitive.content,
+                    matchObject.jsonObject["homeTeamScore"]!!.jsonPrimitive.int,
+                    matchObject.jsonObject["awayTeamScore"]!!.jsonPrimitive.int,
+                    matchObject.jsonObject["minutes"]!!.jsonPrimitive.int,
+                    matchObject.jsonObject["isFinished"]!!.jsonPrimitive.boolean,
+                    matchObject.jsonObject["hasStarted"]!!.jsonPrimitive.boolean,
+                    matchObject.jsonObject["isHalfTime"]!!.jsonPrimitive.boolean,
+                    if (matchObject.jsonObject["winner"]!! == JsonNull) null else Gson().fromJson(matchObject.jsonObject["winner"]!!.jsonObject.toString(), Team::class.java)
+                )
+
+                val goalkeeperObject = lineupObject["goalkeeper"]!!
+                val json = Gson().toJson(goalkeeperObject)
+                println(json)
+                val goalkeeper = Gson().fromJson(json, Player::class.java)
+
+
 
                 val defenders: MutableList<Player> = mutableListOf()
                 for (defender in lineupObject["defenders"]!!.jsonArray) {
