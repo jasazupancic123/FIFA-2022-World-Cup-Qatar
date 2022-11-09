@@ -21,6 +21,13 @@ module.exports = class LineupController {
         lineups[i].match.homeTeam.manager = await ManagerModel.findById(lineups[i].match.homeTeam.manager)
         lineups[i].match.awayTeam = await TeamModel.findById(lineups[i].match.awayTeam)
         lineups[i].match.awayTeam.manager = await ManagerModel.findById(lineups[i].match.awayTeam.manager)
+
+        lineups[i].goalkeeper = await PlayerModel.findById(lineups[i].goalkeeper)
+        lineups[i].goalkeeper.nationality = await TeamModel.findById(lineups[i].goalkeeper.nationality)
+        lineups[i].goalkeeper.nationality.manager = await ManagerModel.findById(lineups[i].goalkeeper.nationality.manager)
+        console.log(lineups[i].goalkeeper.nationality.manager)
+        lineups[i].goalkeeper.club = await ClubModel.findById(lineups[i].goalkeeper.club)
+
         lineups[i].match.winner = await TeamModel.findById(lineups[i].match.winner)
         if (lineups[i].match.winner != null) {
           lineups[i].match.winner.manager = await ManagerModel.findById(lineups[i].match.winner.manager)
@@ -146,6 +153,10 @@ module.exports = class LineupController {
       const match = await MatchModel.findById(req.body.match)
 
       const goalkeeper = await PlayerModel.findById(req.body.goalkeeper)
+      goalkeeper.nationality = await TeamModel.findById(goalkeeper.nationality)
+      goalkeeper.nationality.manager = await ManagerModel.findById(goalkeeper.nationality.manager)
+      goalkeeper.club = await ClubModel.findById(goalkeeper.club)
+      console.log(goalkeeper)
       goalkeeper.appearances += 1
       await goalkeeper.save()
 
