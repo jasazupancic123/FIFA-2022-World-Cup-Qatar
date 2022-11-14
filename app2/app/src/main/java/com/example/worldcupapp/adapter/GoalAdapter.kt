@@ -47,7 +47,6 @@ class GoalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var awayPlayerName: TextView
 
     init {
-        println("GoalViewHolder init")
         homeGoalImage = itemView.findViewById(R.id.homeGoalImage)
         homeMinuteText = itemView.findViewById(R.id.homeMinuteText)
         homeScoreText = itemView.findViewById(R.id.homeScoreText)
@@ -60,7 +59,6 @@ class GoalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     fun bind(goal: Goal, context: Context) {
-        println("BINDING GOAL")
         if(goal.isHomeTeamGoal){
             awayGoalImage.visibility = View.GONE
             awayMinuteText.visibility = View.GONE
@@ -68,7 +66,7 @@ class GoalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             awayPlayerName.visibility = View.GONE
 
             homeMinuteText.text = goal.minute.toString()
-            homeScoreText.text = goal.match.homeTeamScore.toString() + " - " + goal.match.awayTeamScore.toString()
+            homeScoreText.text = goal.currentScore
             homePlayerName.text = goal.scorer.firstName[0] + ". " + goal.scorer.lastName
         } else {
             homeGoalImage.visibility = View.GONE
@@ -77,7 +75,7 @@ class GoalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             homePlayerName.visibility = View.GONE
 
             awayMinuteText.text = goal.minute.toString()
-            awayScoreText.text = goal.match.homeTeamScore.toString() + " - " + goal.match.awayTeamScore.toString()
+            awayScoreText.text = goal.currentScore
             awayPlayerName.text = goal.scorer.firstName[0] + ". " + goal.scorer.lastName
         }
     }

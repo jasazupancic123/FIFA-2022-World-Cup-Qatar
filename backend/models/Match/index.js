@@ -20,6 +20,10 @@ const schema = new Schema({
     type: Schema.Types.String,
     required: true,
   },
+  halfTimeResumedAt: {
+    type: Schema.Types.Date,
+    default: null,
+  },
   referee: {
     type: Schema.Types.String,
     default: 'Unknown',
