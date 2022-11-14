@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -28,10 +27,13 @@ public final class ActivityMainBinding implements ViewBinding {
   public final BottomNavigationView bottomNaviagtionView;
 
   @NonNull
+  public final TextView finishedMatchesText;
+
+  @NonNull
   public final ImageView imageView2;
 
   @NonNull
-  public final LinearLayout linearLayout;
+  public final TextView loadingFinishedMatchesText;
 
   @NonNull
   public final TextView loadingMatchesText;
@@ -40,23 +42,33 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ProgressBar progressBar;
 
   @NonNull
+  public final ProgressBar progressBarFinishedMatches;
+
+  @NonNull
   public final RecyclerView recyclerMatch;
+
+  @NonNull
+  public final RecyclerView recyclerMatchFinished;
 
   @NonNull
   public final TextView upcomingMatchesText;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull BottomNavigationView bottomNaviagtionView, @NonNull ImageView imageView2,
-      @NonNull LinearLayout linearLayout, @NonNull TextView loadingMatchesText,
-      @NonNull ProgressBar progressBar, @NonNull RecyclerView recyclerMatch,
-      @NonNull TextView upcomingMatchesText) {
+      @NonNull BottomNavigationView bottomNaviagtionView, @NonNull TextView finishedMatchesText,
+      @NonNull ImageView imageView2, @NonNull TextView loadingFinishedMatchesText,
+      @NonNull TextView loadingMatchesText, @NonNull ProgressBar progressBar,
+      @NonNull ProgressBar progressBarFinishedMatches, @NonNull RecyclerView recyclerMatch,
+      @NonNull RecyclerView recyclerMatchFinished, @NonNull TextView upcomingMatchesText) {
     this.rootView = rootView;
     this.bottomNaviagtionView = bottomNaviagtionView;
+    this.finishedMatchesText = finishedMatchesText;
     this.imageView2 = imageView2;
-    this.linearLayout = linearLayout;
+    this.loadingFinishedMatchesText = loadingFinishedMatchesText;
     this.loadingMatchesText = loadingMatchesText;
     this.progressBar = progressBar;
+    this.progressBarFinishedMatches = progressBarFinishedMatches;
     this.recyclerMatch = recyclerMatch;
+    this.recyclerMatchFinished = recyclerMatchFinished;
     this.upcomingMatchesText = upcomingMatchesText;
   }
 
@@ -93,15 +105,21 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.finishedMatchesText;
+      TextView finishedMatchesText = ViewBindings.findChildViewById(rootView, id);
+      if (finishedMatchesText == null) {
+        break missingId;
+      }
+
       id = R.id.imageView2;
       ImageView imageView2 = ViewBindings.findChildViewById(rootView, id);
       if (imageView2 == null) {
         break missingId;
       }
 
-      id = R.id.linearLayout;
-      LinearLayout linearLayout = ViewBindings.findChildViewById(rootView, id);
-      if (linearLayout == null) {
+      id = R.id.loadingFinishedMatchesText;
+      TextView loadingFinishedMatchesText = ViewBindings.findChildViewById(rootView, id);
+      if (loadingFinishedMatchesText == null) {
         break missingId;
       }
 
@@ -117,9 +135,21 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressBarFinishedMatches;
+      ProgressBar progressBarFinishedMatches = ViewBindings.findChildViewById(rootView, id);
+      if (progressBarFinishedMatches == null) {
+        break missingId;
+      }
+
       id = R.id.recycler_match;
       RecyclerView recyclerMatch = ViewBindings.findChildViewById(rootView, id);
       if (recyclerMatch == null) {
+        break missingId;
+      }
+
+      id = R.id.recycler_match_finished;
+      RecyclerView recyclerMatchFinished = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerMatchFinished == null) {
         break missingId;
       }
 
@@ -129,8 +159,10 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNaviagtionView, imageView2,
-          linearLayout, loadingMatchesText, progressBar, recyclerMatch, upcomingMatchesText);
+      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNaviagtionView,
+          finishedMatchesText, imageView2, loadingFinishedMatchesText, loadingMatchesText,
+          progressBar, progressBarFinishedMatches, recyclerMatch, recyclerMatchFinished,
+          upcomingMatchesText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

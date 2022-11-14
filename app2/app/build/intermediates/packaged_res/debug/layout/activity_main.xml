@@ -18,17 +18,17 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".MainActivity">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="235dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/world_cup_qattarjpg" />
 
             <TextView
@@ -40,6 +40,7 @@
                 android:background="@color/darkRed"
                 android:gravity="center"
                 android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
                 android:text="Upcoming Matches"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -51,22 +52,73 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:indeterminateTint="@color/darkRed" />
+                android:indeterminateTint="@color/darkRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/upcomingMatchesText" />
 
             <TextView
                 android:id="@+id/loadingMatchesText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Loading matches"
+                android:text="Loading upcoming matches"
                 android:textColor="@color/darkRed"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_match"
                 android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/loadingMatchesText"
                 android:layout_height="wrap_content" />
-    </LinearLayout>
+
+            <TextView
+                android:id="@+id/finishedMatchesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/darkRed"
+                android:gravity="center"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_match"
+                android:text="Finished Matches"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/progressBarFinishedMatches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:indeterminateTint="@color/darkRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/finishedMatchesText" />
+
+            <TextView
+                android:id="@+id/loadingFinishedMatchesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Loading finished matches"
+                android:textColor="@color/darkRed"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressBarFinishedMatches" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_match_finished"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/loadingFinishedMatchesText"
+                android:layout_height="wrap_content" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

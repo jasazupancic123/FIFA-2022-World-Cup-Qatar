@@ -26,10 +26,7 @@ class LineupFragment : Fragment() {
         binding = FragmentLineupBinding.inflate(layoutInflater)
         val args = arguments
         val match = Gson().fromJson(args?.getString("match"), Match::class.java)
-        println("time : ${match.date.time} - ${System.currentTimeMillis()}") //TO JE ZA SPODAJ
-        //get minutes between now and match start
         val minutes = (match.date.time - System.currentTimeMillis()) / 60000
-        println("minutes : $minutes")
         if(minutes < 120){ //tu preveri ce se je ena ura pa pol pred tekmo kar je logicen cas za lineupe
             lifecycleScope.launch{
                 try {
@@ -46,6 +43,7 @@ class LineupFragment : Fragment() {
                     }
                 } catch (e: Exception) {
                     println(e.message)
+                    binding.noHomeTeamLineupsText.visibility = View.VISIBLE
                 }
                 try {
                     val awayTeamLineup = LineupAPI().findByMatchAndTeam(match._id, match.awayTeam._id)
@@ -60,7 +58,12 @@ class LineupFragment : Fragment() {
                     }
                 } catch (e: Exception) {
                     println(e.message)
+                    binding.noAwayTeamLineupsText.visibility = View.VISIBLE
                 }
+                binding.progressBarHomeTeam.visibility = View.GONE
+                binding.loadingHomeTeamLineupsText.visibility = View.GONE
+                binding.progressBarAwayTeam.visibility = View.GONE
+                binding.loadingAwayTeamLineupsText.visibility = View.GONE
             }
         } else {
             binding.progressBarHomeTeam.visibility = View.GONE

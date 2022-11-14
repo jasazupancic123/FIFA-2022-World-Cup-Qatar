@@ -16,6 +16,7 @@ class Match(
     var isFinished: Boolean = false,
     var hasStarted: Boolean = false,
     var isHalfTime: Boolean = false,
+    var halfTimeResumedAt: Date? = null,
     var winner: Team? = null
 ) {
     override fun toString(): String {
@@ -34,6 +35,7 @@ class Match(
                 ", isFinished=" + isFinished +
                 ", hasStarted=" + hasStarted +
                 ", isHalfTime=" + isHalfTime +
+                ", halfTimeResumedAt=" + halfTimeResumedAt +
                 ", winner=" + winner.toString() +
                 '}'
             )

@@ -72,7 +72,6 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     @SuppressLint("SetTextI18n")
     fun bind(match: Match, context: Context) {
-        val test = match.homeTeam
         println(match.homeTeam.name)
         Picasso.with(context).load("https://flagcdn.com/160x120/" + match.homeTeam.iso2.lowercase() + ".png").into(homeTeamImage)
         //println("https://flagcdn.com/16x12/" + match.homeTeam.iso2.lowercase() + ".png")
@@ -82,6 +81,7 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         homeTeamName.text = match.homeTeam.fifaCode
         awayTeamName.text = match.awayTeam.fifaCode
 
+        /*
         if(match.homeTeam.name == "Senegal"){
             match.hasStarted = true
             val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
@@ -92,13 +92,57 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             minuteText.text = "$diffMinutes'"
         }
 
-        if(match.hasStarted){
+         */
+
+        if(match.hasStarted && match.isHalfTime){
             dateOfMatch.visibility = View.GONE
             timeOfMatch.visibility = View.GONE
             homeTeamScore.text = match.homeTeamScore.toString()
             awayTeamScore.text = match.awayTeamScore.toString()
-            //minuteText.text = match.minute.toString() + "'"
-        } else {
+            minuteText.text = "HT"
+        } else if(match.hasStarted && !match.isFinished && match.halfTimeResumedAt == null){
+            dateOfMatch.visibility = View.GONE
+            timeOfMatch.visibility = View.GONE
+            homeTeamScore.text = match.homeTeamScore.toString()
+            awayTeamScore.text = match.awayTeamScore.toString()
+            val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
+            val now = sdf.parse(sdf.format(System.currentTimeMillis()))
+            val start = sdf.parse(match.date.toString())
+            val diff = now.time - start.time
+            val diffMinutes = diff / (60 * 1000) % 60
+            minuteText.text = "$diffMinutes'"
+        }
+        else if (match.halfTimeResumedAt != null && !match.isFinished){
+            dateOfMatch.visibility = View.GONE
+            timeOfMatch.visibility = View.GONE
+            homeTeamScore.text = match.homeTeamScore.toString()
+            awayTeamScore.text = match.awayTeamScore.toString()
+            val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
+            val now = sdf.parse(sdf.format(System.currentTimeMillis()))
+            val start = sdf.parse(match.halfTimeResumedAt.toString())
+            val diff = now.time - start.time
+            val diffMinutes = (diff / (60 * 1000) % 60) + 45
+            minuteText.text = "$diffMinutes'"
+        } else if (match.isFinished){
+            dateOfMatch.visibility = View.GONE
+            timeOfMatch.visibility = View.GONE
+            homeTeamScore.text = match.homeTeamScore.toString()
+            awayTeamScore.text = match.awayTeamScore.toString()
+            val dateFormat: SimpleDateFormat = SimpleDateFormat("EEE d/MM")
+            val timeFormat: SimpleDateFormat = SimpleDateFormat("HH:mm")
+            val givenFormat: SimpleDateFormat =
+                SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
+
+            try {
+                val date = givenFormat.parse(match.date.toString())
+                val dateStr = dateFormat.format(date)
+                val timeStr = timeFormat.format(date)
+                minuteText.text = dateStr + " " + timeStr
+            } catch (e: ParseException) {
+                e.printStackTrace()
+            }
+        }
+        else {
             homeTeamScore.visibility = View.GONE
             awayTeamScore.visibility = View.GONE
             againstText.visibility = View.GONE

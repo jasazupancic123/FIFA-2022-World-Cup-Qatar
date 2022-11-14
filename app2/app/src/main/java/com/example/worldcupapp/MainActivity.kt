@@ -14,20 +14,30 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
-    lateinit var recyclerView: RecyclerView
-    private var matches: MutableList<Match>? = null
+    lateinit var recyclerViewUpomingMatches: RecyclerView
+    lateinit var recyclerViewFinishedMatches: RecyclerView
+    private var upcomingMatches: MutableList<Match>? = null
+    private var finishedMatches: MutableList<Match>? = null
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        recyclerView = binding.recyclerMatch
+        recyclerViewUpomingMatches = binding.recyclerMatch
+        recyclerViewFinishedMatches = binding.recyclerMatchFinished
 
         lifecycleScope.launch {
-            matches = MatchAPI().findUpcomingFive()
-            recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-            recyclerView.adapter = MatchAdapter(this@MainActivity, matches!!)
+            upcomingMatches = MatchAPI().findUpcomingFive()
+            recyclerViewUpomingMatches.layoutManager = LinearLayoutManager(this@MainActivity)
+            recyclerViewUpomingMatches.adapter = MatchAdapter(this@MainActivity, upcomingMatches!!)
             binding.progressBar.visibility = View.GONE
             binding.loadingMatchesText.visibility = View.GONE
+
+            finishedMatches = MatchAPI().findFinished()
+            val firstFiveFinished = finishedMatches?.take(5)
+            recyclerViewFinishedMatches.layoutManager = LinearLayoutManager(this@MainActivity)
+            recyclerViewFinishedMatches.adapter = MatchAdapter(this@MainActivity, firstFiveFinished!!)
+            binding.progressBarFinishedMatches.visibility = View.GONE
+            binding.loadingFinishedMatchesText.visibility = View.GONE
         }
 
         val bottomNavigationView = binding.bottomNaviagtionView

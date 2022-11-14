@@ -37,6 +37,21 @@ app.use(function (req, res, next) {
   next(createError(404))
 })
 
+//check every minute if a match has started
+setInterval(async () => {
+  const Match = require('./models/Match')
+  const matches = await Match.find({ hasStarted: false })
+  matches.forEach(async (match) => {
+    const date = new Date(match.date)
+    const now = new Date()
+    now.setHours(now.getHours() + 1)
+    if (now > date) {
+      match.hasStarted = true
+      await match.save()
+    }
+  })
+}, 30000)
+
 //getTeams()
 
 module.exports = app

@@ -72,6 +72,13 @@ class MatchAPI {
                     val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
+                    val halfTimeResumedAt =
+                        if (matchObject["halfTimeResumedAt"] == JsonNull) {
+                            null
+                        } else {
+                            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(matchObject["halfTimeResumedAt"]!!.jsonPrimitive.content)
+                        }
+
                     val winner = if (matchObject["winner"] != JsonNull) {
                         val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
@@ -93,6 +100,7 @@ class MatchAPI {
                         isFinished,
                         hasStarted,
                         isHalfTime,
+                        halfTimeResumedAt,
                         winner
                     )
                     matches.add(match)
@@ -157,6 +165,13 @@ class MatchAPI {
                 val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
                 val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
+                val halfTimeResumedAt =
+                    if (matchObject["halfTimeResumedAt"] == JsonNull) {
+                        null
+                    } else {
+                        SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(matchObject["halfTimeResumedAt"]!!.jsonPrimitive.content)
+                    }
+
                 val winner = if (matchObject["winner"] != JsonNull) {
                     val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                     winner
@@ -178,6 +193,7 @@ class MatchAPI {
                     isFinished,
                     hasStarted,
                     isHalfTime,
+                    halfTimeResumedAt,
                     winner
                 )
             }
@@ -245,6 +261,13 @@ class MatchAPI {
                     val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
+                    val halfTimeResumedAt =
+                        if (matchObject["halfTimeResumedAt"] == JsonNull) {
+                            null
+                        } else {
+                            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(matchObject["halfTimeResumedAt"]!!.jsonPrimitive.content)
+                        }
+
                     val winner = if (matchObject["winner"] != JsonNull) {
                         val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
@@ -266,6 +289,7 @@ class MatchAPI {
                         isFinished,
                         hasStarted,
                         isHalfTime,
+                        halfTimeResumedAt,
                         winner
                     )
                     matches.add(match)
@@ -417,6 +441,12 @@ class MatchAPI {
                     val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
+                    val halfTimeResumedAt =
+                        if (matchObject["halfTimeResumedAt"] == JsonNull) {
+                            null
+                        } else {
+                            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(matchObject["halfTimeResumedAt"]!!.jsonPrimitive.content)
+                        }
 
                     val winner = if (matchObject["winner"] != JsonNull) {
                         val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
@@ -439,6 +469,7 @@ class MatchAPI {
                         isFinished,
                         hasStarted,
                         isHalfTime,
+                        halfTimeResumedAt,
                         winner
                     )
                     matches.add(match)
@@ -507,6 +538,12 @@ class MatchAPI {
                     val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
+                    val halfTimeResumedAt =
+                        if (matchObject["halfTimeResumedAt"]?.jsonPrimitive?.content == null) {
+                            null
+                        } else {
+                            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(matchObject["halfTimeResumedAt"]!!.jsonPrimitive.content)
+                        }
 
                     val winner = if (matchObject["winner"] != JsonNull) {
                         val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
@@ -529,6 +566,7 @@ class MatchAPI {
                         isFinished,
                         hasStarted,
                         isHalfTime,
+                        halfTimeResumedAt,
                         winner
                     )
                     matches.add(match)
@@ -596,6 +634,12 @@ class MatchAPI {
                     val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
+                    val halfTimeResumedAt =
+                        if (matchObject["halfTimeResumedAt"] == JsonNull) {
+                            null
+                        } else {
+                            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(matchObject["halfTimeResumedAt"]!!.jsonPrimitive.content)
+                        }
 
                     val winner = if (matchObject["winner"] != JsonNull) {
                         val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
@@ -618,6 +662,7 @@ class MatchAPI {
                         isFinished,
                         hasStarted,
                         isHalfTime,
+                        halfTimeResumedAt,
                         winner
                     )
                     matches.add(match)
@@ -682,6 +727,13 @@ class MatchAPI {
                     val hasStarted = matchObject["hasStarted"]!!.jsonPrimitive.boolean
                     val isHalfTime = matchObject["isHalfTime"]!!.jsonPrimitive.boolean
 
+                    val halfTimeResumedAt =
+                        if (matchObject["halfTimeResumedAt"] == JsonNull) {
+                            null
+                        } else {
+                            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(matchObject["halfTimeResumedAt"]!!.jsonPrimitive.content)
+                        }
+
                     val winner = if (matchObject["winner"] != JsonNull) {
                         val winner = Gson().fromJson(matchObject["winner"]!!.jsonPrimitive.content, Team::class.java)
                         winner
@@ -703,6 +755,7 @@ class MatchAPI {
                         isFinished,
                         hasStarted,
                         isHalfTime,
+                        halfTimeResumedAt,
                         winner
                     )
                     matches.add(match)

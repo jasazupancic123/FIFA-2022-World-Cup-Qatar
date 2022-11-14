@@ -73,6 +73,7 @@ id defenderRecycler
 id defenderText
 id defendersCard
 id details
+id finishedMatchesText
 id formationStyle
 id forwardCard
 id forwardText
@@ -102,10 +103,10 @@ id homeTeamName
 id homeTeamScore
 id homeTeamScoreText
 id imageView2
-id linearLayout
 id linearLayoutVertical
 id lineups
 id loadingAwayTeamLineupsText
+id loadingFinishedMatchesText
 id loadingGoalsText
 id loadingGroupText
 id loadingHomeTeamLineupsText
@@ -140,6 +141,7 @@ id players
 id positionText
 id progressBar
 id progressBarAwayTeam
+id progressBarFinishedMatches
 id progressBarHomeTeam
 id recyclerViewAwayTeamLineup
 id recyclerViewDefenders
@@ -150,6 +152,7 @@ id recyclerViewGroup
 id recyclerViewHomeTeamLineup
 id recyclerViewMidfielders
 id recycler_match
+id recycler_match_finished
 id recycler_team_GroupA
 id recycler_team_GroupB
 id redCardsText

@@ -2934,6 +2934,7 @@ int id fill 0x7f0800d9
 int id fill_horizontal 0x7f0800da
 int id fill_vertical 0x7f0800db
 int id filled 0x7f0800dc
+int id finishedMatchesText 0x7f080280
 int id fitCenter 0x7f0800dd
 int id fitEnd 0x7f0800de
 int id fitStart 0x7f0800df
@@ -3014,12 +3015,12 @@ int id legacy 0x7f080128
 int id line1 0x7f080129
 int id line3 0x7f08012a
 int id linear 0x7f08012b
-int id linearLayout 0x7f08012c
 int id linearLayoutVertical 0x7f08012d
 int id lineups 0x7f08012e
 int id listMode 0x7f08012f
 int id list_item 0x7f080130
 int id loadingAwayTeamLineupsText 0x7f080261
+int id loadingFinishedMatchesText 0x7f080281
 int id loadingGoalsText 0x7f080131
 int id loadingGroupText 0x7f080132
 int id loadingHomeTeamLineupsText 0x7f080262
@@ -3154,6 +3155,7 @@ int id postLayout 0x7f0801ac
 int id pressed 0x7f0801ad
 int id progressBar 0x7f0801ae
 int id progressBarAwayTeam 0x7f080265
+int id progressBarFinishedMatches 0x7f080282
 int id progressBarHomeTeam 0x7f080266
 int id progress_circular 0x7f0801af
 int id progress_horizontal 0x7f0801b0
@@ -3169,6 +3171,7 @@ int id recyclerViewGroup 0x7f0801b9
 int id recyclerViewHomeTeamLineup 0x7f0801ba
 int id recyclerViewMidfielders 0x7f0801bb
 int id recycler_match 0x7f0801bc
+int id recycler_match_finished 0x7f080283
 int id recycler_team_GroupA 0x7f0801bd
 int id recycler_team_GroupB 0x7f0801be
 int id redCardsText 0x7f080272

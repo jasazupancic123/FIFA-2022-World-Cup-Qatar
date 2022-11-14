@@ -2935,6 +2935,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id finishedMatchesText
 id fitCenter
 id fitEnd
 id fitStart
@@ -3015,12 +3016,12 @@ id legacy
 id line1
 id line3
 id linear
-id linearLayout
 id linearLayoutVertical
 id lineups
 id listMode
 id list_item
 id loadingAwayTeamLineupsText
+id loadingFinishedMatchesText
 id loadingGoalsText
 id loadingGroupText
 id loadingHomeTeamLineupsText
@@ -3155,6 +3156,7 @@ id postLayout
 id pressed
 id progressBar
 id progressBarAwayTeam
+id progressBarFinishedMatches
 id progressBarHomeTeam
 id progress_circular
 id progress_horizontal
@@ -3170,6 +3172,7 @@ id recyclerViewGroup
 id recyclerViewHomeTeamLineup
 id recyclerViewMidfielders
 id recycler_match
+id recycler_match_finished
 id recycler_team_GroupA
 id recycler_team_GroupB
 id redCardsText

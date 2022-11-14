@@ -16,12 +16,12 @@
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\drawable_lineups_svg.xml.flat",
-        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\drawable\\lineups_svg.xml"
-    },
-    {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\navigation_nav_graph2.xml.flat",
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\navigation\\nav_graph2.xml"
+    },
+    {
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\drawable_lineups_svg.xml.flat",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\drawable\\lineups_svg.xml"
     },
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\drawable_aliou_cisse.jpg.flat",
@@ -52,6 +52,10 @@
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\drawable\\ball.png"
     },
     {
+        "merged": "com.example.worldcupapp-merged_res-45:/layout_activity_main.xml.flat",
+        "source": "com.example.worldcupapp-main-47:/layout/activity_main.xml"
+    },
+    {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\layout_fragment_players.xml.flat",
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\fragment_players.xml"
     },
@@ -74,10 +78,6 @@
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\layout_list_team.xml.flat",
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\list_team.xml"
-    },
-    {
-        "merged": "com.example.worldcupapp-merged_res-45:/layout_activity_statistics.xml.flat",
-        "source": "com.example.worldcupapp-main-47:/layout/activity_statistics.xml"
     },
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
@@ -110,10 +110,6 @@
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.worldcupapp-merged_res-45:/layout_list_match.xml.flat",
-        "source": "com.example.worldcupapp-main-47:/layout/list_match.xml"
     },
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\drawable_felix_sanchez_bas.jpg.flat",
