@@ -117,8 +117,7 @@ class MatchDetailsActivity : AppCompatActivity() {
             binding.awayTeamScoreText.text = match.awayTeamScore.toString()
             binding.minuteText.text = "HT"
         }
-
-        if(match.hasStarted && !match.isFinished && match.halfTimeResumedAt == null){
+        else if(match.hasStarted && !match.isFinished && match.halfTimeResumedAt == null){
             binding.timeOfMatch.visibility = View.GONE
             binding.dateOfMatch.visibility = View.GONE
 

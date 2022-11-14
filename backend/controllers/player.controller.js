@@ -5,7 +5,7 @@ const TeamModel = require('../models/Team')
 const ManagerModel = require('../models/Manager')
 const ClubModel = require('../models/Club')
 
-const { default: mongoose } = require('mongoose')
+const { default: mongoose, Mongoose } = require('mongoose')
 
 module.exports = class PlayerController {
   static async find(req, res, next) {
@@ -194,7 +194,14 @@ module.exports = class PlayerController {
   //POST
   static async create(req, res, next) {
     try {
-      const player = await PlayerModel.create(req.body)
+      const playerObject = req.body
+      const team = await TeamModel.findById(playerObject.nationality)
+      console.log(team.manager)
+      const manager = await ManagerModel.findById(team.manager)
+      team.manager = manager
+      playerObject.nationality = team
+      playerObject.club = await ClubModel.findById(playerObject.club)
+      const player = await PlayerModel.create(playerObject)
       res.json(JsonUtil.response(res, false, 'Successfully created player', player))
     } catch (e) {
       next(e)
