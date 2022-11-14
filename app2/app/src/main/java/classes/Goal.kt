@@ -7,6 +7,7 @@ class Goal (
     var minute: Int,
     var match: Match,
     var isHomeTeamGoal: Boolean,
+    var currentScore: String?,
     var isOwnGoal: Boolean = false
         ) {
     override fun toString(): String {
@@ -18,6 +19,7 @@ class Goal (
                 ", minute=" + minute +
                 ", match=" + match +
                 ", isHomeTeamGoal=" + isHomeTeamGoal +
+                ", currentScore='" + currentScore + '\'' +
                 ", isOwnGoal=" + isOwnGoal +
                 '}'
             )

@@ -46,6 +46,8 @@ class GoalAPI {
 
                     val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
+                    val currentScore = goalObject["currentScore"]!!.jsonPrimitive.content
+
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
 
@@ -56,6 +58,7 @@ class GoalAPI {
                         minute,
                         match,
                         isHomeTeamGoal,
+                        currentScore,
                         isOwnGoal
                     )
                     goals.add(goal)
@@ -94,6 +97,8 @@ class GoalAPI {
 
                 val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
+                val currentScore = goalObject["currentScore"]!!.jsonPrimitive.content
+
                 val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                 val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
 
@@ -104,6 +109,7 @@ class GoalAPI {
                     minute,
                     match,
                     isHomeTeamGoal,
+                    currentScore,
                     isOwnGoal
                 )
             }
@@ -141,6 +147,8 @@ class GoalAPI {
 
                     val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
+                    val currentScore = goalObject["currentScore"]!!.jsonPrimitive.content
+
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
 
@@ -151,6 +159,7 @@ class GoalAPI {
                         minute,
                         match,
                         isHomeTeamGoal,
+                        currentScore,
                         isOwnGoal
                     )
                     goals.add(goal)
@@ -190,6 +199,8 @@ class GoalAPI {
 
                     val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
+                    val currentScore = goalObject["currentScore"]!!.jsonPrimitive.content
+
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
 
@@ -200,6 +211,7 @@ class GoalAPI {
                         minute,
                         match,
                         isHomeTeamGoal,
+                        currentScore,
                         isOwnGoal
                     )
                     goals.add(goal)
@@ -242,6 +254,8 @@ class GoalAPI {
 
                     val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
+                    val currentScore = goalObject["currentScore"]!!.jsonPrimitive.content
+
                     val isHomeTeamGoal = goalObject["isHomeTeamGoal"]!!.jsonPrimitive.boolean
                     val isOwnGoal = goalObject["isOwnGoal"]!!.jsonPrimitive.boolean
 
@@ -252,6 +266,7 @@ class GoalAPI {
                         minute,
                         match,
                         isHomeTeamGoal,
+                        currentScore,
                         isOwnGoal
                     )
                     goals.add(goal)
