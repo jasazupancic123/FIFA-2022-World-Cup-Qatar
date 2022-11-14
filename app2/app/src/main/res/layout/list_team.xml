@@ -10,6 +10,12 @@
     card_view:cardCornerRadius="10dp">
     <!--app:cardBackgroundColor="@color/darkRed"> -->
 
+    <Button
+        android:id="@+id/teamButton"
+        android:layout_width="match_parent"
+        android:background="@color/transparent"
+        android:layout_height="wrap_content"/>
+
     <LinearLayout
         android:id="@+id/linearLayoutVertical"
         android:layout_width="match_parent"

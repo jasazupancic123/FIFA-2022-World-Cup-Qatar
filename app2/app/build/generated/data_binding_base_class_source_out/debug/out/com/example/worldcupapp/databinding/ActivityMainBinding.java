@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -22,7 +22,7 @@ import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final BottomNavigationView bottomNaviagtionView;
@@ -45,7 +45,7 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final TextView upcomingMatchesText;
 
-  private ActivityMainBinding(@NonNull ScrollView rootView,
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull BottomNavigationView bottomNaviagtionView, @NonNull ImageView imageView2,
       @NonNull LinearLayout linearLayout, @NonNull TextView loadingMatchesText,
       @NonNull ProgressBar progressBar, @NonNull RecyclerView recyclerMatch,
@@ -62,7 +62,7 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -129,7 +129,7 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ScrollView) rootView, bottomNaviagtionView, imageView2,
+      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNaviagtionView, imageView2,
           linearLayout, loadingMatchesText, progressBar, recyclerMatch, upcomingMatchesText);
     }
     String missingId = rootView.getResources().getResourceName(id);

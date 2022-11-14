@@ -26,31 +26,49 @@ class LineupFragment : Fragment() {
         binding = FragmentLineupBinding.inflate(layoutInflater)
         val args = arguments
         val match = Gson().fromJson(args?.getString("match"), Match::class.java)
-        println(match.toString())
         println("time : ${match.date.time} - ${System.currentTimeMillis()}") //TO JE ZA SPODAJ
-        if(true){
+        //get minutes between now and match start
+        val minutes = (match.date.time - System.currentTimeMillis()) / 60000
+        println("minutes : $minutes")
+        if(minutes < 120){ //tu preveri ce se je ena ura pa pol pred tekmo kar je logicen cas za lineupe
             lifecycleScope.launch{
-                val homeTeamLineup = LineupAPI().findByMatchAndTeam(match._id, match.homeTeam._id)
-                binding.progressBar.visibility = View.GONE
-                binding.loadingLineupsText.visibility = View.GONE
-                if(homeTeamLineup != null){
-                    recyclerViewHomeLineup = binding.recyclerViewHomeTeamLineup
-                    recyclerViewHomeLineup.layoutManager = LinearLayoutManager(activity)
-                    recyclerViewHomeLineup.adapter = LineupAdapter(mContext, homeTeamLineup)
-                } else {
-                    binding.noLineupsText.visibility = View.VISIBLE
+                try {
+                    val homeTeamLineup =
+                        LineupAPI().findByMatchAndTeam(match._id, match.homeTeam._id)
+                    binding.progressBarHomeTeam.visibility = View.GONE
+                    binding.loadingHomeTeamLineupsText.visibility = View.GONE
+                    if (homeTeamLineup != null) {
+                        recyclerViewHomeLineup = binding.recyclerViewHomeTeamLineup
+                        recyclerViewHomeLineup.layoutManager = LinearLayoutManager(activity)
+                        recyclerViewHomeLineup.adapter = LineupAdapter(mContext, homeTeamLineup)
+                    } else {
+                        binding.noHomeTeamLineupsText.visibility = View.VISIBLE
+                    }
+                } catch (e: Exception) {
+                    println(e.message)
                 }
-                val awayTeamLineup = LineupAPI().findByMatchAndTeam(match._id, match.awayTeam._id)
-                if(awayTeamLineup != null){
-                    recyclerViewAwayLineup = binding.recyclerViewAwayTeamLineup
-                    recyclerViewAwayLineup.layoutManager = LinearLayoutManager(activity)
-                    recyclerViewAwayLineup.adapter = LineupAdapter(mContext, awayTeamLineup)
-                } else {
-                    //do nothing, just display the no lineup text
+                try {
+                    val awayTeamLineup = LineupAPI().findByMatchAndTeam(match._id, match.awayTeam._id)
+                    binding.progressBarAwayTeam.visibility = View.GONE
+                    binding.loadingAwayTeamLineupsText.visibility = View.GONE
+                    if(awayTeamLineup != null){
+                        recyclerViewAwayLineup = binding.recyclerViewAwayTeamLineup
+                        recyclerViewAwayLineup.layoutManager = LinearLayoutManager(activity)
+                        recyclerViewAwayLineup.adapter = LineupAdapter(mContext, awayTeamLineup)
+                    } else {
+                        binding.noAwayTeamLineupsText.visibility = View.VISIBLE
+                    }
+                } catch (e: Exception) {
+                    println(e.message)
                 }
             }
         } else {
-            //binding?.lineupText?.text = "Lineups are not available until after the match has started."
+            binding.progressBarHomeTeam.visibility = View.GONE
+            binding.loadingHomeTeamLineupsText.visibility = View.GONE
+            binding.progressBarAwayTeam.visibility = View.GONE
+            binding.loadingAwayTeamLineupsText.visibility = View.GONE
+            binding.noHomeTeamLineupsText.visibility = View.VISIBLE
+            binding.noAwayTeamLineupsText.visibility = View.VISIBLE
         }
     }
 

@@ -5,18 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/darkRed"
+        app:cardCornerRadius="20dp"
+        android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/teamName"
+        android:textSize="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:textColor="@color/white"
         android:text="Team Name"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,19 +34,25 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:text="Formation Style"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="25dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_marginTop="20dp"
         android:id="@+id/goalkeeperText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Goalkeeper"
-        android:layout_marginLeft="50dp"
+        android:gravity="center"
+        app:layout_goneMarginTop="10dp"
+        android:textColor="@color/white"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teamName"
         tools:ignore="MissingConstraints" />
 
@@ -46,19 +60,15 @@
         android:id="@+id/goalkeeperCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
         app:cardCornerRadius="10dp"
-        android:backgroundTint="@android:color/darker_gray"
         app:layout_constraintTop_toBottomOf="@id/goalkeeperText">
-        <TextView
-            android:id="@+id/goalkeeperName"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/goalkeeperRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="Midfielder 1 Name"
-            tools:ignore="ExtraText" />
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.cardview.widget.CardView>
 
@@ -66,20 +76,21 @@
         android:id="@+id/defenderText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Defenders"
-        android:layout_marginLeft="50dp"
-        app:layout_constraintTop_toBottomOf="@id/goalkeeperCard"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        />
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalkeeperCard"
+        app:layout_goneMarginTop="10dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/defenderCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
         app:cardCornerRadius="10dp"
-        android:backgroundTint="@android:color/darker_gray"
         app:layout_constraintTop_toBottomOf="@id/defenderText">
         <TextView
             android:id="@+id/defenderNames"
@@ -90,35 +101,39 @@
             android:text="Midfielder 1 Name"
             tools:ignore="ExtraText" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/defenderRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/midfielderText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/defenderCard"
         android:text="Midfielders"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:layout_marginLeft="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/defenderCard"
         tools:ignore="ExtraText" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/midfielderCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
         app:cardCornerRadius="10dp"
-        android:backgroundTint="@android:color/darker_gray"
         app:layout_constraintTop_toBottomOf="@id/midfielderText">
-        <TextView
-            android:id="@+id/midfielderNames"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/midfielderRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="Midfielder 1 Name"
-            tools:ignore="ExtraText" />
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.cardview.widget.CardView>
 
@@ -127,33 +142,64 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Forwards"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/midfielderCard"
-        android:layout_marginLeft="50dp"
         tools:ignore="ExtraText" />
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/forwardCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
         app:cardCornerRadius="10dp"
-        android:backgroundTint="@android:color/darker_gray"
         app:layout_constraintTop_toBottomOf="@id/forwardText">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/forwardsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.cardview.widget.CardView>
+
     <TextView
-        android:id="@+id/forwardNames"
+        android:id="@+id/substitutionsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="20dp"
+        android:text="Substitutions"
         android:gravity="center"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:text="Forward 1 Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forwardCard"
         tools:ignore="ExtraText" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/substitutionsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/substitutionsText">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/substitutionsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.cardview.widget.CardView>
 
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </ScrollView>

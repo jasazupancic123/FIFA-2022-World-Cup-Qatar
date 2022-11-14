@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.worldcupapp.Lineup
 import com.example.worldcupapp.R
@@ -35,18 +37,20 @@ class LineupAdapter : RecyclerView.Adapter<LineupViewHolder> {
 }
 
 class LineupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    lateinit var goalkeeperName: TextView
-    lateinit var defendersName: TextView
-    lateinit var midfieldersName: TextView
-    lateinit var forwardsName: TextView
+    lateinit var goalkeperRecycler: RecyclerView
+    lateinit var defendersRecycler: RecyclerView
+    lateinit var midfieldersRecycler: RecyclerView
+    lateinit var attackersRecycler: RecyclerView
+    lateinit var substitutesRecycler: RecyclerView
     lateinit var formationStyle: TextView
     lateinit var teamName: TextView
 
     init {
-        goalkeeperName = itemView.findViewById(R.id.goalkeeperName)
-        defendersName = itemView.findViewById(R.id.defenderNames)
-        midfieldersName = itemView.findViewById(R.id.midfielderNames)
-        forwardsName = itemView.findViewById(R.id.forwardNames)
+        goalkeperRecycler = itemView.findViewById(R.id.goalkeeperRecycler)
+        defendersRecycler = itemView.findViewById(R.id.defenderRecycler)
+        midfieldersRecycler = itemView.findViewById(R.id.midfielderRecycler)
+        attackersRecycler = itemView.findViewById(R.id.forwardsRecycler)
+        substitutesRecycler = itemView.findViewById(R.id.substitutionsRecycler)
         formationStyle = itemView.findViewById(R.id.formationStyle)
         teamName = itemView.findViewById(R.id.teamName)
     }
@@ -55,15 +59,23 @@ class LineupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(lineup: Lineup, context: Context) {
         teamName.text = lineup.team.name
         formationStyle.text = lineup.type
-        goalkeeperName.text = lineup.goalkeeper.shirtNumber.toString() + "     " + lineup.goalkeeper.firstName + " " + lineup.goalkeeper.lastName
+        goalkeperRecycler.layoutManager = LinearLayoutManager(context)
+        goalkeperRecycler.adapter = PlayerAdapter(context, mutableListOf(lineup.goalkeeper))
         for (defender in lineup.defenders) {
-            defendersName.text = defender.shirtNumber.toString() + "     " + defendersName.text.toString() + defender.firstName + " " + defender.lastName + "\n"
+            defendersRecycler.layoutManager = LinearLayoutManager(context)
+            defendersRecycler.adapter = PlayerAdapter(context, lineup.defenders)
         }
         for (midfielder in lineup.midfielders) {
-            midfieldersName.text = midfielder.shirtNumber.toString() + "     " + midfieldersName.text.toString() + midfielder.firstName + " " + midfielder.lastName + "\n"
+            midfieldersRecycler.layoutManager = LinearLayoutManager(context)
+            midfieldersRecycler.adapter = PlayerAdapter(context, lineup.midfielders)
         }
         for (forward in lineup.attackers) {
-            forwardsName.text = forward.shirtNumber.toString() + "     " + forwardsName.text.toString() + forward.firstName + " " + forward.lastName + "\n"
+            attackersRecycler.layoutManager = LinearLayoutManager(context)
+            attackersRecycler.adapter = PlayerAdapter(context, lineup.attackers)
+        }
+        for (substitute in lineup.substitutes) {
+            substitutesRecycler.layoutManager = LinearLayoutManager(context)
+            substitutesRecycler.adapter = PlayerAdapter(context, lineup.substitutes)
         }
     }
 }

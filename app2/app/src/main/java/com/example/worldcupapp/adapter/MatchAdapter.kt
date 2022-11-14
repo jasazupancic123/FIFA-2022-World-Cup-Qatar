@@ -1,5 +1,6 @@
 package com.example.worldcupapp.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.example.worldcupapp.MatchDetailsActivity
 import com.example.worldcupapp.R
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
+import org.w3c.dom.Text
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
@@ -49,6 +51,11 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var timeOfMatch: TextView
     var button: Button
 
+    var homeTeamScore: TextView
+    var awayTeamScore: TextView
+    var againstText: TextView
+    var minuteText: TextView
+
     init {
         homeTeamImage = itemView.findViewById(R.id.homeTeamImage)
         awayTeamImage = itemView.findViewById(R.id.awayTeamImage)
@@ -57,8 +64,13 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         dateOfMatch = itemView.findViewById(R.id.dateOfMatch)
         timeOfMatch = itemView.findViewById(R.id.timeOfMatch)
         button = itemView.findViewById(R.id.button)
+        homeTeamScore = itemView.findViewById(R.id.homeTeamScore)
+        awayTeamScore = itemView.findViewById(R.id.awayTeamScore)
+        againstText = itemView.findViewById(R.id.againstText)
+        minuteText = itemView.findViewById(R.id.minuteText)
     }
 
+    @SuppressLint("SetTextI18n")
     fun bind(match: Match, context: Context) {
         val test = match.homeTeam
         println(match.homeTeam.name)
@@ -70,20 +82,43 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         homeTeamName.text = match.homeTeam.fifaCode
         awayTeamName.text = match.awayTeam.fifaCode
 
-        val dateFormat : SimpleDateFormat = SimpleDateFormat("EEE d/MM")
-        val timeFormat : SimpleDateFormat = SimpleDateFormat("HH:mm")
-        val givenFormat: SimpleDateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
-
-        try {
-            val date = givenFormat.parse(match.date.toString())
-            val dateStr = dateFormat.format(date)
-            val timeStr = timeFormat.format(date)
-            dateOfMatch.text = dateStr
-            timeOfMatch.text = timeStr
-        } catch (e: ParseException) {
-            e.printStackTrace()
+        if(match.homeTeam.name == "Senegal"){
+            match.hasStarted = true
+            val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
+            val now = sdf.parse(sdf.format(System.currentTimeMillis()))
+            val start = sdf.parse(match.date.toString())
+            val diff = now.time - start.time
+            val diffMinutes = diff / (60 * 1000) % 60
+            minuteText.text = "$diffMinutes'"
         }
 
+        if(match.hasStarted){
+            dateOfMatch.visibility = View.GONE
+            timeOfMatch.visibility = View.GONE
+            homeTeamScore.text = match.homeTeamScore.toString()
+            awayTeamScore.text = match.awayTeamScore.toString()
+            //minuteText.text = match.minute.toString() + "'"
+        } else {
+            homeTeamScore.visibility = View.GONE
+            awayTeamScore.visibility = View.GONE
+            againstText.visibility = View.GONE
+            minuteText.visibility = View.GONE
+
+            val dateFormat: SimpleDateFormat = SimpleDateFormat("EEE d/MM")
+            val timeFormat: SimpleDateFormat = SimpleDateFormat("HH:mm")
+            val givenFormat: SimpleDateFormat =
+                SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
+
+            try {
+                val date = givenFormat.parse(match.date.toString())
+                val dateStr = dateFormat.format(date)
+                val timeStr = timeFormat.format(date)
+                dateOfMatch.text = dateStr
+                timeOfMatch.text = timeStr
+            } catch (e: ParseException) {
+                e.printStackTrace()
+            }
+        }
         button.setOnClickListener {
             val intent = Intent(context, MatchDetailsActivity::class.java)
             intent.putExtra("match", Gson().toJson(match))

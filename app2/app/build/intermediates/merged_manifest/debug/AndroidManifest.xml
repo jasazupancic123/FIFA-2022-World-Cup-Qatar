@@ -24,6 +24,20 @@
         android:theme="@style/Theme.WorldCupApp"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.worldcupapp.PlayerActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.worldcupapp.TeamActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name="com.example.worldcupapp.MatchDetailsActivity"
             android:exported="false" >
             <meta-data
@@ -40,7 +54,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.worldcupapp.TeamActivity"
+            android:name="com.example.worldcupapp.GroupsActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"

@@ -186,11 +186,14 @@ class MatchAPI {
     }
 
     suspend fun findUpcomingFive(): MutableList<Match> {
+        println("test3")
         val matches: MutableList<Match> = mutableListOf()
         coroutineScope {
             val coroutine = async {
                 val client = HttpClient()
-                val response: HttpResponse = client.get(url) {
+                println("test4")
+
+                val response: HttpResponse = client.get(url + "/upcoming/five") {
                     method = HttpMethod.Get
                 }
 

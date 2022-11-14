@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
-INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
-INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
-INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
+INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
+INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
+INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
 MERGED from [androidx.databinding:viewbinding:7.3.0] C:\Users\jasaz\.gradle\caches\transforms-3\c4cb892f171ca1d410550e46c7385279\transformed\viewbinding-7.3.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.navigation:navigation-ui-ktx:2.5.3] C:\Users\jasaz\.gradle\caches\transforms-3\d0c426e3ac9c9ac975b4d16fc9281126\transformed\navigation-ui-ktx-2.5.3\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-ui:2.5.3] C:\Users\jasaz\.gradle\caches\transforms-3\b4e66e66b71c1541ec208d8dd4bcf2b6\transformed\navigation-ui-2.5.3\AndroidManifest.xml:17:1-24:12
@@ -61,22 +61,22 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\jasaz\.gradle\ca
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\3ac119fa795bc1ef3ecdd8c6ea4af554\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\5b9f05308f02d2aab4c4e2d31764b8b7\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\jasaz\.gradle\caches\transforms-3\760b9af4b43b4d512130ddd1633ee153\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
-INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
-INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
+INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
+INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
+INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
 	package
 		INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
 		INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
 		INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-56:12
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:1-70:12
 		INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:2:11-69
@@ -85,7 +85,7 @@ ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-Worl
 	android:name
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:7:5-54:19
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:7:5-68:19
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\jasaz\.gradle\caches\transforms-3\11918c9aa544653f8c45c32ea9ac02b8\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\jasaz\.gradle\caches\transforms-3\11918c9aa544653f8c45c32ea9ac02b8\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\jasaz\.gradle\caches\transforms-3\9827ec6617366e82ed5e7c7a909d86e6\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -124,50 +124,62 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\jasaz\.gradle\cach
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:9:9-65
 	android:usesCleartextTraffic
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:16:9-44
-activity#com.example.worldcupapp.MatchDetailsActivity
+activity#com.example.worldcupapp.PlayerActivity
 ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:18:9-24:20
 	android:exported
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:20:13-37
 	android:name
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:19:13-49
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:19:13-43
 meta-data#android.app.lib_name
 ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
 	android:value
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
 	android:name
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
-activity#com.example.worldcupapp.StatisticsActivity
-ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:25:9-33:20
-	android:label
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:28:13-62
+activity#com.example.worldcupapp.TeamActivity
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:25:9-31:20
 	android:exported
 		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:26:13-41
+activity#com.example.worldcupapp.MatchDetailsActivity
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:32:9-38:20
+	android:exported
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:33:13-49
+activity#com.example.worldcupapp.StatisticsActivity
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:39:9-47:20
+	android:label
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:42:13-62
+	android:exported
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:41:13-37
 	android:theme
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:29:13-65
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:43:13-65
 	android:name
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:26:13-47
-activity#com.example.worldcupapp.TeamActivity
-ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:34:9-40:20
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:40:13-47
+activity#com.example.worldcupapp.GroupsActivity
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:48:9-54:20
 	android:exported
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:36:13-37
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:50:13-37
 	android:name
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:35:13-41
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:49:13-43
 activity#com.example.worldcupapp.MainActivity
-ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:41:9-53:20
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:55:9-67:20
 	android:exported
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:43:13-36
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:57:13-36
 	android:name
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:42:13-41
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:56:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:44:13-48:29
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:58:13-62:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:45:17-69
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:59:17-69
 	android:name
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:45:25-66
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:59:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:47:17-77
+ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:61:17-77
 	android:name
-		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:47:27-74
+		ADDED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:61:27-74
 uses-sdk
 INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml

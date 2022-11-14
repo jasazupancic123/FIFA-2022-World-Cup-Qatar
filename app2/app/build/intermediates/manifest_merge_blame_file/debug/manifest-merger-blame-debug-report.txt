@@ -15,7 +15,7 @@
 11-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:7:5-54:19
+13-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:7:5-68:19
 14        android:allowBackup="true"
 14-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -40,8 +40,8 @@
 25-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:16:9-44
 26        <activity
 26-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:18:9-24:20
-27            android:name="com.example.worldcupapp.MatchDetailsActivity"
-27-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:19:13-49
+27            android:name="com.example.worldcupapp.PlayerActivity"
+27-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:19:13-43
 28            android:exported="false" >
 28-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:20:13-37
 29            <meta-data
@@ -52,94 +52,120 @@
 31-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
 32        </activity>
 33        <activity
-33-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:25:9-33:20
-34            android:name="com.example.worldcupapp.StatisticsActivity"
-34-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:26:13-47
-35            android:exported="false"
+33-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:25:9-31:20
+34            android:name="com.example.worldcupapp.TeamActivity"
+34-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:26:13-41
+35            android:exported="false" >
 35-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:27:13-37
-36            android:label="@string/title_activity_statistics"
-36-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:28:13-62
-37            android:theme="@style/Theme.WorldCupApp.NoActionBar" >
-37-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:29:13-65
-38            <meta-data
-38-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
-39                android:name="android.app.lib_name"
-39-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
-40                android:value="" />
-40-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
-41        </activity>
-42        <activity
-42-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:34:9-40:20
-43            android:name="com.example.worldcupapp.TeamActivity"
-43-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:35:13-41
-44            android:exported="false" >
-44-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:36:13-37
-45            <meta-data
-45-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
-46                android:name="android.app.lib_name"
-46-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
-47                android:value="" />
-47-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
-48        </activity>
-49        <activity
-49-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:41:9-53:20
-50            android:name="com.example.worldcupapp.MainActivity"
-50-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:42:13-41
-51            android:exported="true" >
-51-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:43:13-36
-52            <intent-filter>
-52-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:44:13-48:29
-53                <action android:name="android.intent.action.MAIN" />
-53-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:45:17-69
-53-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:45:25-66
-54
-55                <category android:name="android.intent.category.LAUNCHER" />
-55-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:47:17-77
-55-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:47:27-74
-56            </intent-filter>
-57
-58            <meta-data
-58-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
-59                android:name="android.app.lib_name"
-59-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
-60                android:value="" />
-60-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
-61        </activity>
-62
-63        <uses-library
-63-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
-64            android:name="androidx.window.extensions"
-64-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
-65            android:required="false" />
-65-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
-66        <uses-library
-66-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
-67            android:name="androidx.window.sidecar"
-67-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
-68            android:required="false" />
-68-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
-69
-70        <provider
-70-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-71            android:name="androidx.startup.InitializationProvider"
-71-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-72            android:authorities="com.example.worldcupapp.androidx-startup"
-72-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-73            android:exported="false" >
-73-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-74            <meta-data
-74-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-75                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-75-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-76                android:value="androidx.startup" />
-76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
-77            <meta-data
-77-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jasaz\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
-78                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-78-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jasaz\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
-79                android:value="androidx.startup" />
-79-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jasaz\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
-80        </provider>
-81    </application>
-82
-83</manifest>
+36            <meta-data
+36-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
+37                android:name="android.app.lib_name"
+37-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
+38                android:value="" />
+38-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
+39        </activity>
+40        <activity
+40-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:32:9-38:20
+41            android:name="com.example.worldcupapp.MatchDetailsActivity"
+41-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:33:13-49
+42            android:exported="false" >
+42-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:34:13-37
+43            <meta-data
+43-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
+44                android:name="android.app.lib_name"
+44-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
+45                android:value="" />
+45-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
+46        </activity>
+47        <activity
+47-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:39:9-47:20
+48            android:name="com.example.worldcupapp.StatisticsActivity"
+48-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:40:13-47
+49            android:exported="false"
+49-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:41:13-37
+50            android:label="@string/title_activity_statistics"
+50-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:42:13-62
+51            android:theme="@style/Theme.WorldCupApp.NoActionBar" >
+51-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:43:13-65
+52            <meta-data
+52-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
+53                android:name="android.app.lib_name"
+53-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
+54                android:value="" />
+54-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
+55        </activity>
+56        <activity
+56-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:48:9-54:20
+57            android:name="com.example.worldcupapp.GroupsActivity"
+57-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:49:13-43
+58            android:exported="false" >
+58-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:50:13-37
+59            <meta-data
+59-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
+60                android:name="android.app.lib_name"
+60-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
+61                android:value="" />
+61-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
+62        </activity>
+63        <activity
+63-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:55:9-67:20
+64            android:name="com.example.worldcupapp.MainActivity"
+64-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:56:13-41
+65            android:exported="true" >
+65-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:57:13-36
+66            <intent-filter>
+66-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:58:13-62:29
+67                <action android:name="android.intent.action.MAIN" />
+67-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:59:17-69
+67-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:59:25-66
+68
+69                <category android:name="android.intent.category.LAUNCHER" />
+69-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:61:17-77
+69-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:61:27-74
+70            </intent-filter>
+71
+72            <meta-data
+72-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:21:13-23:36
+73                android:name="android.app.lib_name"
+73-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:22:17-52
+74                android:value="" />
+74-->C:\Users\jasaz\OneDrive\Namizje\FERI\ProstoUcenje\Apps\FIFA-2022-World-Cup-Qatar\app2\app\src\main\AndroidManifest.xml:23:17-33
+75        </activity>
+76
+77        <uses-library
+77-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+78            android:name="androidx.window.extensions"
+78-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+79            android:required="false" />
+79-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+80        <uses-library
+80-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+81            android:name="androidx.window.sidecar"
+81-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+82            android:required="false" />
+82-->[androidx.window:window:1.0.0] C:\Users\jasaz\.gradle\caches\transforms-3\59cc7bfaee96798b7702f2d6d4e8e0bd\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+83
+84        <provider
+84-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+85            android:name="androidx.startup.InitializationProvider"
+85-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+86            android:authorities="com.example.worldcupapp.androidx-startup"
+86-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+87            android:exported="false" >
+87-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+88            <meta-data
+88-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+89                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+89-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+90                android:value="androidx.startup" />
+90-->[androidx.emoji2:emoji2:1.2.0] C:\Users\jasaz\.gradle\caches\transforms-3\848773e611bbde5d3ec0ec3e63d01c98\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+91            <meta-data
+91-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jasaz\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+92                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+92-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jasaz\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+93                android:value="androidx.startup" />
+93-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\jasaz\.gradle\caches\transforms-3\a4f0fb44e9b56370f8c2ed23c9d5d030\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+94        </provider>
+95    </application>
+96
+97</manifest>

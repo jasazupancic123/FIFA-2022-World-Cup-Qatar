@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="darkRed">#FF740526</color>
+    <color name="deepSpaceSparkle">#335C67</color>
+    <color name="mediumChampagne">#FFF3B0</color>
 </resources>

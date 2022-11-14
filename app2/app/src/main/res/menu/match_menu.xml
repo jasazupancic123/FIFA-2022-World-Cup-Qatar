@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Details"
-        android:icon="@drawable/statistics_svg"
         android:id="@+id/details"
+        android:icon="@drawable/statistics_svg"
         />
     <item android:title="Standings"
-        android:icon="@drawable/teams_svg"
         android:id="@+id/standings"
+        android:icon="@drawable/teams_svg"
         />
     <item android:title="Lineups"
-        android:icon="@drawable/lineups_svg"
         android:id="@+id/lineups"
+        android:icon="@drawable/lineups_svg"
         />
 </menu>

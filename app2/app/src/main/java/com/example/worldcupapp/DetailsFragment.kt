@@ -33,9 +33,9 @@ class DetailsFragment : Fragment() {
         val args = arguments
         match = Gson().fromJson(args?.getString("match"), Match::class.java)
         println(match.toString())
+        binding.stadium.text = match.stadium
         if(match.homeTeamScore != null && match.awayTeamScore != null){
             if(match.homeTeamScore!! > 0 || match.awayTeamScore!! > 0){
-                println("IDK WHY THIS WOULD CALL")
                 binding.progressBar.visibility = View.VISIBLE
                 binding.loadingGoalsText.visibility = View.VISIBLE
                 lifecycleScope.launch{

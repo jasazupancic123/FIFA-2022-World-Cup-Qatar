@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Details"
+        android:id="@+id/details"
+        android:icon="@drawable/statistics_svg"
+        />
+    <item android:title="Players"
+        android:id="@+id/players"
+        android:icon="@drawable/lineups_svg"
+        />
+</menu>

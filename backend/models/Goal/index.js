@@ -15,6 +15,10 @@ const schema = new Schema({
     type: Schema.Types.Number,
     required: true,
   },
+  currentScore: {
+    type: Schema.Types.String,
+    default: '0-0',
+  },
   match: {
     type: Schema.Types.ObjectId,
     ref: 'Match',

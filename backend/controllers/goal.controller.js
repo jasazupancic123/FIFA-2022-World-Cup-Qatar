@@ -263,6 +263,7 @@ module.exports = class GoalController {
         homeTeam.goalsAgainst += 1
         await homeTeam.save()
       }
+      goal.currentScore = match.homeTeamScore + ' - ' + match.awayTeamScore
       res.json(JsonUtil.response(res, false, 'Successfully created goal', goal))
     } catch (e) {
       next(e)
