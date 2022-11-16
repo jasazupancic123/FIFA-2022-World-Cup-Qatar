@@ -25,6 +25,10 @@ class PlayerActivity : AppCompatActivity() {
         player = Gson().fromJson(playerObject.toString(), Player::class.java)
         bind()
         setContentView(binding.root)
+
+        binding.backButton.setOnClickListener{ view ->
+            finish()
+        }
     }
 
     @SuppressLint("SimpleDateFormat", "SetTextI18n")

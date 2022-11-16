@@ -48,22 +48,22 @@ class PlayersFragment : Fragment() {
             binding.goalkeepersCard.visibility = View.VISIBLE
             recyclerViewGoalkepers = binding.recyclerViewGoalkeepers
             recyclerViewGoalkepers.layoutManager = LinearLayoutManager(activity)
-            recyclerViewGoalkepers.adapter = PlayerAdapter(mContext, goalkepers)
+            recyclerViewGoalkepers.adapter = PlayerAdapter(mContext, goalkepers, 0)
 
             binding.defendersCard.visibility = View.VISIBLE
             recyclerViewDefenders = binding.recyclerViewDefenders
             recyclerViewDefenders.layoutManager = LinearLayoutManager(activity)
-            recyclerViewDefenders.adapter = PlayerAdapter(mContext, defenders)
+            recyclerViewDefenders.adapter = PlayerAdapter(mContext, defenders, 0)
 
             binding.midfieldersCard.visibility = View.VISIBLE
             recyclerViewMidfielders = binding.recyclerViewMidfielders
             recyclerViewMidfielders.layoutManager = LinearLayoutManager(activity)
-            recyclerViewMidfielders.adapter = PlayerAdapter(mContext, midfielders)
+            recyclerViewMidfielders.adapter = PlayerAdapter(mContext, midfielders, 0)
 
             binding.forwardsCard.visibility = View.VISIBLE
             recyclerViewForwards = binding.recyclerViewForwards
             recyclerViewForwards.layoutManager = LinearLayoutManager(activity)
-            recyclerViewForwards.adapter = PlayerAdapter(mContext, forwards)
+            recyclerViewForwards.adapter = PlayerAdapter(mContext, forwards, 0)
         }
     }
 

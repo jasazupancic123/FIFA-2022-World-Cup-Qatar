@@ -276,4 +276,268 @@ class PlayerAPI {
         }
         return players
     }
+
+    suspend fun findByMostGoals() : MutableList<Player> {
+        val players: MutableList<Player> = mutableListOf<Player>()
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url + "/stats/mostGoals/") {
+                    method = HttpMethod.Get
+                }
+
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
+
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
+
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                for (player in data!!.jsonArray) {
+                    val playerObject = player.jsonObject
+                    val _id = playerObject["_id"]!!.jsonPrimitive.content
+                    val firstName = playerObject["firstName"]!!.jsonPrimitive.content
+                    val lastName = playerObject["lastName"]!!.jsonPrimitive.content
+                    val image = playerObject["image"]!!.jsonPrimitive.content
+
+                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonObject.toString(), Team::class.java)
+
+                    val position = playerObject["position"]!!.jsonPrimitive.content
+                    val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
+                    val birthDate = playerObject["birthDate"]!!.jsonPrimitive.content
+                    val height = playerObject["height"]!!.jsonPrimitive.float
+                    val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
+
+                    val club = Gson().fromJson(playerObject["club"]!!.jsonObject.toString(), Club::class.java)
+
+                    val appearances = playerObject["appearances"]!!.jsonPrimitive.int
+                    val goals = playerObject["goals"]!!.jsonPrimitive.int
+                    val assists = playerObject["assists"]!!.jsonPrimitive.int
+                    val yellowCards = playerObject["yellowCards"]!!.jsonPrimitive.int
+                    val redCards = playerObject["redCards"]!!.jsonPrimitive.int
+
+                    val player = Player(
+                        _id,
+                        firstName,
+                        lastName,
+                        image,
+                        nationality,
+                        position,
+                        shirtNumber,
+                        SimpleDateFormat("yyyy-MM-dd").parse(birthDate),
+                        height,
+                        prefferedFoot,
+                        club!!,
+                        appearances,
+                        goals,
+                        assists,
+                        yellowCards,
+                        redCards
+                    )
+                    players.add(player)
+                }
+            }
+        }
+        return players
+    }
+
+    suspend fun findByMostAssists() : MutableList<Player> {
+        val players: MutableList<Player> = mutableListOf<Player>()
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url + "/stats/mostAssists") {
+                    method = HttpMethod.Get
+                }
+
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
+
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
+
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                for (player in data!!.jsonArray) {
+                    val playerObject = player.jsonObject
+                    val _id = playerObject["_id"]!!.jsonPrimitive.content
+                    val firstName = playerObject["firstName"]!!.jsonPrimitive.content
+                    val lastName = playerObject["lastName"]!!.jsonPrimitive.content
+                    val image = playerObject["image"]!!.jsonPrimitive.content
+
+                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonObject.toString(), Team::class.java)
+
+                    val position = playerObject["position"]!!.jsonPrimitive.content
+                    val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
+                    val birthDate = playerObject["birthDate"]!!.jsonPrimitive.content
+                    val height = playerObject["height"]!!.jsonPrimitive.float
+                    val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
+
+                    val club = Gson().fromJson(playerObject["club"]!!.jsonObject.toString(), Club::class.java)
+
+                    val appearances = playerObject["appearances"]!!.jsonPrimitive.int
+                    val goals = playerObject["goals"]!!.jsonPrimitive.int
+                    val assists = playerObject["assists"]!!.jsonPrimitive.int
+                    val yellowCards = playerObject["yellowCards"]!!.jsonPrimitive.int
+                    val redCards = playerObject["redCards"]!!.jsonPrimitive.int
+
+                    val player = Player(
+                        _id,
+                        firstName,
+                        lastName,
+                        image,
+                        nationality,
+                        position,
+                        shirtNumber,
+                        SimpleDateFormat("yyyy-MM-dd").parse(birthDate),
+                        height,
+                        prefferedFoot,
+                        club!!,
+                        appearances,
+                        goals,
+                        assists,
+                        yellowCards,
+                        redCards
+                    )
+                    players.add(player)
+                }
+            }
+        }
+        return players
+    }
+
+    suspend fun findByMostYellowCards() : MutableList<Player> {
+        val players: MutableList<Player> = mutableListOf<Player>()
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url + "/stats/mostYellowCards") {
+                    method = HttpMethod.Get
+                }
+
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
+
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
+
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                for (player in data!!.jsonArray) {
+                    val playerObject = player.jsonObject
+                    val _id = playerObject["_id"]!!.jsonPrimitive.content
+                    val firstName = playerObject["firstName"]!!.jsonPrimitive.content
+                    val lastName = playerObject["lastName"]!!.jsonPrimitive.content
+                    val image = playerObject["image"]!!.jsonPrimitive.content
+
+                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonObject.toString(), Team::class.java)
+
+                    val position = playerObject["position"]!!.jsonPrimitive.content
+                    val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
+                    val birthDate = playerObject["birthDate"]!!.jsonPrimitive.content
+                    val height = playerObject["height"]!!.jsonPrimitive.float
+                    val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
+
+                    val club = Gson().fromJson(playerObject["club"]!!.jsonObject.toString(), Club::class.java)
+
+                    val appearances = playerObject["appearances"]!!.jsonPrimitive.int
+                    val goals = playerObject["goals"]!!.jsonPrimitive.int
+                    val assists = playerObject["assists"]!!.jsonPrimitive.int
+                    val yellowCards = playerObject["yellowCards"]!!.jsonPrimitive.int
+                    val redCards = playerObject["redCards"]!!.jsonPrimitive.int
+
+                    val player = Player(
+                        _id,
+                        firstName,
+                        lastName,
+                        image,
+                        nationality,
+                        position,
+                        shirtNumber,
+                        SimpleDateFormat("yyyy-MM-dd").parse(birthDate),
+                        height,
+                        prefferedFoot,
+                        club!!,
+                        appearances,
+                        goals,
+                        assists,
+                        yellowCards,
+                        redCards
+                    )
+                    players.add(player)
+                }
+            }
+        }
+        return players
+    }
+
+    suspend fun findByMostRedCards() : MutableList<Player> {
+        val players: MutableList<Player> = mutableListOf<Player>()
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.get(url + "/stats/mostRedCards") {
+                    method = HttpMethod.Get
+                }
+
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
+
+                if (Json.parseToJsonElement(response.body()).jsonObject["data"].toString() == "null") {
+                    throw Exception("No data found")
+                }
+
+                val data = Json.parseToJsonElement(response.body()).jsonObject["data"]
+                for (player in data!!.jsonArray) {
+                    val playerObject = player.jsonObject
+                    val _id = playerObject["_id"]!!.jsonPrimitive.content
+                    val firstName = playerObject["firstName"]!!.jsonPrimitive.content
+                    val lastName = playerObject["lastName"]!!.jsonPrimitive.content
+                    val image = playerObject["image"]!!.jsonPrimitive.content
+
+                    val nationality = Gson().fromJson(playerObject["nationality"]!!.jsonObject.toString(), Team::class.java)
+
+                    val position = playerObject["position"]!!.jsonPrimitive.content
+                    val shirtNumber = playerObject["shirtNumber"]!!.jsonPrimitive.int
+                    val birthDate = playerObject["birthDate"]!!.jsonPrimitive.content
+                    val height = playerObject["height"]!!.jsonPrimitive.float
+                    val prefferedFoot = playerObject["prefferedFoot"]!!.jsonPrimitive.content
+
+                    val club = Gson().fromJson(playerObject["club"]!!.jsonObject.toString(), Club::class.java)
+
+                    val appearances = playerObject["appearances"]!!.jsonPrimitive.int
+                    val goals = playerObject["goals"]!!.jsonPrimitive.int
+                    val assists = playerObject["assists"]!!.jsonPrimitive.int
+                    val yellowCards = playerObject["yellowCards"]!!.jsonPrimitive.int
+                    val redCards = playerObject["redCards"]!!.jsonPrimitive.int
+
+                    val player = Player(
+                        _id,
+                        firstName,
+                        lastName,
+                        image,
+                        nationality,
+                        position,
+                        shirtNumber,
+                        SimpleDateFormat("yyyy-MM-dd").parse(birthDate),
+                        height,
+                        prefferedFoot,
+                        club!!,
+                        appearances,
+                        goals,
+                        assists,
+                        yellowCards,
+                        redCards
+                    )
+                    players.add(player)
+                }
+            }
+        }
+        return players
+    }
 }

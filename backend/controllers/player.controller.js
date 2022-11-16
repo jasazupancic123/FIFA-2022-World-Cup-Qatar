@@ -111,7 +111,7 @@ module.exports = class PlayerController {
   }
   static async findByMostGoals(req, res, next) {
     try {
-      const players = await PlayerModel.find().sort({ goals: -1 })
+      const players = await PlayerModel.find({ goals: { $gt: 0 } }).sort({ goals: -1 })
       for (let i = 0; i < players.length; i++) {
         players[i].nationality = await TeamModel.findById(players[i].nationality)
         const manager = await ManagerModel.findById(players[i].nationality.manager)
@@ -125,7 +125,7 @@ module.exports = class PlayerController {
   }
   static async findByMostAssists(req, res, next) {
     try {
-      const players = await PlayerModel.find().sort({ assists: -1 })
+      const players = await PlayerModel.find({ assists: { $gt: 0 } }).sort({ assists: -1 })
       for (let i = 0; i < players.length; i++) {
         players[i].nationality = await TeamModel.findById(players[i].nationality)
         const manager = await ManagerModel.findById(players[i].nationality.manager)
@@ -139,7 +139,7 @@ module.exports = class PlayerController {
   }
   static async findByMostYellowCards(req, res, next) {
     try {
-      const players = await PlayerModel.find().sort({ yellowCards: -1 })
+      const players = await PlayerModel.find({ yellowCards: { $gt: 0 } }).sort({ yellowCards: -1 })
       for (let i = 0; i < players.length; i++) {
         players[i].nationality = await TeamModel.findById(players[i].nationality)
         const manager = await ManagerModel.findById(players[i].nationality.manager)
@@ -153,7 +153,7 @@ module.exports = class PlayerController {
   }
   static async findByMostRedCards(req, res, next) {
     try {
-      const players = await PlayerModel.find().sort({ redCards: -1 })
+      const players = await PlayerModel.find({ redCards: { $gt: 0 } }).sort({ redCards: -1 })
       for (let i = 0; i < players.length; i++) {
         players[i].nationality = await TeamModel.findById(players[i].nationality)
         const manager = await ManagerModel.findById(players[i].nationality.manager)
@@ -194,6 +194,7 @@ module.exports = class PlayerController {
   //POST
   static async create(req, res, next) {
     try {
+      console.log('req.body', req.body)
       const playerObject = req.body
       const team = await TeamModel.findById(playerObject.nationality)
       console.log(team.manager)

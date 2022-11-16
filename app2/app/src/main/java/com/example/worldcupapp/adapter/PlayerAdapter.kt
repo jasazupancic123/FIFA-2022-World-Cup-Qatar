@@ -19,10 +19,12 @@ import com.squareup.picasso.Picasso
 class PlayerAdapter : RecyclerView.Adapter<PlayerViewHolder> {
     lateinit var context: Context
     lateinit var players: List<Player>
+    var case: Int
 
-    constructor(context: Context, players: List<Player>) {
+    constructor(context: Context, players: List<Player>, case: Int) {
         this.context = context
         this.players = players
+        this.case = case
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
         return PlayerViewHolder(LayoutInflater.from(context).inflate(R.layout.list_player, parent, false))
@@ -30,7 +32,7 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerViewHolder> {
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         val player = players[position]
-        holder.bind(player, context)
+        holder.bind(player, context, case)
     }
 
     override fun getItemCount(): Int {
@@ -52,23 +54,36 @@ class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         playerButton = itemView.findViewById(R.id.playerButton)
     }
 
-    fun bind(player: Player, context: Context) {
+    fun bind(player: Player, context: Context, case: Int) {
+        when(case) {
+            0 -> { //normalen izpis
+                playerShitNumberText.text = ""
+            }
+            1 -> { //izpis za gole
+                playerShitNumberText.text = player.goals.toString()
+            }
+            2 -> { //izpis za asiste
+                playerShitNumberText.text = player.assists.toString()
+            }
+            3 -> { //izpis za yelow carde
+                playerShitNumberText.text = player.yellowCards.toString()
+            }
+            4 -> { //izpis za red carde
+                playerShitNumberText.text = player.redCards.toString()
+            }
+        }
         playerNameText.text = when (player.firstName.length > 10) {
             true -> {
-                player.firstName[0] + ". " + player.firstName[player.firstName.indexOf(" ") - 1] + ". " + player.lastName
+                player.shirtNumber.toString() + " " + player.firstName[0] + ". " + player.firstName[player.firstName.indexOf(" ") - 1] + ". " + player.lastName
             }
-            else -> player.firstName + " " + player.lastName
+            else -> player.shirtNumber.toString() + " " + player.firstName + " " + player.lastName
         }
-        playerShitNumberText.text = player.shirtNumber.toString()
         Picasso.with(context).load("https://api.sofascore.app/api/v1/player/12994/image").into(playerImage)
-
         playerButton.setOnClickListener{
             val intent = Intent(context, PlayerActivity::class.java)
             intent.putExtra("player", Gson().toJson(player))
             context.startActivity(intent)
         }
-
-
         //val resourceId = context.resources.getIdentifier(player.image, "drawable", context.packageName)
         //playerImage.setImageResource(resourceId)
     }

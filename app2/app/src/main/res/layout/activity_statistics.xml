@@ -25,7 +25,7 @@
                 app:srcCompat="@drawable/world_cup_qattarjpg" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/topScorersText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -38,11 +38,34 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView2"
                 tools:ignore="MissingConstraints" />
 
+            <ProgressBar
+                android:id="@+id/loadingTopScorers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:indeterminateTint="@color/darkRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topScorersText" />
+
+            <TextView
+                android:id="@+id/loadingTopScorersText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Loading top scorers..."
+                android:textColor="@color/darkRed"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loadingTopScorers" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/topScorersRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/textView" />
+                app:layout_constraintTop_toBottomOf="@id/loadingTopScorersText" />
 
             <Button
                 android:id="@+id/topScorersButton"
@@ -55,7 +78,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/topScorersRecycler" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/topAsistersText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -67,11 +90,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/topScorersButton" />
 
+            <ProgressBar
+                android:id="@+id/loadingTopAsisters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:indeterminateTint="@color/darkRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topAsistersText" />
+
+            <TextView
+                android:id="@+id/loadingTopAsistersText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Loading top assisters..."
+                android:textColor="@color/darkRed"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loadingTopAsisters" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/topAssistersRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/textView2" />
+                app:layout_constraintTop_toBottomOf="@id/loadingTopAsistersText" />
 
             <Button
                 android:id="@+id/topAssistersButton"
@@ -84,7 +130,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/topAssistersRecycler" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/mostYellowCardsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -96,11 +142,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/topAssistersButton" />
 
+            <ProgressBar
+                android:id="@+id/loadingTopYellowCards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:indeterminateTint="@color/darkRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mostYellowCardsText" />
+
+            <TextView
+                android:id="@+id/loadingMostYellowCardsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Loading players with most yellow cards..."
+                android:textColor="@color/darkRed"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loadingTopYellowCards" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mostYellowCardsRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/textView3" />
+                app:layout_constraintTop_toBottomOf="@id/loadingMostYellowCardsText" />
 
             <Button
                 android:id="@+id/mostYellowCardsButton"
@@ -113,7 +182,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/mostYellowCardsRecycler" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/mostRedCardsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -125,11 +194,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mostYellowCardsButton" />
 
+            <ProgressBar
+                android:id="@+id/loadingTopRedCards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:indeterminateTint="@color/darkRed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mostRedCardsText" />
+
+            <TextView
+                android:id="@+id/loadingMostRedCardsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Loading players with most red cards..."
+                android:textColor="@color/darkRed"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loadingTopRedCards" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mostRedCardsRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/textView4" />
+                app:layout_constraintTop_toBottomOf="@id/loadingMostRedCardsText" />
 
             <Button
                 android:id="@+id/mostRedCardsButton"

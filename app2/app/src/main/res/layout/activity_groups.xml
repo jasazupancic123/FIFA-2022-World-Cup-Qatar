@@ -87,6 +87,144 @@
             tools:ignore="NotSibling">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/GroupC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkRed"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Group C"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/recycler_team_GroupB" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_team_GroupC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/GroupC"
+            tools:ignore="NotSibling">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/GroupD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkRed"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Group D"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/recycler_team_GroupC" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_team_GroupD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/GroupD"
+            tools:ignore="NotSibling">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/GroupE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkRed"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Group E"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/recycler_team_GroupD" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_team_GroupE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/GroupE"
+            tools:ignore="NotSibling">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/GroupF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkRed"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Group F"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/recycler_team_GroupE" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_team_GroupF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/GroupF"
+            tools:ignore="NotSibling">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/GroupG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkRed"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Group G"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/recycler_team_GroupF" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_team_GroupG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/GroupG"
+            tools:ignore="NotSibling">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/GroupH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkRed"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Group H"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/recycler_team_GroupG" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_team_GroupH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/GroupH"
+            tools:ignore="NotSibling">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 <com.google.android.material.bottomnavigation.BottomNavigationView

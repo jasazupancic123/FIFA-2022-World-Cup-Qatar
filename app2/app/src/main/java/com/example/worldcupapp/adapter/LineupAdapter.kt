@@ -60,22 +60,22 @@ class LineupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         teamName.text = lineup.team.name
         formationStyle.text = lineup.type
         goalkeperRecycler.layoutManager = LinearLayoutManager(context)
-        goalkeperRecycler.adapter = PlayerAdapter(context, mutableListOf(lineup.goalkeeper))
+        goalkeperRecycler.adapter = PlayerAdapter(context, mutableListOf(lineup.goalkeeper), 0)
         for (defender in lineup.defenders) {
             defendersRecycler.layoutManager = LinearLayoutManager(context)
-            defendersRecycler.adapter = PlayerAdapter(context, lineup.defenders)
+            defendersRecycler.adapter = PlayerAdapter(context, lineup.defenders, 0)
         }
         for (midfielder in lineup.midfielders) {
             midfieldersRecycler.layoutManager = LinearLayoutManager(context)
-            midfieldersRecycler.adapter = PlayerAdapter(context, lineup.midfielders)
+            midfieldersRecycler.adapter = PlayerAdapter(context, lineup.midfielders, 0)
         }
         for (forward in lineup.attackers) {
             attackersRecycler.layoutManager = LinearLayoutManager(context)
-            attackersRecycler.adapter = PlayerAdapter(context, lineup.attackers)
+            attackersRecycler.adapter = PlayerAdapter(context, lineup.attackers, 0)
         }
         for (substitute in lineup.substitutes) {
             substitutesRecycler.layoutManager = LinearLayoutManager(context)
-            substitutesRecycler.adapter = PlayerAdapter(context, lineup.substitutes)
+            substitutesRecycler.adapter = PlayerAdapter(context, lineup.substitutes, 0)
         }
     }
 }

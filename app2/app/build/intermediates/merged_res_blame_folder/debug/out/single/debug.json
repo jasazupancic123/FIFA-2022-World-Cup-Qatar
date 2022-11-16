@@ -52,10 +52,6 @@
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\drawable\\ball.png"
     },
     {
-        "merged": "com.example.worldcupapp-merged_res-45:/layout_activity_main.xml.flat",
-        "source": "com.example.worldcupapp-main-47:/layout/activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\layout_fragment_players.xml.flat",
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\fragment_players.xml"
     },
@@ -78,6 +74,10 @@
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\layout_list_team.xml.flat",
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\list_team.xml"
+    },
+    {
+        "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\layout_dialog_player_stats.xml.flat",
+        "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\layout\\dialog_player_stats.xml"
     },
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
@@ -130,6 +130,10 @@
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\drawable_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-main-47:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.worldcupapp-merged_res-45:/layout_activity_groups.xml.flat",
+        "source": "com.example.worldcupapp-main-47:/layout/activity_groups.xml"
     },
     {
         "merged": "C:\\Users\\jasaz\\.gradle\\daemon\\7.4\\com.example.worldcupapp-merged_res-45:\\drawable_gustavo_alfaro.jpg.flat",
