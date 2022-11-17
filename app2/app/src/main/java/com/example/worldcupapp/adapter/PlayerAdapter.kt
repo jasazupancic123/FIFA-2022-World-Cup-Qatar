@@ -78,7 +78,7 @@ class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             }
             else -> player.shirtNumber.toString() + " " + player.firstName + " " + player.lastName
         }
-        Picasso.with(context).load("https://api.sofascore.app/api/v1/player/12994/image").into(playerImage)
+        Picasso.with(context).load(player.image).into(playerImage)
         playerButton.setOnClickListener{
             val intent = Intent(context, PlayerActivity::class.java)
             intent.putExtra("player", Gson().toJson(player))

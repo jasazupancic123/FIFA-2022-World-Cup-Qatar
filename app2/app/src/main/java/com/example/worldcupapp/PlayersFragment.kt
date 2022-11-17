@@ -35,12 +35,10 @@ class PlayersFragment : Fragment() {
         team = Gson().fromJson(args?.getString("team"), Team::class.java)
         lifecycleScope.launch{
             val players = PlayerAPI().findByTeam(team._id)
-            println("Players: $players")
             goalkepers = players.filter { it.position == "goalkeeper" }.toMutableList()
             defenders = players.filter { it.position == "defender" }.toMutableList()
             midfielders = players.filter { it.position == "midfielder" }.toMutableList()
             forwards = players.filter { it.position == "attacker" }.toMutableList()
-            println("Forwards: $forwards")
 
             binding.progressBar.visibility = View.GONE
             binding.loadingPlayersText.visibility = View.GONE
