@@ -73,24 +73,4 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.4" />
 
-    <Button
-        android:id="@+id/addYellowCardButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Yellow Card"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addLineupButton" />
-
-    <Button
-        android:id="@+id/addRedCardButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Red Card"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addYellowCardButton" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,7 +60,8 @@ class GoalActivity : AppCompatActivity() {
                                 player._id,
                                 minute,
                                 match._id,
-                                isHomeGoal
+                                isHomeGoal,
+                                this@GoalActivity
                             )
                             val intent = Intent(this@GoalActivity, MatchUpdateActivity::class.java)
                             intent.putExtra("match", Gson().toJson(match))
@@ -97,7 +98,8 @@ class GoalActivity : AppCompatActivity() {
                                 player._id,
                                 minute,
                                 match._id,
-                                isHomeGoal
+                                isHomeGoal,
+                                this@GoalActivity
                             )
                             val intent = Intent(this@GoalActivity, MatchUpdateActivity::class.java)
                             intent.putExtra("match", Gson().toJson(match))
@@ -106,6 +108,10 @@ class GoalActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        binding.backButton.setOnClickListener{
+            finish()
         }
 
 

@@ -1,5 +1,7 @@
 package api
 
+import android.content.Context
+import android.widget.Toast
 import com.example.worldcupapp.*
 import com.google.gson.Gson
 import io.ktor.client.*
@@ -767,53 +769,65 @@ class MatchAPI {
         return matches
     }
 
-    suspend fun updateIsHalfTime(matchId: String){
+    suspend fun updateIsHalfTime(matchId: String, context: Context){
         coroutineScope {
             val coroutine = async {
                 val client = HttpClient()
-                val response: HttpResponse = client.put("$url/halftime/$matchId") {
-                    method = HttpMethod.Put
+                try {
+                    val response: HttpResponse = client.put("$url/halftime/$matchId") {
+                        method = HttpMethod.Put
+                    }
+
+                    if (response.status.value == 404) {
+                        throw Exception("Status code 404")
+                    }
+                    Toast.makeText(context, "Halftime updated", Toast.LENGTH_SHORT).show()
+                } catch (e: Exception) {
+                    Toast.makeText(context, "Error updating halftime", Toast.LENGTH_SHORT).show()
                 }
 
-                if (response.status.value == 404) {
-                    throw Exception("Status code 404")
-                }
-
-                println(response)
             }
         }
     }
 
-    suspend fun updateSecondHalfStarted(matchId: String){
+    suspend fun updateSecondHalfStarted(matchId: String, context: Context){
         coroutineScope {
             val coroutine = async {
                 val client = HttpClient()
-                val response: HttpResponse = client.put("$url/halftimeResumedAt/$matchId") {
-                    method = HttpMethod.Put
-                }
+                try {
+                    val response: HttpResponse = client.put("$url/halftimeResumedAt/$matchId") {
+                        method = HttpMethod.Put
+                    }
 
-                if (response.status.value == 404) {
-                    throw Exception("Status code 404")
+                    if (response.status.value == 404) {
+                        throw Exception("Status code 404")
+                    }
+                    Toast.makeText(context, "Updated Second half started", Toast.LENGTH_SHORT).show()
                 }
-
-                println(response)
+                catch (e: Exception) {
+                    Toast.makeText(context, "Error updating second half", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
 
-    suspend fun updateHasFinished(matchId: String){
+    suspend fun updateHasFinished(matchId: String, context: Context){
         coroutineScope {
             val coroutine = async {
                 val client = HttpClient()
-                val response: HttpResponse = client.put("$url/finished/$matchId") {
-                    method = HttpMethod.Put
-                }
+                try {
+                    val response: HttpResponse = client.put("$url/finished/$matchId") {
+                        method = HttpMethod.Put
+                    }
 
-                if (response.status.value == 404) {
-                    throw Exception("Status code 404")
+                    if (response.status.value == 404) {
+                        throw Exception("Status code 404")
+                    }
+                    Toast.makeText(context, "Updated has finished", Toast.LENGTH_SHORT).show()
                 }
-
-                println(response.body() as String)
+                catch (e: Exception) {
+                    Toast.makeText(context, "Error updating match", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

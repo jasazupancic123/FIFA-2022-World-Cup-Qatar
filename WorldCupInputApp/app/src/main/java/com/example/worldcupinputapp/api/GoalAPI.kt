@@ -1,5 +1,7 @@
 package api
 
+import android.content.Context
+import android.widget.Toast
 import com.example.worldcupapp.*
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -286,7 +288,7 @@ class GoalAPI {
     )
 
     @OptIn(InternalAPI::class)
-    suspend fun postAndUpdateEverything(playerId: String, minute: Int, matchId: String, isHomeTeamGoal: Boolean){
+    suspend fun postAndUpdateEverything(playerId: String, minute: Int, matchId: String, isHomeTeamGoal: Boolean, context: Context){
         coroutineScope {
             val coroutine = async {
                 //make post request
@@ -300,20 +302,24 @@ class GoalAPI {
                         isHomeTeamGoal
                     )
                 ))
-                val response: HttpResponse = client.post(url + "/updateEverything") {
-                    contentType(ContentType.Application.Json)
-                    //method = HttpMethod.Post
-                    body = Gson().toJson(
-                        GoalForPost(
-                            playerId,
-                            playerId,
-                            minute,
-                            matchId,
-                            isHomeTeamGoal
+                try {
+                    val response: HttpResponse = client.post(url + "/updateEverything") {
+                        contentType(ContentType.Application.Json)
+                        //method = HttpMethod.Post
+                        body = Gson().toJson(
+                            GoalForPost(
+                                playerId,
+                                playerId,
+                                minute,
+                                matchId,
+                                isHomeTeamGoal
+                            )
                         )
-                    )
+                    }
+                    Toast.makeText(context, "Successfully Added Goal", Toast.LENGTH_SHORT).show()
+                } catch (e: Exception) {
+                    Toast.makeText(context, "Error Adding Goal", Toast.LENGTH_SHORT).show()
                 }
-                println(response.body() as String)
             }
         }
     }

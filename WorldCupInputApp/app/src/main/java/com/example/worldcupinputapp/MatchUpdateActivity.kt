@@ -45,7 +45,7 @@ class MatchUpdateActivity : AppCompatActivity() {
                 val yesButton = dialog.findViewById<Button>(R.id.yesButton)
                 yesButton.setOnClickListener() {
                     lifecycleScope.launch {
-                        MatchAPI().updateIsHalfTime(match._id)
+                        MatchAPI().updateIsHalfTime(match._id, this@MatchUpdateActivity)
                         dialog.dismiss()
                     }
                 }
@@ -68,7 +68,7 @@ class MatchUpdateActivity : AppCompatActivity() {
                 val yesButton = dialog.findViewById<Button>(R.id.yesButton)
                 yesButton.setOnClickListener() {
                     lifecycleScope.launch {
-                        MatchAPI().updateSecondHalfStarted(match._id)
+                        MatchAPI().updateSecondHalfStarted(match._id, this@MatchUpdateActivity)
                         dialog.dismiss()
                     }
                 }
@@ -92,7 +92,7 @@ class MatchUpdateActivity : AppCompatActivity() {
                 val yesButton = dialog.findViewById<Button>(R.id.yesButton)
                 yesButton.setOnClickListener() {
                     lifecycleScope.launch {
-                        MatchAPI().updateHasFinished(match._id)
+                        MatchAPI().updateHasFinished(match._id, this@MatchUpdateActivity)
                         dialog.dismiss()
                     }
                 }
@@ -104,31 +104,71 @@ class MatchUpdateActivity : AppCompatActivity() {
             dialog.setContentView(R.layout.dialog_home_or_away_goal)
             dialog.setTitle("Home Or Away Goal")
             dialog.show()
-            val homeGoalButton = dialog.findViewById<Button>(R.id.homeGoalButton)
-            homeGoalButton.text = match.homeTeam.name + " Goal"
-            homeGoalButton.setOnClickListener() {
-                val intent = Intent(this, GoalActivity::class.java)
-                intent.putExtra("match", Gson().toJson(match))
-                intent.putExtra("homeOrAway", "home")
-                startActivity(intent)
+            if(!match.hasStarted || match.isFinished) {
+                val noNeedToAddGoalText = dialog.findViewById<TextView>(R.id.cannotUpdateHomeOrAwayGoalText)
+                noNeedToAddGoalText.visibility = TextView.VISIBLE
+                val homeGoalButton = dialog.findViewById<Button>(R.id.homeGoalButton)
+                homeGoalButton.visibility = Button.GONE
+                val awayGoalButton = dialog.findViewById<Button>(R.id.awayGoalButton)
+                awayGoalButton.visibility = Button.GONE
+                val homeOrAwayGoalText = dialog.findViewById<TextView>(R.id.isHomeOrAwayGoalText)
+                homeOrAwayGoalText.visibility = TextView.GONE
             }
-            val awayGoalButton = dialog.findViewById<Button>(R.id.awayGoalButton)
-            awayGoalButton.text = match.awayTeam.name + " Goal"
-            awayGoalButton.setOnClickListener() {
-                val intent = Intent(this, GoalActivity::class.java)
-                intent.putExtra("match", Gson().toJson(match))
-                intent.putExtra("homeOrAway", "away")
-                startActivity(intent)
+            else {
+                val homeGoalButton = dialog.findViewById<Button>(R.id.homeGoalButton)
+                homeGoalButton.text = match.homeTeam.name + " Goal"
+                homeGoalButton.setOnClickListener() {
+                    val intent = Intent(this, GoalActivity::class.java)
+                    intent.putExtra("match", Gson().toJson(match))
+                    intent.putExtra("homeOrAway", "home")
+                    startActivity(intent)
+                }
+                val awayGoalButton = dialog.findViewById<Button>(R.id.awayGoalButton)
+                awayGoalButton.text = match.awayTeam.name + " Goal"
+                awayGoalButton.setOnClickListener() {
+                    val intent = Intent(this, GoalActivity::class.java)
+                    intent.putExtra("match", Gson().toJson(match))
+                    intent.putExtra("homeOrAway", "away")
+                    startActivity(intent)
+                }
             }
         }
+
         binding.addLineupButton.setOnClickListener(){
-            //dialog
-        }
-        binding.addYellowCardButton.setOnClickListener(){
-            //dialog
-        }
-        binding.addRedCardButton.setOnClickListener(){
-            //dialog
+            val dialog: Dialog = Dialog(this)
+            dialog.setContentView(R.layout.dialog_home_or_away_lineup)
+            dialog.setTitle("Home Or Away Lineup")
+            dialog.show()
+            if(match.isFinished) {
+                val noNeedToAddLineupText = dialog.findViewById<TextView>(R.id.cannotUpdateHomeOrAwayLineupText)
+                noNeedToAddLineupText.visibility = TextView.VISIBLE
+                val homeLineupButton = dialog.findViewById<Button>(R.id.homeLineupButton)
+                homeLineupButton.visibility = Button.GONE
+                val awayLineupButton = dialog.findViewById<Button>(R.id.awayLineupButton)
+                awayLineupButton.visibility = Button.GONE
+                val homeOrAwayLineupText = dialog.findViewById<TextView>(R.id.isHomeOrAwayLineupText)
+                homeOrAwayLineupText.visibility = TextView.GONE
+            }
+            else {
+                val homeLineupButton = dialog.findViewById<Button>(R.id.homeLineupButton)
+                homeLineupButton.text = match.homeTeam.name + " Lineup"
+                homeLineupButton.setOnClickListener() {
+                    val intent = Intent(this, LineupActivity::class.java)
+                    intent.putExtra("match", Gson().toJson(match))
+                    intent.putExtra("homeOrAway", "home")
+                    dialog.dismiss()
+                    startActivity(intent)
+                }
+                val awayGoalButton = dialog.findViewById<Button>(R.id.awayLineupButton)
+                awayGoalButton.text = match.awayTeam.name + " Lineup"
+                awayGoalButton.setOnClickListener() {
+                    val intent = Intent(this, LineupActivity::class.java)
+                    intent.putExtra("match", Gson().toJson(match))
+                    intent.putExtra("homeOrAway", "away")
+                    dialog.dismiss()
+                    startActivity(intent)
+                }
+            }
         }
 
         binding.backButton.setOnClickListener(){

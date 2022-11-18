@@ -5,12 +5,12 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/cannotUpdateHomeOrAwayGoalText"
+        android:id="@+id/cannotUpdateHomeOrAwayLineupText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Cannot input home or away goal"
+        android:text="Cannot input home or away lineup"
         android:textAllCaps="true"
         android:visibility="invisible"
         android:textColor="@color/darkRed"
@@ -20,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/isHomeOrAwayGoalText"
+        android:id="@+id/isHomeOrAwayLineupText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Is Home or Away Goal?"
+        android:text="Is Home or Away Lineup?"
         android:textAllCaps="true"
         android:textColor="@color/darkRed"
         android:textStyle="bold"
@@ -34,24 +34,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/homeGoalButton"
+        android:id="@+id/homeLineupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Home goal"
+        android:text="Home lineup"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/isHomeOrAwayGoalText" />
+        app:layout_constraintTop_toBottomOf="@+id/isHomeOrAwayLineupText" />
 
     <Button
-        android:id="@+id/awayGoalButton"
+        android:id="@+id/awayLineupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Away goal"
+        android:text="Away lineup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/isHomeOrAwayGoalText" />
+        app:layout_constraintTop_toBottomOf="@+id/isHomeOrAwayLineupText" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

@@ -1,5 +1,7 @@
 package api
 
+import android.content.Context
+import android.widget.Toast
 import com.example.worldcupapp.*
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -9,9 +11,11 @@ import io.ktor.http.*
 
 import kotlinx.serialization.json.*
 import com.google.gson.Gson
+import io.ktor.client.plugins.*
+import io.ktor.util.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import java.text.SimpleDateFormat
+import kotlinx.coroutines.delay
 
 class LineupAPI {
     val url = "https://fifa-2022-world-cup-qatar.up.railway.app/lineup"
@@ -231,5 +235,71 @@ class LineupAPI {
             }
         }
         return lineup
+    }
+
+    inner class LineupForApi(
+        val type: String,
+        val team: String,
+        val match: String,
+        val goalkeeper: String,
+        val defenders: List<String>,
+        val midfielders: List<String>,
+        val attackers: List<String>,
+        val substitutes: List<String>
+    )
+
+    @OptIn(InternalAPI::class)
+    suspend fun postAndUpdateEverything(
+        lineupType: String,
+        teamId: String,
+        matchId: String,
+        goalkeeper: Player,
+        defenders: java.util.ArrayList<Player?>,
+        midfielders: java.util.ArrayList<Player?>,
+        forwards: java.util.ArrayList<Player?>,
+        substitutes: ArrayList<Player>,
+        context: Context
+    ){
+        coroutineScope {
+            val coroutine = async {
+                //make post request
+                val client = HttpClient()
+                println(Gson().toJson(
+                    LineupForApi(
+                        lineupType,
+                        teamId,
+                        matchId,
+                        goalkeeper._id,
+                        defenders.map { it!!._id },
+                        midfielders.map { it!!._id },
+                        forwards.map { it!!._id },
+                        substitutes.map { it._id }
+                    )
+                ))
+                try {
+                    val response: HttpResponse = client.post(url + "/updateEverything") {
+                        contentType(ContentType.Application.Json)
+                        //method = HttpMethod.Post
+                        body = Gson().toJson(
+                            LineupForApi(
+                                lineupType,
+                                teamId,
+                                matchId,
+                                goalkeeper._id,
+                                defenders.map { it!!._id },
+                                midfielders.map { it!!._id },
+                                forwards.map { it!!._id },
+                                substitutes.map { it._id }
+                            )
+                        )
+                    }
+                    println(response.body() as String)
+                } catch (e: io.ktor.client.plugins.HttpRequestTimeoutException) {
+                    Toast.makeText(context, "Successfully Added Lineups", Toast.LENGTH_SHORT).show()
+                } catch (e: java.lang.Exception){
+                    Toast.makeText(context, "Error Adding Lineups", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }
