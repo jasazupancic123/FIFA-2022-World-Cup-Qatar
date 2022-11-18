@@ -78,8 +78,8 @@ class MatchUpdateActivity : AppCompatActivity() {
         binding.hasFinishedButton.setOnClickListener(){
             //noNeedToUpdateHasFinishedText
             val dialog: Dialog = Dialog(this)
-            dialog.setContentView(R.layout.dialog_second_half_started)
-            dialog.setTitle("Has Second Half Started")
+            dialog.setContentView(R.layout.dialog_has_finished)
+            dialog.setTitle("Has Finished")
             dialog.show()
             if(!match.hasStarted || match.isFinished || match.halfTimeResumedAt == null){
                 val noNeedToUpdateHasFinishedText = dialog.findViewById<TextView>(R.id.noNeedToUpdateHasFinishedText)
@@ -98,8 +98,28 @@ class MatchUpdateActivity : AppCompatActivity() {
                 }
             }
         }
+
         binding.addGoalButton.setOnClickListener(){
-            //dialog
+            val dialog: Dialog = Dialog(this)
+            dialog.setContentView(R.layout.dialog_home_or_away_goal)
+            dialog.setTitle("Home Or Away Goal")
+            dialog.show()
+            val homeGoalButton = dialog.findViewById<Button>(R.id.homeGoalButton)
+            homeGoalButton.text = match.homeTeam.name + " Goal"
+            homeGoalButton.setOnClickListener() {
+                val intent = Intent(this, GoalActivity::class.java)
+                intent.putExtra("match", Gson().toJson(match))
+                intent.putExtra("homeOrAway", "home")
+                startActivity(intent)
+            }
+            val awayGoalButton = dialog.findViewById<Button>(R.id.awayGoalButton)
+            awayGoalButton.text = match.awayTeam.name + " Goal"
+            awayGoalButton.setOnClickListener() {
+                val intent = Intent(this, GoalActivity::class.java)
+                intent.putExtra("match", Gson().toJson(match))
+                intent.putExtra("homeOrAway", "away")
+                startActivity(intent)
+            }
         }
         binding.addLineupButton.setOnClickListener(){
             //dialog

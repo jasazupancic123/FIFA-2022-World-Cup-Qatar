@@ -10,6 +10,7 @@ import io.ktor.http.*
 import kotlinx.serialization.json.*
 import kotlinx.coroutines.async
 import com.google.gson.Gson
+import io.ktor.util.*
 import kotlinx.coroutines.coroutineScope
 import java.text.SimpleDateFormat
 
@@ -274,5 +275,46 @@ class GoalAPI {
             }
         }
         return goals
+    }
+
+    inner class GoalForPost(
+        val scorer: String,
+        val assister: String,
+        val minute: Int,
+        val match: String,
+        val isHomeTeamGoal: Boolean,
+    )
+
+    @OptIn(InternalAPI::class)
+    suspend fun postAndUpdateEverything(playerId: String, minute: Int, matchId: String, isHomeTeamGoal: Boolean){
+        coroutineScope {
+            val coroutine = async {
+                //make post request
+                val client = HttpClient()
+                println(Gson().toJson(
+                    GoalForPost(
+                        playerId,
+                        playerId,
+                        minute,
+                        matchId,
+                        isHomeTeamGoal
+                    )
+                ))
+                val response: HttpResponse = client.post(url + "/updateEverything") {
+                    contentType(ContentType.Application.Json)
+                    //method = HttpMethod.Post
+                    body = Gson().toJson(
+                        GoalForPost(
+                            playerId,
+                            playerId,
+                            minute,
+                            matchId,
+                            isHomeTeamGoal
+                        )
+                    )
+                }
+                println(response.body() as String)
+            }
+        }
     }
 }

@@ -241,10 +241,10 @@ module.exports = class GoalController {
         await assister.save()
       }
       const match = await MatchModel.findById(goalBody.match)
-      goalBody.currentScore = match.homeTeamScore + ' - ' + match.awayTeamScore
       var goal = await GoalModel.create(goalBody)
       if (goal.isHomeTeamGoal) {
         match.homeTeamScore += 1
+        goalBody.currentScore = match.homeTeamScore + ' - ' + match.awayTeamScore
         await match.save()
         const homeTeam = await TeamModel.findById(match.homeTeam)
         homeTeam.goalsScored += 1
@@ -255,6 +255,7 @@ module.exports = class GoalController {
         await awayTeam.save()
       } else {
         match.awayTeamScore += 1
+        goalBody.currentScore = match.homeTeamScore + ' - ' + match.awayTeamScore
         await match.save()
         const awayTeam = await TeamModel.findById(match.awayTeam)
         awayTeam.goalsScored += 1
