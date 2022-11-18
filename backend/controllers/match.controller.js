@@ -231,6 +231,16 @@ module.exports = class MatchController {
     try {
       console.log('In updateIsHalfTime')
       const match = await MatchModel.findByIdAndUpdate(req.params.id, { isHalfTime: true }, { new: true })
+      match.half
+      res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
+    } catch (e) {
+      next(e)
+    }
+  }
+
+  static async updateHalfTimeResumedAt(req, res, next) {
+    try {
+      const match = await MatchModel.findByIdAndUpdate(req.params.id, { halfTimeResumedAt: new Date(), isHalfTime: false }, { new: true })
       res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
     } catch (e) {
       next(e)

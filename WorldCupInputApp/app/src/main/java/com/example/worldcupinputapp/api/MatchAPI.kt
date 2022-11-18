@@ -773,7 +773,24 @@ class MatchAPI {
                 val isHalfTime = true
                 val client = HttpClient()
                 val response: HttpResponse = client.put("$url/halftime/$matchId") {
-                    setBody("\"isHalfTime\" : $isHalfTime")
+                    method = HttpMethod.Put
+                }
+
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
+
+                println(response)
+            }
+        }
+    }
+
+    suspend fun updateSecondHalfStarted(matchId: String){
+        coroutineScope {
+            val coroutine = async {
+                val isHalfTime = false
+                val client = HttpClient()
+                val response: HttpResponse = client.put("$url/halftimeResumedAt/$matchId") {
                     method = HttpMethod.Put
                 }
 

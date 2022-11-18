@@ -20,6 +20,7 @@ router.put('/awayScore/:id', MatchController.updateAwayScore)
 router.put('/minute/:id', MatchController.updateMinute)
 router.put('/finished/:id', MatchController.updateIsFinished)
 router.put('/halftime/:id', MatchController.updateIsHalfTime)
+router.put('/halftimeResumedAt/:id', MatchController.updateHalfTimeResumedAt)
 router.put('/winner/:id', MatchController.updateWinner)
 router.put('/hasStarted/:id', MatchController.updateHasStarted)
 

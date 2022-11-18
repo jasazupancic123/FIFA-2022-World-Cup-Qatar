@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
 import api.MatchAPI
@@ -12,6 +13,7 @@ import com.example.worldcupapp.Match
 import com.example.worldcupinputapp.databinding.ActivityMatchUpdateBinding
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 
 class MatchUpdateActivity : AppCompatActivity() {
     lateinit var binding: ActivityMatchUpdateBinding
@@ -29,18 +31,46 @@ class MatchUpdateActivity : AppCompatActivity() {
         binding.isHalfTimeButton.setOnClickListener(){
             val dialog: Dialog = Dialog(this)
             dialog.setContentView(R.layout.dialog_is_half_time)
-            dialog.setTitle("Delete Player")
+            dialog.setTitle("Is Half Time")
             dialog.show()
-            val yesButton = dialog.findViewById<Button>(R.id.yesButton)
-            yesButton.setOnClickListener(){
-                lifecycleScope.launch {
-                    MatchAPI().updateIsHalfTime(match._id)
-                    dialog.dismiss()
+            if(!match.hasStarted || match.isFinished || match.isHalfTime){
+                val noNeedToUpdateHalfTimeText = dialog.findViewById<TextView>(R.id.noNeedToUpdateHalfTimeText)
+                noNeedToUpdateHalfTimeText.visibility = TextView.VISIBLE
+                val yesButton = dialog.findViewById<Button>(R.id.yesButton)
+                yesButton.visibility = Button.GONE
+                val isHalfTimeText = dialog.findViewById<TextView>(R.id.isHalfTimeText)
+                isHalfTimeText.visibility = TextView.GONE
+            } else {
+                val yesButton = dialog.findViewById<Button>(R.id.yesButton)
+                yesButton.setOnClickListener() {
+                    lifecycleScope.launch {
+                        MatchAPI().updateIsHalfTime(match._id)
+                        dialog.dismiss()
+                    }
                 }
             }
         }
         binding.secondHalfStartedButton.setOnClickListener(){
-            //dialog
+            val dialog: Dialog = Dialog(this)
+            dialog.setContentView(R.layout.dialog_second_half_started)
+            dialog.setTitle("Has Second Half Started")
+            dialog.show()
+            if(!match.hasStarted || match.isFinished || !match.isHalfTime){
+                val noNeedToUpdateSecondHalfText = dialog.findViewById<TextView>(R.id.noNeedToStartSecondHalfText)
+                noNeedToUpdateSecondHalfText.visibility = TextView.VISIBLE
+                val yesButton = dialog.findViewById<Button>(R.id.yesButton)
+                yesButton.visibility = Button.GONE
+                val secondHalfStartedText = dialog.findViewById<TextView>(R.id.hasHalfTimeResumedText)
+                secondHalfStartedText.visibility = TextView.GONE
+            } else {
+                val yesButton = dialog.findViewById<Button>(R.id.yesButton)
+                yesButton.setOnClickListener() {
+                    lifecycleScope.launch {
+                        MatchAPI().updateSecondHalfStarted(match._id)
+                        dialog.dismiss()
+                    }
+                }
+            }
         }
         binding.hasFinishedButton.setOnClickListener(){
             //dialog
@@ -56,6 +86,10 @@ class MatchUpdateActivity : AppCompatActivity() {
         }
         binding.addRedCardButton.setOnClickListener(){
             //dialog
+        }
+
+        binding.backButton.setOnClickListener(){
+            finish()
         }
 
         setContentView(binding.root)

@@ -5,12 +5,12 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/noNeedToUpdateHalfTimeText"
+        android:id="@+id/noNeedToStartSecondHalfText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="No need to update half time"
+        android:text="No need to start second half"
         android:textAllCaps="true"
         android:textColor="@color/darkRed"
         android:textStyle="bold"
@@ -20,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/isHalfTimeText"
+        android:id="@+id/hasHalfTimeResumedText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Is Half Time?"
+        android:text="Has second half started?"
         android:textAllCaps="true"
         android:textColor="@color/darkRed"
         android:textStyle="bold"
@@ -41,6 +41,6 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/isHalfTimeText" />
+        app:layout_constraintTop_toBottomOf="@+id/hasHalfTimeResumedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
