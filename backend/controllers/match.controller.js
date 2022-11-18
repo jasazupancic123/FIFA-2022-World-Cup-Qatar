@@ -201,7 +201,7 @@ module.exports = class MatchController {
 
   static async updateIsFinished(req, res, next) {
     try {
-      const match = await MatchModel.findByIdAndUpdate(req.params.id, { isFinished: req.body.isFinished }, { new: true })
+      const match = await MatchModel.findByIdAndUpdate(req.params.id, { isFinished: true }, { new: true })
       if (match.homeTeamScore > match.awayTeamScore) {
         const homeTeam = await TeamMode.findById(match.homeTeam)
         const awayTeam = await TeamMode.findById(match.awayTeam)

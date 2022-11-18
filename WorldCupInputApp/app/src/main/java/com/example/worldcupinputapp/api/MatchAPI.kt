@@ -813,7 +813,7 @@ class MatchAPI {
                     throw Exception("Status code 404")
                 }
 
-                println(response)
+                println(response.body() as String)
             }
         }
     }

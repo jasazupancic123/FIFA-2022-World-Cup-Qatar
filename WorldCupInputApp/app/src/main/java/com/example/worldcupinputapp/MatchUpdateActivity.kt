@@ -1,6 +1,7 @@
 package com.example.worldcupinputapp
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -111,7 +112,8 @@ class MatchUpdateActivity : AppCompatActivity() {
         }
 
         binding.backButton.setOnClickListener(){
-            finish()
+            val intent: Intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         setContentView(binding.root)
