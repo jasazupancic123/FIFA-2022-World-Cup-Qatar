@@ -203,24 +203,35 @@ module.exports = class MatchController {
     try {
       const match = await MatchModel.findByIdAndUpdate(req.params.id, { isFinished: req.body.isFinished }, { new: true })
       if (match.homeTeamScore > match.awayTeamScore) {
-        const homeTeam = await TeamModel.findById(match.homeTeam)
+        const homeTeam = await TeamMode.findById(match.homeTeam)
+        const awayTeam = await TeamMode.findById(match.awayTeam)
         homeTeam.points += 3
         homeTeam.matchesWon += 1
         awayTeam.matchesLost += 1
+        await homeTeam.save()
+        await awayTeam.save()
+        match.winner = homeTeam
+        await match.save()
       } else if (match.homeTeamScore < match.awayTeamScore) {
-        const awayTeam = await TeamModel.findById(match.awayTeam)
+        const homeTeam = await TeamMode.findById(match.homeTeam)
+        const awayTeam = await TeamMode.findById(match.awayTeam)
         awayTeam.points += 3
         awayTeam.matchesWon += 1
         homeTeam.matchesLost += 1
+        await homeTeam.save()
+        await awayTeam.save()
+        match.winner = awayTeam
+        await match.save()
       } else {
-        const homeTeam = await TeamModel.findById(match.homeTeam)
-        const awayTeam = await TeamModel.findById(match.awayTeam)
+        const homeTeam = await TeamMode.findById(match.homeTeam)
+        const awayTeam = await TeamMode.findById(match.awayTeam)
         homeTeam.points += 1
         awayTeam.points += 1
         homeTeam.matchesDrawn += 1
         awayTeam.matchesDrawn += 1
+        await homeTeam.save()
+        await awayTeam.save()
       }
-
       res.json(JsonUtil.response(res, false, 'Successfully updated match', match))
     } catch (e) {
       next(e)
@@ -259,8 +270,8 @@ module.exports = class MatchController {
   static async updateHasStarted(req, res, next) {
     try {
       const match = await MatchModel.findByIdAndUpdate(req.params.id, { hasStarted: req.body.hasStarted }, { new: true })
-      const homeTeam = await TeamModel.findById(match.homeTeam)
-      const awayTeam = await TeamModel.findById(match.awayTeam)
+      const homeTeam = await TeamMode.findById(match.homeTeam)
+      const awayTeam = await TeamMode.findById(match.awayTeam)
       if (match.hasStarted) {
         homeTeam.matchesPlayed++
         awayTeam.matchesPlayed++

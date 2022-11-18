@@ -770,7 +770,6 @@ class MatchAPI {
     suspend fun updateIsHalfTime(matchId: String){
         coroutineScope {
             val coroutine = async {
-                val isHalfTime = true
                 val client = HttpClient()
                 val response: HttpResponse = client.put("$url/halftime/$matchId") {
                     method = HttpMethod.Put
@@ -788,9 +787,25 @@ class MatchAPI {
     suspend fun updateSecondHalfStarted(matchId: String){
         coroutineScope {
             val coroutine = async {
-                val isHalfTime = false
                 val client = HttpClient()
                 val response: HttpResponse = client.put("$url/halftimeResumedAt/$matchId") {
+                    method = HttpMethod.Put
+                }
+
+                if (response.status.value == 404) {
+                    throw Exception("Status code 404")
+                }
+
+                println(response)
+            }
+        }
+    }
+
+    suspend fun updateHasFinished(matchId: String){
+        coroutineScope {
+            val coroutine = async {
+                val client = HttpClient()
+                val response: HttpResponse = client.put("$url/finished/$matchId") {
                     method = HttpMethod.Put
                 }
 

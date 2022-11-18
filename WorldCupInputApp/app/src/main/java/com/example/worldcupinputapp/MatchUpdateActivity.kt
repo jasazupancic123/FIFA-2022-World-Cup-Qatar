@@ -50,6 +50,7 @@ class MatchUpdateActivity : AppCompatActivity() {
                 }
             }
         }
+
         binding.secondHalfStartedButton.setOnClickListener(){
             val dialog: Dialog = Dialog(this)
             dialog.setContentView(R.layout.dialog_second_half_started)
@@ -72,8 +73,29 @@ class MatchUpdateActivity : AppCompatActivity() {
                 }
             }
         }
+
         binding.hasFinishedButton.setOnClickListener(){
-            //dialog
+            //noNeedToUpdateHasFinishedText
+            val dialog: Dialog = Dialog(this)
+            dialog.setContentView(R.layout.dialog_second_half_started)
+            dialog.setTitle("Has Second Half Started")
+            dialog.show()
+            if(!match.hasStarted || match.isFinished || match.halfTimeResumedAt == null){
+                val noNeedToUpdateHasFinishedText = dialog.findViewById<TextView>(R.id.noNeedToUpdateHasFinishedText)
+                noNeedToUpdateHasFinishedText.visibility = TextView.VISIBLE
+                val yesButton = dialog.findViewById<Button>(R.id.yesButton)
+                yesButton.visibility = Button.GONE
+                val hasFinishedText = dialog.findViewById<TextView>(R.id.hasMatchFinishedText)
+                hasFinishedText.visibility = TextView.GONE
+            } else {
+                val yesButton = dialog.findViewById<Button>(R.id.yesButton)
+                yesButton.setOnClickListener() {
+                    lifecycleScope.launch {
+                        MatchAPI().updateHasFinished(match._id)
+                        dialog.dismiss()
+                    }
+                }
+            }
         }
         binding.addGoalButton.setOnClickListener(){
             //dialog
