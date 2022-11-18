@@ -152,30 +152,6 @@ module.exports = class MatchController {
     }
   }
 
-  static async findStartedAndUpcomingMatches(req, res, next) {
-    try {
-      const startedMatches = await MatchModel.find({ hasStarted: true }).sort({ date: 1 })
-      const startedMatchesSize = startedMatches.length
-      const upcomingMatches = await MatchModel.find({ hasStarted: false })
-        .sort({ date: 1 })
-        .limit(5 - startedMatchesSize)
-      const matches = startedMatches.concat(upcomingMatches)
-      for (let i = 0; i < matches.length; i++) {
-        const homeTeam = await TeamMode.findById(matches[i].homeTeam)
-        const awayTeam = await TeamMode.findById(matches[i].awayTeam)
-        matches[i].homeTeam = homeTeam
-        matches[i].awayTeam = awayTeam
-        const homeTeamManager = await ManagerModel.findById(homeTeam.manager)
-        const awayTeamManager = await ManagerModel.findById(awayTeam.manager)
-        matches[i].homeTeam.manager = homeTeamManager
-        matches[i].awayTeam.manager = awayTeamManager
-      }
-      res.json(JsonUtil.response(res, false, 'Successfully found matches', matches))
-    } catch (e) {
-      next(e)
-    }
-  }
-
   //POST
   static async create(req, res, next) {
     try {
