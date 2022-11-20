@@ -23,7 +23,7 @@ class TeamAdapter : RecyclerView.Adapter<TeamViewHolder> {
 
     constructor(context: Context, teams: List<Team>) {
         this.context = context
-        this.teams = teams
+        this.teams = teams.sortedByDescending { it.points }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         return TeamViewHolder(LayoutInflater.from(context).inflate(R.layout.list_team, parent, false))

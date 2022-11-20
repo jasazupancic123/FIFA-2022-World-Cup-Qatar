@@ -26,7 +26,6 @@ public class GoalAdapter: RecyclerView.Adapter<GoalViewHolder> {
 
     override fun onBindViewHolder(holder: GoalViewHolder, position: Int) {
         val goal = goals[position]
-        println(goal.toString())
         holder.bind(goal, context)
     }
 
@@ -58,6 +57,7 @@ class GoalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         awayPlayerName = itemView.findViewById(R.id.awayPlayerName)
     }
 
+    @SuppressLint("SetTextI18n")
     fun bind(goal: Goal, context: Context) {
         if(goal.isHomeTeamGoal){
             awayGoalImage.visibility = View.GONE

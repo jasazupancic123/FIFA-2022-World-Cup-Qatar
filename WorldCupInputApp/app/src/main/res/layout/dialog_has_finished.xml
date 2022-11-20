@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="No need to update has finished"
+        android:text="Second half has not started yet... cannot update match has finished"
         android:textAllCaps="true"
         android:textColor="@color/darkRed"
         android:textStyle="bold"

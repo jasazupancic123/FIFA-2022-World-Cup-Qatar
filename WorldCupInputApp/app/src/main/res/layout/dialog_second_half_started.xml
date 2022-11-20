@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="No need to start second half"
+        android:text="Match has not started or half time has not been updated... cannot start second half"
         android:textAllCaps="true"
         android:textColor="@color/darkRed"
         android:textStyle="bold"

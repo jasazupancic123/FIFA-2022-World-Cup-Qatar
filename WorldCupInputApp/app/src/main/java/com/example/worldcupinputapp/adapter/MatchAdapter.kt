@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.util.Date
 
 public class MatchAdapter : RecyclerView.Adapter<MatchViewHolder> {
     lateinit var context: Context
@@ -61,7 +62,7 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         awayTeamImage = itemView.findViewById(R.id.awayTeamImage)
         homeTeamName = itemView.findViewById(R.id.homeTeamName)
         awayTeamName = itemView.findViewById(R.id.awayTeamName)
-        dateOfMatch = itemView.findViewById(R.id.dateOfMatch)
+        dateOfMatch = itemView.findViewById(R.id.dateOfMatch1)
         timeOfMatch = itemView.findViewById(R.id.timeOfMatch)
         button = itemView.findViewById(R.id.button)
         homeTeamScore = itemView.findViewById(R.id.homeTeamScore)
@@ -70,7 +71,7 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         minuteText = itemView.findViewById(R.id.minuteText)
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "SimpleDateFormat")
     fun bind(match: Match, context: Context) {
         println(match.homeTeam.name)
         Picasso.with(context).load("https://flagcdn.com/160x120/" + match.homeTeam.iso2.lowercase() + ".png").into(homeTeamImage)
@@ -105,42 +106,44 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             timeOfMatch.visibility = View.GONE
             homeTeamScore.text = match.homeTeamScore.toString()
             awayTeamScore.text = match.awayTeamScore.toString()
-            val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
-            val now = sdf.parse(sdf.format(System.currentTimeMillis()))
-            val start = sdf.parse(match.date.toString())
-            val diff = now.time - start.time
-            val diffMinutes = diff / (60 * 1000) % 60
-            minuteText.text = "$diffMinutes'"
+            val matchTime: String = match.date.toString()[12].toString() + match.date.toString()[13] + match.date.toString()[14] + match.date.toString()[15] + match.date.toString()[16] + match.date.toString()[17] + match.date.toString()[18] + match.date.toString()[19]
+            val sdf = SimpleDateFormat("HH:mm:ss")
+            try {
+                val now = sdf.parse(sdf.format(System.currentTimeMillis()))
+                val start = sdf.parse(matchTime)
+                val diff = now.time - start.time
+                val diffMinutes = diff / (60 * 1000) % 60
+                minuteText.text = "$diffMinutes'"
+            }
+            catch (e: ParseException){
+                println(e)
+                println("Date error")
+            }
         }
         else if (match.halfTimeResumedAt != null && !match.isFinished){
             dateOfMatch.visibility = View.GONE
             timeOfMatch.visibility = View.GONE
             homeTeamScore.text = match.homeTeamScore.toString()
             awayTeamScore.text = match.awayTeamScore.toString()
-            val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
-            val now = sdf.parse(sdf.format(System.currentTimeMillis()))
-            val start = sdf.parse(match.halfTimeResumedAt.toString())
-            val diff = now.time - start.time
-            val diffMinutes = (diff / (60 * 1000) % 60) + 45
-            minuteText.text = "$diffMinutes'"
+            val matchTime: String = match.halfTimeResumedAt.toString()[12].toString() + match.halfTimeResumedAt.toString()[13] + match.halfTimeResumedAt.toString()[14] + match.halfTimeResumedAt.toString()[15] + match.halfTimeResumedAt.toString()[16] + match.halfTimeResumedAt.toString()[17] + match.halfTimeResumedAt.toString()[18] + match.halfTimeResumedAt.toString()[19]
+            val sdf = SimpleDateFormat("HH:mm:ss")
+            try {
+                val now = sdf.parse(sdf.format(System.currentTimeMillis()))
+                val start = sdf.parse(matchTime)
+                val diff = now.time - start.time
+                var diffMinutes = diff / (60 * 1000) % 60
+                diffMinutes += 45
+                minuteText.text = "$diffMinutes'"
+            }
+            catch (e: ParseException){
+                println(e)
+                println("Date error")
+            }
         } else if (match.isFinished){
             dateOfMatch.visibility = View.GONE
             timeOfMatch.visibility = View.GONE
             homeTeamScore.text = match.homeTeamScore.toString()
             awayTeamScore.text = match.awayTeamScore.toString()
-            val dateFormat: SimpleDateFormat = SimpleDateFormat("EEE d/MM")
-            val timeFormat: SimpleDateFormat = SimpleDateFormat("HH:mm")
-            val givenFormat: SimpleDateFormat =
-                SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
-
-            try {
-                val date = givenFormat.parse(match.date.toString())
-                val dateStr = dateFormat.format(date)
-                val timeStr = timeFormat.format(date)
-                minuteText.text = dateStr + " " + timeStr
-            } catch (e: ParseException) {
-                e.printStackTrace()
-            }
         }
         else {
             homeTeamScore.visibility = View.GONE
@@ -148,20 +151,11 @@ class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             againstText.visibility = View.GONE
             minuteText.visibility = View.GONE
 
-            val dateFormat: SimpleDateFormat = SimpleDateFormat("EEE d/MM")
-            val timeFormat: SimpleDateFormat = SimpleDateFormat("HH:mm")
-            val givenFormat: SimpleDateFormat =
-                SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
-
-            try {
-                val date = givenFormat.parse(match.date.toString())
-                val dateStr = dateFormat.format(date)
-                val timeStr = timeFormat.format(date)
-                dateOfMatch.text = dateStr
-                timeOfMatch.text = timeStr
-            } catch (e: ParseException) {
-                e.printStackTrace()
-            }
+            val days = match.date.toString()[8].toString() + match.date.toString()[9].toString()
+            val month = match.date.toString()[4].toString() + match.date.toString()[5].toString() + match.date.toString()[6].toString()
+            val time = match.date.toString()[11].toString() + match.date.toString()[12].toString() + match.date.toString()[13].toString() + match.date.toString()[14].toString() + match.date.toString()[15].toString()
+            dateOfMatch.text = days + " " + month
+            timeOfMatch.text = time
         }
         button.setOnClickListener(View.OnClickListener {
             val intent = Intent(context, MatchUpdateActivity::class.java)

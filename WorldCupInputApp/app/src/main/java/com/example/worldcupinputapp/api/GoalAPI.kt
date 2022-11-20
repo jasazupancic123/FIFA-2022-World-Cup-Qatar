@@ -281,7 +281,7 @@ class GoalAPI {
 
     inner class GoalForPost(
         val scorer: String,
-        val assister: String,
+        val assister: String?,
         val minute: Int,
         val match: String,
         val isHomeTeamGoal: Boolean,
@@ -296,7 +296,7 @@ class GoalAPI {
                 println(Gson().toJson(
                     GoalForPost(
                         playerId,
-                        playerId,
+                        null,
                         minute,
                         matchId,
                         isHomeTeamGoal
@@ -309,7 +309,7 @@ class GoalAPI {
                         body = Gson().toJson(
                             GoalForPost(
                                 playerId,
-                                playerId,
+                                null,
                                 minute,
                                 matchId,
                                 isHomeTeamGoal

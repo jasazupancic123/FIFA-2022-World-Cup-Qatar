@@ -104,7 +104,7 @@ class MatchUpdateActivity : AppCompatActivity() {
             dialog.setContentView(R.layout.dialog_home_or_away_goal)
             dialog.setTitle("Home Or Away Goal")
             dialog.show()
-            if(!match.hasStarted || match.isFinished) {
+            if(!match.hasStarted || match.isFinished || match.isHalfTime) {
                 val noNeedToAddGoalText = dialog.findViewById<TextView>(R.id.cannotUpdateHomeOrAwayGoalText)
                 noNeedToAddGoalText.visibility = TextView.VISIBLE
                 val homeGoalButton = dialog.findViewById<Button>(R.id.homeGoalButton)

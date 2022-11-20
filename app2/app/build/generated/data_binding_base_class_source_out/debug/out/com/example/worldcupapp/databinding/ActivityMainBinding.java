@@ -53,12 +53,16 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final TextView upcomingMatchesText;
 
+  @NonNull
+  public final ImageView whiteImage;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull BottomNavigationView bottomNaviagtionView, @NonNull TextView finishedMatchesText,
       @NonNull ImageView imageView2, @NonNull TextView loadingFinishedMatchesText,
       @NonNull TextView loadingMatchesText, @NonNull ProgressBar progressBar,
       @NonNull ProgressBar progressBarFinishedMatches, @NonNull RecyclerView recyclerMatch,
-      @NonNull RecyclerView recyclerMatchFinished, @NonNull TextView upcomingMatchesText) {
+      @NonNull RecyclerView recyclerMatchFinished, @NonNull TextView upcomingMatchesText,
+      @NonNull ImageView whiteImage) {
     this.rootView = rootView;
     this.bottomNaviagtionView = bottomNaviagtionView;
     this.finishedMatchesText = finishedMatchesText;
@@ -70,6 +74,7 @@ public final class ActivityMainBinding implements ViewBinding {
     this.recyclerMatch = recyclerMatch;
     this.recyclerMatchFinished = recyclerMatchFinished;
     this.upcomingMatchesText = upcomingMatchesText;
+    this.whiteImage = whiteImage;
   }
 
   @Override
@@ -159,10 +164,16 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.whiteImage;
+      ImageView whiteImage = ViewBindings.findChildViewById(rootView, id);
+      if (whiteImage == null) {
+        break missingId;
+      }
+
       return new ActivityMainBinding((ConstraintLayout) rootView, bottomNaviagtionView,
           finishedMatchesText, imageView2, loadingFinishedMatchesText, loadingMatchesText,
           progressBar, progressBarFinishedMatches, recyclerMatch, recyclerMatchFinished,
-          upcomingMatchesText);
+          upcomingMatchesText, whiteImage);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

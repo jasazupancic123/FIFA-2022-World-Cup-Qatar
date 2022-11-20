@@ -79,8 +79,8 @@ class DetailsFragment : Fragment() {
         val homeTeamManagerImageString2 = homeTeamManagerImageString.replace(" ", "_").lowercase()
         val homeTeamManagerImageString3 = homeTeamManagerImageString2.replace("é", "e")
         val homeTeamManagerImageString4 = homeTeamManagerImageString3.replace("á", "a")
-        val homeTeamManagerImage = resources.getIdentifier(homeTeamManagerImageString4, "drawable", activity?.packageName)
-        binding.homeTeamManagerImage.setImageResource(homeTeamManagerImage)
+        Picasso.with(mContext).load(match.homeTeam.manager.image).into(binding.homeTeamManagerImage)
+        Picasso.with(mContext).load(match.awayTeam.manager.image).into(binding.awayTeamManagerImage)
 
         val awayTeamManagerImageString = match.awayTeam.manager.firstName + " " + match.awayTeam.manager.lastName + ".jpg"
         val awayTeamManagerImageString2 = awayTeamManagerImageString.replace(" ", "_").lowercase()

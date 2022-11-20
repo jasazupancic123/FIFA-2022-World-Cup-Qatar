@@ -30,6 +30,7 @@ drawable matches_svg
 drawable rob_page
 drawable statistics_svg
 drawable teams_svg
+drawable whiteimg
 drawable world_cup_qatar_official
 drawable world_cup_qattarjpg
 id First2Fragment
@@ -212,6 +213,7 @@ id topScorersButton
 id topScorersRecycler
 id topScorersText
 id upcomingMatchesText
+id whiteImage
 id yellowCardsText
 layout activity_groups
 layout activity_main

@@ -196,11 +196,11 @@ class LineupActivity : AppCompatActivity() {
         }
         else {
             lifecycleScope.launch{
+                players = PlayerAPI().findByTeam(match.awayTeam._id)
                 binding.lineupTypeEditText.visibility = View.VISIBLE
                 binding.lineupTypeEditText.setOnClickListener {
                     binding.lineupTypeEditText.text.clear()
                 }
-                println("players: $players")
                 for (p in players){
                     when (p.position){
                         "goalkeeper" -> goalkeeperNames.add(p.firstName + " " + p.lastName)

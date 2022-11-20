@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Cannot input home or away goal"
+        android:text="Match has not started yet or it is half time... cannot update home or away goal"
         android:textAllCaps="true"
         android:visibility="invisible"
         android:textColor="@color/darkRed"

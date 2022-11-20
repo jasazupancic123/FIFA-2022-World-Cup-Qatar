@@ -38,7 +38,7 @@ class PlayersFragment : Fragment() {
             goalkepers = players.filter { it.position == "goalkeeper" }.toMutableList()
             defenders = players.filter { it.position == "defender" }.toMutableList()
             midfielders = players.filter { it.position == "midfielder" }.toMutableList()
-            forwards = players.filter { it.position == "attacker" }.toMutableList()
+            forwards = players.filter { it.position == "forward" }.toMutableList()
 
             binding.progressBar.visibility = View.GONE
             binding.loadingPlayersText.visibility = View.GONE

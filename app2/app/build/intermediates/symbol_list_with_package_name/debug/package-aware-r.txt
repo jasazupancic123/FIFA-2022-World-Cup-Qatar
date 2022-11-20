@@ -2706,6 +2706,7 @@ drawable teams_svg
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable whiteimg
 drawable world_cup_qatar_official
 drawable world_cup_qattarjpg
 id ALT
@@ -3364,6 +3365,7 @@ id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
 id west
+id whiteImage
 id withText
 id with_icon
 id withinBounds

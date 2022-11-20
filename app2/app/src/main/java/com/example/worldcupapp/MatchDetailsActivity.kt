@@ -124,12 +124,19 @@ class MatchDetailsActivity : AppCompatActivity() {
             binding.homeTeamScoreText.text = match.homeTeamScore.toString()
             binding.awayTeamScoreText.text = match.awayTeamScore.toString()
 
-            val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
-            val now = sdf.parse(sdf.format(System.currentTimeMillis()))
-            val start = sdf.parse(match.date.toString())
-            val diff = now.time - start.time
-            val diffMinutes = diff / (60 * 1000) % 60
-            binding.minuteText.text = "$diffMinutes'"
+            val matchTime: String = match.date.toString()[12].toString() + match.date.toString()[13] + match.date.toString()[14] + match.date.toString()[15] + match.date.toString()[16] + match.date.toString()[17] + match.date.toString()[18] + match.date.toString()[19]
+            val sdf = SimpleDateFormat("HH:mm:ss")
+            try {
+                val now = sdf.parse(sdf.format(System.currentTimeMillis()))
+                val start = sdf.parse(matchTime)
+                val diff = now.time - start.time
+                val diffMinutes = diff / (60 * 1000) % 60
+                binding.minuteText.text = "$diffMinutes'"
+            }
+            catch (e: ParseException){
+                println(e)
+                println("Date error")
+            }
         }
         else if (match.halfTimeResumedAt != null && !match.isFinished){
             binding.timeOfMatch.visibility = View.GONE
@@ -138,34 +145,29 @@ class MatchDetailsActivity : AppCompatActivity() {
             binding.homeTeamScoreText.text = match.homeTeamScore.toString()
             binding.awayTeamScoreText.text = match.awayTeamScore.toString()
 
-            val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
-            val now = sdf.parse(sdf.format(System.currentTimeMillis()))
-            val start = sdf.parse(match.halfTimeResumedAt.toString())
-            val diff = now.time - start.time
-            val diffMinutes = (diff / (60 * 1000) % 60) + 45
-            binding.minuteText.text = "$diffMinutes'"
+            val matchTime: String = match.halfTimeResumedAt.toString()[12].toString() + match.halfTimeResumedAt.toString()[13] + match.halfTimeResumedAt.toString()[14] + match.halfTimeResumedAt.toString()[15] + match.halfTimeResumedAt.toString()[16] + match.halfTimeResumedAt.toString()[17] + match.halfTimeResumedAt.toString()[18] + match.halfTimeResumedAt.toString()[19]
+            val sdf = SimpleDateFormat("HH:mm:ss")
+            try {
+                val now = sdf.parse(sdf.format(System.currentTimeMillis()))
+                val start = sdf.parse(matchTime)
+                val diff = now.time - start.time
+                var diffMinutes = diff / (60 * 1000) % 60
+                diffMinutes += 45
+                binding.minuteText.text = "$diffMinutes'"
+            }
+            catch (e: ParseException){
+                println(e)
+                println("Date error")
+            }
         }
         else if (match.isFinished){
+            println("palacinke")
             binding.timeOfMatch.visibility = View.GONE
             binding.dateOfMatch.visibility = View.GONE
+            binding.minuteText.text = "FT"
 
             binding.homeTeamScoreText.text = match.homeTeamScore.toString()
             binding.awayTeamScoreText.text = match.awayTeamScore.toString()
-            val dateFormat: SimpleDateFormat = SimpleDateFormat("EEE d/MM")
-            val timeFormat: SimpleDateFormat = SimpleDateFormat("HH:mm")
-            val givenFormat: SimpleDateFormat =
-                SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
-
-            try {
-                val date = givenFormat.parse(match.date.toString())
-                val dateStr = dateFormat.format(date)
-                val timeStr = timeFormat.format(date)
-
-                binding.minuteText.textSize = 13.5f
-                binding.minuteText.text = dateStr + " " + timeStr
-            } catch (e: ParseException) {
-                e.printStackTrace()
-            }
         }
         else {
             binding.homeTeamScoreText.visibility = View.GONE
@@ -177,16 +179,11 @@ class MatchDetailsActivity : AppCompatActivity() {
             val givenFormat: SimpleDateFormat =
                 SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT+01:00' yyyy")
 
-            try {
-                val date = givenFormat.parse(match.date.toString())
-                val dateStr = dateFormat.format(date)
-                val timeStr = timeFormat.format(date)
-
-                binding.dateOfMatch.text = dateStr
-                binding.timeOfMatch.text = timeStr
-            } catch (e: ParseException) {
-                e.printStackTrace()
-            }
+            val days = match.date.toString()[8].toString() + match.date.toString()[9].toString()
+            val month = match.date.toString()[4].toString() + match.date.toString()[5].toString() + match.date.toString()[6].toString()
+            val time = match.date.toString()[11].toString() + match.date.toString()[12].toString() + match.date.toString()[13].toString() + match.date.toString()[14].toString() + match.date.toString()[15].toString()
+            binding.dateOfMatch.text = days + " " + month
+            binding.timeOfMatch.text = time
         }
     }
 }

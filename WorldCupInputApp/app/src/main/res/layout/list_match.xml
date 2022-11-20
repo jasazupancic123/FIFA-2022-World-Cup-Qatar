@@ -87,12 +87,11 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/dateOfMatch"
+            android:id="@+id/dateOfMatch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:text="Date"
             android:layout_marginTop="5dp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/awayTeamName"

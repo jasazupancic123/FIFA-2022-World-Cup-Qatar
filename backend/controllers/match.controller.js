@@ -210,8 +210,6 @@ module.exports = class MatchController {
         awayTeam.matchesLost += 1
         await homeTeam.save()
         await awayTeam.save()
-        match.winner = homeTeam
-        await match.save()
       } else if (match.homeTeamScore < match.awayTeamScore) {
         const homeTeam = await TeamMode.findById(match.homeTeam)
         const awayTeam = await TeamMode.findById(match.awayTeam)
@@ -220,8 +218,6 @@ module.exports = class MatchController {
         homeTeam.matchesLost += 1
         await homeTeam.save()
         await awayTeam.save()
-        match.winner = awayTeam
-        await match.save()
       } else {
         const homeTeam = await TeamMode.findById(match.homeTeam)
         const awayTeam = await TeamMode.findById(match.awayTeam)

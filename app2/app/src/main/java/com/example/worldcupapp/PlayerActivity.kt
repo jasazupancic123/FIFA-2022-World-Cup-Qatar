@@ -33,8 +33,8 @@ class PlayerActivity : AppCompatActivity() {
 
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
     fun bind(){
-        Picasso.with(this).load("https://api.sofascore.app/api/v1/player/12994/image").into(binding.playerImage)
-        Picasso.with(this).load("https://api.sofascore.app/api/v1/team/1644/image").into(binding.clubImage)
+        Picasso.with(this).load(player.image).into(binding.playerImage)
+        Picasso.with(this).load(player.club.image).into(binding.clubImage)
         Picasso.with(this).load("https://flagcdn.com/160x120/" + player.team.iso2.lowercase() + ".png").into(binding.teamImageButton)
         binding.playerName.text = player.firstName + " " + player.lastName
         binding.teamText.text = player.team.fifaCode

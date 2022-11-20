@@ -251,6 +251,7 @@ class GoalAPI {
                     val assister = Gson().fromJson(goalObject["assister"]!!.jsonObject.toString(), Player::class.java)
 
                     val minute = goalObject["minute"]!!.jsonPrimitive.int
+                    println(goalObject["match"]!!.jsonObject.toString())
 
                     val match = Gson().fromJson(goalObject["match"]!!.jsonObject.toString(), Match::class.java)
 
